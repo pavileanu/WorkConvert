@@ -1,0 +1,8 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="false" CodeBehind="AdminMenu.master.vb" Inherits="IQ.AdminMenu" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+     <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <div><span onclick="document.location='SystemEditor.aspx';">System Editor</span><span onclick="document.location='AttrFinder.aspx';">Attribute Finder</span><span onclick="document.location='AttrFinder.aspx';">Attribute Finder</span><span onclick="document.location='AttrFinder.aspx';">Quote Finder</span><span onclick="document.location='AttrFinder.aspx';">List Price Lookup</span></div>
+     <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+</asp:Content>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://iquote2.channelcentral.net:8092/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/treeview" />
+  <xs:import schemaLocation="http://iquote2.channelcentral.net:8092/?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="GetLogNode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nodeID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLogNodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/treeview" minOccurs="0" name="GetLogNodeResult" nillable="true" type="q1:clsLog.Node" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNodeChildren">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nodeID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNodeChildrenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/treeview" minOccurs="0" name="GetNodeChildrenResult" nillable="true" type="q2:ArrayOfclsLog.Node" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="find">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nodeID" type="xs:int" />
+        <xs:element minOccurs="0" name="text" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="findResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/treeview" minOccurs="0" name="findResult" nillable="true" type="q3:ArrayOfclsLog.Node" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Ancestors">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nodeID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AncestorsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AncestorsResult" nillable="true" type="q4:ArrayOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Prune">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nodeID" type="xs:int" />
+        <xs:element minOccurs="0" name="slash" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PruneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PruneResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IngramPriceBand">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="hostid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="customerNumber" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IngramPriceBandResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IngramPriceBandResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

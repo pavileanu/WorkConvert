@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="clsUniTran" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="WSHttpBinding_I_UniTran_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://www3.channelcentral.net:8090/unitran?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://www3.channelcentral.net:8090/unitran?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://www3.channelcentral.net:8090/unitran?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://www3.channelcentral.net:8090/unitran?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/wsConsumer" />
+      <xsd:import schemaLocation="http://www3.channelcentral.net:8090/unitran?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="I_UniTran_AllProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:AllProducts" />
+  </wsdl:message>
+  <wsdl:message name="I_UniTran_AllProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AllProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="I_UniTran_RequestStockPrices_InputMessage">
+    <wsdl:part name="parameters" element="tns:RequestStockPrices" />
+  </wsdl:message>
+  <wsdl:message name="I_UniTran_RequestStockPrices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RequestStockPricesResponse" />
+  </wsdl:message>
+  <wsdl:message name="I_UniTran_CheckStockPrices_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckStockPrices" />
+  </wsdl:message>
+  <wsdl:message name="I_UniTran_CheckStockPrices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckStockPricesResponse" />
+  </wsdl:message>
+  <wsdl:message name="I_UniTran_GetLogNode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLogNode" />
+  </wsdl:message>
+  <wsdl:message name="I_UniTran_GetLogNode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLogNodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="I_UniTran_GetNodeChildren_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNodeChildren" />
+  </wsdl:message>
+  <wsdl:message name="I_UniTran_GetNodeChildren_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNodeChildrenResponse" />
+  </wsdl:message>
+  <wsdl:message name="I_UniTran_find_InputMessage">
+    <wsdl:part name="parameters" element="tns:find" />
+  </wsdl:message>
+  <wsdl:message name="I_UniTran_find_OutputMessage">
+    <wsdl:part name="parameters" element="tns:findResponse" />
+  </wsdl:message>
+  <wsdl:message name="I_UniTran_Ancestors_InputMessage">
+    <wsdl:part name="parameters" element="tns:Ancestors" />
+  </wsdl:message>
+  <wsdl:message name="I_UniTran_Ancestors_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AncestorsResponse" />
+  </wsdl:message>
+  <wsdl:message name="I_UniTran_Prune_InputMessage">
+    <wsdl:part name="parameters" element="tns:Prune" />
+  </wsdl:message>
+  <wsdl:message name="I_UniTran_Prune_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PruneResponse" />
+  </wsdl:message>
+  <wsdl:message name="I_UniTran_BuildRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuildRequest" />
+  </wsdl:message>
+  <wsdl:message name="I_UniTran_BuildRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuildRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="I_UniTran_hello_InputMessage">
+    <wsdl:part name="parameters" element="tns:hello" />
+  </wsdl:message>
+  <wsdl:message name="I_UniTran_hello_OutputMessage">
+    <wsdl:part name="parameters" element="tns:helloResponse" />
+  </wsdl:message>
+  <wsdl:portType name="I_UniTran">
+    <wsdl:operation name="AllProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/I_UniTran/AllProducts" message="tns:I_UniTran_AllProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/I_UniTran/AllProductsResponse" message="tns:I_UniTran_AllProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestStockPrices">
+      <wsdl:input wsaw:Action="http://tempuri.org/I_UniTran/RequestStockPrices" message="tns:I_UniTran_RequestStockPrices_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/I_UniTran/RequestStockPricesResponse" message="tns:I_UniTran_RequestStockPrices_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckStockPrices">
+      <wsdl:input wsaw:Action="http://tempuri.org/I_UniTran/CheckStockPrices" message="tns:I_UniTran_CheckStockPrices_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/I_UniTran/CheckStockPricesResponse" message="tns:I_UniTran_CheckStockPrices_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLogNode">
+      <wsdl:input wsaw:Action="http://tempuri.org/I_UniTran/GetLogNode" message="tns:I_UniTran_GetLogNode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/I_UniTran/GetLogNodeResponse" message="tns:I_UniTran_GetLogNode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNodeChildren">
+      <wsdl:input wsaw:Action="http://tempuri.org/I_UniTran/GetNodeChildren" message="tns:I_UniTran_GetNodeChildren_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/I_UniTran/GetNodeChildrenResponse" message="tns:I_UniTran_GetNodeChildren_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="find">
+      <wsdl:input wsaw:Action="http://tempuri.org/I_UniTran/find" message="tns:I_UniTran_find_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/I_UniTran/findResponse" message="tns:I_UniTran_find_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Ancestors">
+      <wsdl:input wsaw:Action="http://tempuri.org/I_UniTran/Ancestors" message="tns:I_UniTran_Ancestors_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/I_UniTran/AncestorsResponse" message="tns:I_UniTran_Ancestors_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Prune">
+      <wsdl:input wsaw:Action="http://tempuri.org/I_UniTran/Prune" message="tns:I_UniTran_Prune_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/I_UniTran/PruneResponse" message="tns:I_UniTran_Prune_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuildRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/I_UniTran/BuildRequest" message="tns:I_UniTran_BuildRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/I_UniTran/BuildRequestResponse" message="tns:I_UniTran_BuildRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="hello">
+      <wsdl:input wsaw:Action="http://tempuri.org/I_UniTran/hello" message="tns:I_UniTran_hello_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/I_UniTran/helloResponse" message="tns:I_UniTran_hello_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSHttpBinding_I_UniTran" type="tns:I_UniTran">
+    <wsp:PolicyReference URI="#WSHttpBinding_I_UniTran_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AllProducts">
+      <soap12:operation soapAction="http://tempuri.org/I_UniTran/AllProducts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestStockPrices">
+      <soap12:operation soapAction="http://tempuri.org/I_UniTran/RequestStockPrices" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckStockPrices">
+      <soap12:operation soapAction="http://tempuri.org/I_UniTran/CheckStockPrices" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLogNode">
+      <soap12:operation soapAction="http://tempuri.org/I_UniTran/GetLogNode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNodeChildren">
+      <soap12:operation soapAction="http://tempuri.org/I_UniTran/GetNodeChildren" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="find">
+      <soap12:operation soapAction="http://tempuri.org/I_UniTran/find" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ancestors">
+      <soap12:operation soapAction="http://tempuri.org/I_UniTran/Ancestors" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Prune">
+      <soap12:operation soapAction="http://tempuri.org/I_UniTran/Prune" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildRequest">
+      <soap12:operation soapAction="http://tempuri.org/I_UniTran/BuildRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="hello">
+      <soap12:operation soapAction="http://tempuri.org/I_UniTran/hello" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="clsUniTran">
+    <wsdl:port name="WSHttpBinding_I_UniTran" binding="tns:WSHttpBinding_I_UniTran">
+      <soap12:address location="http://www3.channelcentral.net:8090/unitran/endpoint" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://www3.channelcentral.net:8090/unitran/endpoint</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

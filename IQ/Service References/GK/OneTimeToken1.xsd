@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="channelcentral.net/oneTimeToken" elementFormDefault="qualified" targetNamespace="channelcentral.net/oneTimeToken" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:17561/Services/OneTimeToken.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/IQ" />
+  <xs:element name="GetToken">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="HostID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="HostPassword" nillable="true" type="xs:string" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/IQ" minOccurs="0" name="Pairs" nillable="true" type="q1:ArrayOfclsNameValuePair" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTokenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/IQ" minOccurs="0" name="GetTokenResult" nillable="true" type="q2:clsToken" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Help">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HelpResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/IQ" minOccurs="0" name="HelpResult" nillable="true" type="q3:ArrayOfclsName" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

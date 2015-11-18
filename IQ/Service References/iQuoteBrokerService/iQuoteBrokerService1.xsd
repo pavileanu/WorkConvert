@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8033/iQuoteBrokerService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:8033/iQuoteBrokerService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:import schemaLocation="http://localhost:8033/iQuoteBrokerService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/iQuoteBroker.Classes" />
+  <xs:element name="UpdateObject">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="Id" type="q1:guid" />
+        <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="Properties" nillable="true" type="q2:ArrayOfTupleOfstringstringanyTypeNullableOfintOgMXChDh" />
+        <xs:element minOccurs="0" name="TimeStamp" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateObjectResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateObjectResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterParticipant">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="Id" type="q3:guid" />
+        <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="URI" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="IsBroker" type="xs:boolean" />
+        <xs:element minOccurs="0" name="IsRootNode" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterParticipantResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObjectUpdated">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="Id" type="q4:guid" />
+        <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="Properties" nillable="true" type="q5:ArrayOfTupleOfstringstringanyTypeNullableOfintOgMXChDh" />
+        <xs:element minOccurs="0" name="UpdateTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObjectUpdatedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ObjectUpdatedResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNodes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNodesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/iQuoteBroker.Classes" minOccurs="0" name="GetNodesResult" nillable="true" type="q6:ArrayOfNode" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

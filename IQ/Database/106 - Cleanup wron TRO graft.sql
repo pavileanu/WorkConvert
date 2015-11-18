@@ -1,0 +1,1 @@
+ delete from Graft  where [Source] = 'RefreshPQWSTRO' and [path] =''

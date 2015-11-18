@@ -1,0 +1,1 @@
+﻿ALTER TABLE [Event] add severity int default 0 not null

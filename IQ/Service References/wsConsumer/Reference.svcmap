@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="fc429146-fa61-4243-a42e-14d358526216" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://iquote2.channelcentral.net:8090/unitran" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="unitran55.xsd" MetadataType="Schema" ID="585fe64f-821a-4a57-95b3-f53bfc8b9bc9" SourceId="1" SourceUrl="http://iquote2.channelcentral.net:8090/unitran?xsd=xsd0" />
+    <MetadataFile FileName="unitran56.xsd" MetadataType="Schema" ID="489e294d-3ebc-4612-910d-3d58ebb4bb63" SourceId="1" SourceUrl="http://iquote2.channelcentral.net:8090/unitran?xsd=xsd1" />
+    <MetadataFile FileName="unitran57.xsd" MetadataType="Schema" ID="153fc370-c507-4307-9ec6-e207e404ef4b" SourceId="1" SourceUrl="http://iquote2.channelcentral.net:8090/unitran?xsd=xsd2" />
+    <MetadataFile FileName="unitran58.xsd" MetadataType="Schema" ID="70c6bef4-3e49-4be9-a528-a2b2e0d83142" SourceId="1" SourceUrl="http://iquote2.channelcentral.net:8090/unitran?xsd=xsd4" />
+    <MetadataFile FileName="unitran11.disco" MetadataType="Disco" ID="e527e361-19f9-40e6-ae2e-bc5157a216fe" SourceId="1" SourceUrl="http://iquote2.channelcentral.net:8090/unitran?disco" />
+    <MetadataFile FileName="clsUniTran11.wsdl" MetadataType="Wsdl" ID="0a554f9d-087e-403f-849b-9c58b96b2cd0" SourceId="1" SourceUrl="http://iquote2.channelcentral.net:8090/unitran?wsdl" />
+    <MetadataFile FileName="unitran59.xsd" MetadataType="Schema" ID="88a79538-aef7-4048-8792-5daacb7e3cf3" SourceId="1" SourceUrl="http://iquote2.channelcentral.net:8090/unitran?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

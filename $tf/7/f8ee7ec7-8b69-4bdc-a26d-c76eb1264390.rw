@@ -1,0 +1,1 @@
+﻿update field set [FK_InputType_ID]=519,WidgetUI = 'NUMS',FilterVisible=0 where property='Promos(F)'

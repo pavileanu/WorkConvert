@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IQ.clsAccount">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQABAABACBBAgAAAEAAAQRAAiAAAAAQCEEAEAAAEQAA=</HashCode>
+      <FileName>Classes\clsAccount.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="IQ.clsChannel">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACUAGGACgAAAiAgQAAAkQUwIADEAQAESCQQQQAAAAAA=</HashCode>
+      <FileName>Classes\clsChannel.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="IQ.clsRegion">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAgAAAAAAkQAQAAQAAABAQAAgAAAADAAA=</HashCode>
+      <FileName>Classes\clsRegion.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

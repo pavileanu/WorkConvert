@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://iquote2.channelcentral.net:8090/unitran?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://iquote2.channelcentral.net:8090/unitran?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/wsConsumer" />
+  <xs:element name="AllProducts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="hostID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AllProductsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AllProductsResult" nillable="true" type="q1:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestStockPrices">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/wsConsumer" minOccurs="0" name="request" nillable="true" type="q2:clsStockPriceRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestStockPricesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RequestStockPricesResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckStockPrices">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="requestid" type="xs:int" />
+        <xs:element minOccurs="0" name="synchronous" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SynchTimeOut" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckStockPricesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/wsConsumer" minOccurs="0" name="CheckStockPricesResult" nillable="true" type="q3:clsStockPriceResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLogNode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nodeID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLogNodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/wsConsumer" minOccurs="0" name="GetLogNodeResult" nillable="true" type="q4:clsLogNode" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNodeChildren">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nodeID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNodeChildrenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/wsConsumer" minOccurs="0" name="GetNodeChildrenResult" nillable="true" type="q5:ArrayOfclsLogNode" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="find">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nodeID" type="xs:int" />
+        <xs:element minOccurs="0" name="text" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="findResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/wsConsumer" minOccurs="0" name="findResult" nillable="true" type="q6:ArrayOfclsLogNode" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Ancestors">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nodeID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AncestorsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AncestorsResult" nillable="true" type="q7:ArrayOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Prune">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nodeID" type="xs:int" />
+        <xs:element minOccurs="0" name="slash" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PruneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PruneResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuildRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="hostID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="hostAccountnum" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sessionID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="currency" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="warehouse" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="authkey" nillable="true" type="xs:string" />
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Skus" nillable="true" type="q8:ArrayOfstring" />
+        <xs:element minOccurs="0" name="quoteID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="additionalParameters" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="app" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuildRequestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/wsConsumer" minOccurs="0" name="BuildRequestResult" nillable="true" type="q9:clsStockPriceRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListPrices">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="currency" nillable="true" type="xs:string" />
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="HPskus" nillable="true" type="q10:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListPricesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/wsConsumer" minOccurs="0" name="ListPricesResult" nillable="true" type="q11:ArrayOfclslistprice" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hello">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="helloResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="helloResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,1 @@
+﻿alter table translation add deleted bit not null default 0 

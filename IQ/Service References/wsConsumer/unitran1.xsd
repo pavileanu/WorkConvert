@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/wsConsumer" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/wsConsumer" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://www3.channelcentral.net:8090/unitran?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://www3.channelcentral.net:8090/unitran?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+  <xs:complexType name="clsStockPriceRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdditionalParams" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AuthKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HostAccountNum" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HostID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QuoteID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SessionID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Warehouse" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="skus" nillable="true" type="q1:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsStockPriceRequest" nillable="true" type="tns:clsStockPriceRequest" />
+  <xs:complexType name="clsStockPriceResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RequestID" type="xs:int" />
+      <xs:element minOccurs="0" name="ResponseTimeStamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="completed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="currency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="items" nillable="true" type="tns:ArrayOfclsStockPriceItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsStockPriceResponse" nillable="true" type="tns:clsStockPriceResponse" />
+  <xs:complexType name="ArrayOfclsStockPriceItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsStockPriceItem" nillable="true" type="tns:clsStockPriceItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsStockPriceItem" nillable="true" type="tns:ArrayOfclsStockPriceItem" />
+  <xs:complexType name="clsStockPriceItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CustomerPrice" type="xs:float" />
+      <xs:element minOccurs="0" name="ListPrice" type="xs:float" />
+      <xs:element minOccurs="0" name="SKU" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="stock" nillable="true" type="tns:ArrayOfclsShipment" />
+      <xs:element minOccurs="0" name="warehouse" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsStockPriceItem" nillable="true" type="tns:clsStockPriceItem" />
+  <xs:complexType name="ArrayOfclsShipment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsShipment" nillable="true" type="tns:clsShipment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsShipment" nillable="true" type="tns:ArrayOfclsShipment" />
+  <xs:complexType name="clsShipment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arrival" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="isCurrent" type="xs:boolean" />
+      <xs:element minOccurs="0" name="quantity" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsShipment" nillable="true" type="tns:clsShipment" />
+  <xs:complexType name="clsLogNode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="children" nillable="true" type="q2:QueueOfint" />
+      <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="parent" type="xs:int" />
+      <xs:element minOccurs="0" name="severity" type="xs:int" />
+      <xs:element minOccurs="0" name="timestamp" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsLogNode" nillable="true" type="tns:clsLogNode" />
+  <xs:complexType name="ArrayOfclsLogNode">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsLogNode" nillable="true" type="tns:clsLogNode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsLogNode" nillable="true" type="tns:ArrayOfclsLogNode" />
+</xs:schema>

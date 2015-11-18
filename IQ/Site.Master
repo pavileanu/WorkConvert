@@ -1,0 +1,580 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Site.master.vb" Inherits="IQ.Site" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN">
+
+<head runat="server">
+    <title></title>
+
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+    <link href="<%# ResolveUrl("~/") %>Styles/Site.css" rel="stylesheet" type="text/css" />
+    <!--static styleshhet link was here - see page_load -->
+
+
+    <!-- <link href="Styles/Dan.css" rel="stylesheet" type="text/css" />-->
+    <!--<link rel="stylesheet" href="http://www.channelcentral.net/styles/HP/dropdowns.css"/>    -->
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <!-- DO NOT ATTEMPT TO SELF CLOSE SCRIPT TAGS -->
+    <%-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>--%>
+    <script src="<%# ResolveUrl("~/")%>scripts/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script src="<%# ResolveUrl("~/")%>scripts/jquery-ui-1.11.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="<%# ResolveUrl("~/")%>scripts/iQuote2-1.0.0.js"></script>
+    <script type="text/javascript" src="<%# ResolveUrl("~/") %>scripts/embed.js"></script>
+
+
+    <!---Put a copy of the loginID into the javascript global variable-->
+    <script type="text/javascript">
+        loginID = "<%#Request.QueryString("lid")%>";
+        elevatedID = "<%#Request("elid")%>";
+
+        function validate() {
+            var email = $("#<%#txtFeedBackFrom.ClientID%>").val();
+            var name = $("#<%#txtFeedbackName.ClientID%>").val();
+            var contact = $("#<%#txtContactDetails.ClientID%>").val();
+            var feedback = $("#<%#txtFeedback.ClientID%>").val();
+
+            return feedbackValidate(email, name, contact, feedback);
+
+        }
+        $(function () {
+            $("#tooltabs").tabs({
+                active: 1
+            });
+        });
+    </script>
+
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+
+    <style type="text/css">
+        .ui-widget-overlay {
+            opacity: .50 !important; /* Make sure to change both of these, as IE only sees the second one */
+            filter: Alpha(Opacity=50) !important;
+            background: rgb(50, 50, 50) !important; /* This will make it darker */
+            z-index: 50;
+        }
+
+        .ui-widget {
+            font-family: HP,Calibri,Arial;
+            font-size: 1em;
+        }
+
+        .ui-state-active a, .ui-state-hover a, .ui-state-visited a, .ui-state-focus a {
+            outline: none;
+        }
+
+        .btnHide {
+            display: none;
+        }
+
+        .btnShow {
+            display: block;
+        }
+
+        .feedbackdiv {
+            float: left;
+            margin: 12px 0;
+            color: #FFFFFF;
+            font-weight: bold;
+            background-color: green;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(function () {
+            if ($("#<%# lblMsg.ClientID%>").html().length > 0) {
+                $("#feedbackMsg").text($("#<%# lblMsg.ClientID%>").html());
+                setTimeout("$('#feedbackMsg').hide();", 3000);
+            }
+        })
+
+        function feedbackClick() {
+            $("#errmsg").hide();
+            //$("#ctl00_btndiv").show();
+            $("#<%# btndiv.ClientID %>").show()
+            var popupWidth = $(document).width() * 80 / 100;
+            var txtboxwith = $(document).width() * 50 / 100;
+
+            $("#<%# txtFeedback.ClientID%>").width(txtboxwith);
+            $("#<%# lblMsg.ClientID%>").text("");
+            $("#feedback").dialog({
+                resizable: false,
+                height: 480,
+                width: popupWidth,
+                modal: true,
+                open: function (type, data) {
+                    $(this).parent().appendTo("form");
+                },
+                title: 'Feedback'//,
+                //  close: function (type, data) { ($(this).parent().replaceWith("")); }
+
+            });
+        }
+
+        
+    </script>
+</head>
+
+<body onload="window.history.forward();">
+    <div id="spinnerContainer" class="spinnerContainer"></div>
+    <script type="text/javascript" src="../scripts/wz_tooltip.js"></script>
+    <div id="stillThere" style="display: none;">
+        <div id="stillThereInner">
+
+            <div id="stillThereText">You will be logged out soon due to inactivity. Do you wish to continue using HP iQuote?</div>
+            <div id="rib" class="hpOrangeButton" style="width: 6em; margin-top: 2em;" onclick="extendSession();">Continue</div>
+            <div id="sob" class="hpGreyButton" style="width: 6em; margin-top: 2em;" onclick="logOut();">Log out</div>
+
+        </div>
+    </div>
+
+
+    <div id="PageLimits">
+        <form runat="server">
+
+            <div id="headerBack"></div>
+            <!-- sits behind the header itselfs to it's background image can be displayed - yet the tree can scroll behind it -->
+            <div id="headerBar">
+                <!-- positioned fixed and therefore not in the flow -->
+
+                <div id="loginDisplay" style="position: absolute; right: 0; top: .3em; display: block; text-align: right;" runat="server">
+                    <div style="padding-right: 2em; text-align: right;">
+                        <asp:Label ID="LblRole" runat="server" Text="Not logged in"></asp:Label>
+                    </div>
+                    <div id="newMenu" runat="server" visible="false" style="padding-right: 2em;">
+                        <ul id=" mainNav">
+                            <li id="admMenu" visible="false" runat="server"><a href="administration.aspx?lid=<%= Request.QueryString("lid")%><%=If(Request("elid") <> "", "&elid=" & Request("elid"), "")%>"><%=translateUI("Administration")%> </a></li>
+                            <li id="accountSetting" runat="server"><a href="accountSettings.aspx?lid=<%= Request.QueryString("lid")%>
+                                <%=If(Request("elid") <> "", "&elid=" & Request("elid"), "")%>">
+                                <%=TranslateUI("Account Settings")%>
+                            </a>
+                            </li>
+                            <li id="switchAccount" runat="server" visible="true">
+                                <a href="accounts.aspx?lid=<%=Request.QueryString("lid")%>&Switch=true">
+                                    <%=TranslateUI("Switch Account")%>
+                                </a>
+                            </li>
+                            <li id="Logout" runat="server"><a href="Signout.aspx?lid=<%= Request.QueryString("lid")%>"><%= TranslateUI("Log Out")%> </a></li>
+                        </ul>
+                    </div>
+                    <div id="btnNav" runat="server" style="text-align: right; padding-right: 2em;" visible="false">
+                        <asp:Button ID="btnPortFolio" UseSubmitBehavior="false" runat="server" Text="Show All" CommandArgument="all" Style="height: 18px; padding: 2px; border: 0px; margin-left: 5px;" />
+                        <asp:Button ID="btnErrorDisplay" UseSubmitBehavior="false" runat="server" Text="Show Errors" CommandArgument="show" Style="height: 18px; padding: 2px; border: 0px; margin-left: 5px;" />
+                        <asp:Button ID="BtnTreeMode" UseSubmitBehavior="false" runat="server" Text="Tree Mode" CommandArgument="tree" Style="height: 18px; padding: 2px; border: 0px; margin-left: 5px;" />
+                    </div>
+
+
+                    <br />
+                    <asp:HyperLink ID='HyperBack' runat="server" NavigateUrl="~/aspx/signin.aspx" Style="height: 18px; padding-right: 2em;">Log in</asp:HyperLink>
+
+                </div>
+
+                <div id="newHeader" style="min-width: 1024px;" runat="server" visible="false">
+                    <ul id="nav" style="text-align: center;">
+                        <li style="float: left; display: inline-block;">
+                            <ul style="padding: 0px;">
+                                <li class="menuItem"><%=TranslateUI("Add Products :")%></li>
+                                <li class="menuItem" id="btnBrowse" runat="server">
+
+                                    <a href="#"
+                                        onclick="if(window.location.href.indexOf('tree.aspx')>0){
+                                        hideKeywordSearchResults();
+                                        getBranches('cmd=open&path=tree.1&into=tree&Paradigm=B');
+                                        return false;}
+                                        else
+                                        {window.location.href='tree.aspx?lid=<%= Request("lid")%>&Quote=Browse<%=If(Request("elid") <> "", "&elid=" & Request("elid"), "")%>'}">
+                                        <%= TranslateUI("Browse")%>
+                                    </a>
+                                </li>
+
+                                <li class="menuItem">
+                                    <a href="#" id="searchMenuItem" runat="server"
+                                        onclick='burstBubble(event);$("#optionsSearch").hide();$("#systemsSearch").show();searchClick("");return false;'>
+                                        <%= TranslateUI("Search")%>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li style="float: left; display: inline-block; margin-left: 4em;">
+                            <ul style="padding: 0px;">
+                                <li class="menuItem"><a href="tree.aspx?lid=<%= Request("lid")%>&Quote=New<%= If(Request("elid") <> "", "&elid=" & Request("elid"), "")%>"><%= TranslateUI("New Quote")%></a></li>
+                                <li class="menuItem"><a href="listquotes.aspx?lid=<%= Request("lid")%><%= If(Request("elid") <> "", "&elid=" & Request("elid"), "")%>"><%= TranslateUI("My Quotes")%></a></li>
+                            </ul>
+                        </li>
+                        <li style="float: left; display: inline-block; margin-left: 4em;">
+                            <ul style="padding: 0px;">
+                                <li class="menuItem" id="toolsLink" runat="server"><a href="#" onclick="showToolTabs(event);"><%= TranslateUI("Tools")%></a></li>
+                                <li class="menuItem"><a href="resources.aspx?lid=<%=Request("lid")%><%= If(Request("elid") <> "", "&elid=" & Request("elid"), "")%>"><%= TranslateUI("Resources")%></a></li>
+                            </ul>
+                        </li>
+                        <li style="float: right; margin-right: 4em;" id="wareHouseli" runat="server" visible="false">
+                            <ul style="padding: 0px;">
+                                <li class="menuItem">
+                                    <input type="button" value="Not Set" onclick="NotSetClick();" id="btnContext" runat="server" class="hpRedButton" /></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!--                    <script type="text/javascript">
+                        var url = $(location).attr('href');
+                        if (url.toLowerCase().indexOf("tree.aspx") < 0) {
+                            $("#nav").find("li:eq(2)").hide();
+                            $("#nav").find("li:eq(3)").css("padding-left", "312px");
+                        }
+                    </script>-->
+
+                </div>
+                <!--/newheader-->
+
+            </div>
+            <!--/headerbar-->
+
+            <div id="spacer"></div>
+            <div id="OneEm" style="width: 1em;"></div>
+            <!--Used to detemrin tree width - has no height-->
+            <!-- Pushes the tree 'down' behind the fixed position header bar (menus,find customer and keyword search) - if you try to position it absolutely - you don't get a scroll bar) -->
+
+            <div id="xx" runat="server">
+                <div id='tools' style='display: none;'>
+
+                    <div id="tooltabs" style="border: 1px solid #aaaaaa;">
+                        <ul>
+                            <li><a href="#importBody"><%= TranslateUI("Import")%>
+                            </a></li>
+                            <li><a href="#priceListBody">
+                                <%= TranslateUI("Price List")%></a></li>
+                        </ul>
+                        <div id="importBody">
+                            <div id="slIntro" style="margin-bottom: 1em;">
+                                <p>
+                                    <%= TranslateUI("Copy/Paste a list of Part Numbers and Quantities from Microsoft Excel or an email table.")%><br />
+                                    <%= TranslateUI("iQuote will check that everything works together and turn your Shopping List into a quote.")%>
+                                </p>
+                            </div>
+                            <div id="import">
+                                <textarea rows="10" cols="40" id="shoppingList" style="resize: none;"
+                                    <%=" placeholder=" & Chr(34) & TranslateUI("Paste your parts list here") & Chr(34)%>></textarea>
+                            </div>
+
+                            <div id="importHelp" style="display: none; z-index: 30;">
+                                <p>
+                                    <%=TranslateUI("1. The Import tool is designed to work best with a list of part numbers")%>
+                                </p>
+                                <p>
+                                    <%=TranslateUI(" and quantities pasted straight out of Microsoft Excel or an Email table.")%>
+                                </p>
+                                <br />
+                                <p class="indent40">
+                                    <%=TranslateUI("a. It doesn't matter which order the columns are in - iQuote")%>
+                                </p>
+                                <p class="indent45">
+                                    <%=TranslateUI("will calculate which column is part numbers and which is ")%>
+                                </p>
+                                <p class="indent45">
+                                    <%=TranslateUI("quantities.")%>
+                                </p>
+                                <br />
+                                <p class="indent40">
+                                    <%= TranslateUI("b. The quantities are not mandatory - if you don't provide them, iQuote ")%>
+                                </p>
+                                <p class="indent45">
+                                    <%= TranslateUI(" will assume you want one (1) of each product.")%>
+                                </p>
+                                <br />
+                                <p class="indent40">
+                                    <%= TranslateUI("c. You can type directly into the text area if you prefer.")%>
+                                </p>
+
+                                <p class="indent45">
+                                    <%= TranslateUI("Use &quot;*&quot; to indicate quantities (e.g. ABCDEA*2) and press")%>
+                                </p>
+                                <p class="indent45">
+                                    <%= TranslateUI("ENTER for each new line.")%>
+                                </p>
+                                <br />
+                                <p>
+                                    <%= TranslateUI("2. Make sure the System Unit is first in your list. iQuote will then check")%>
+                                </p>
+                                <p>
+                                    <%= TranslateUI(" whether the subsequent lines are compatible options for the system.")%>
+                                </p>
+                                <br />
+                                <p class="indent40">
+                                    <%= TranslateUI("a. If you are quoting for multiple systems that are the same,")%>
+                                </p>
+                                <p class="indent45">
+                                    <%= TranslateUI("simply multiply up every quantity in your list - or use the standard")%>
+                                </p>
+                                <p class="indent45">
+                                    <%= TranslateUI("System Multiplier control once you have imported your list.")%>
+                                </p>
+
+                            </div>
+
+                            <!-- help button - and 'special popup dialog' -->
+                            <div id="importHelpButton" class="hpGreyButton ib">
+                                <%= TranslateUI("Help")%>
+                            </div>
+
+                            <div id="importButtons">
+                                <!--
+                                <div id="swift2Button" class ="hpBlueButton ib"
+                                    onclick="$('#tools').dialog('close');swift2()">
+                                    <%'=TranslateUI("View stock and Price")%>                            
+                                </div>                    
+                                -->
+                                <div id="importButton" class="hpOrangeButton ib"
+                                    onclick="shoppingList();">
+                                    <%= TranslateUI("Add to quote")%>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div id="priceListBody">
+                            <!--Start on the system tab-->
+                            <div id="sysIntro" style="margin-bottom: 1em;">
+                                <p><%= TranslateUI("Type in a System Unit Part Number to generate a pricelist of all compatible options.")%></p>
+                            </div>
+                            <div id="sysSkuHolder">
+                                <input id="systemSKU" type="text" maxlength="15" />
+                            </div>
+                            <div id="submitSystem" class="hpOrangeButton ib" onclick="swift1();">
+                                <%= TranslateUI("Export to CSV")%>
+                            </div>
+                        </div>
+                        <div id="toolsError" class="hpRed hpsmall"></div>
+                    </div>
+
+                </div>
+                <!--/tools-->
+            </div>
+            <!--/runat-->
+
+
+            <div id="PageContent">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </div>
+
+            <div id="learnmore" style="display: none">
+            </div>
+
+            <div id="feedback" style="display: none">
+                <div>
+                    <div class="feedbackError">
+                        <span id="errmsg" style="display: none;">Please fill in email , name , contact details and feedback. </span>
+
+                    </div>
+                </div>
+                <div>
+                    <div class="feedbackLabel">
+                        <asp:Label ID="Label1" runat="server" Text="Your email"></asp:Label>
+                    </div>
+                    <div class="feedbackBox">
+                        <asp:TextBox ID="txtFeedBackFrom" runat="server" Width="250"></asp:TextBox>
+                    </div>
+                </div>
+                <div>
+                    <div class="feedbackLabel">
+                        <asp:Label ID="Label6" runat="server" Text="Your name"></asp:Label>
+                    </div>
+                    <div class="feedbackBox">
+                        <asp:TextBox ID="txtFeedbackName" runat="server" Width="250"></asp:TextBox>
+                    </div>
+                </div>
+                <div>
+                    <div class="feedbackLabel">
+                        <asp:Label ID="Label7" runat="server" Text="Contact details"></asp:Label>
+                    </div>
+                    <div class="feedbackBox">
+                        <asp:TextBox ID="txtContactDetails" runat="server" Width="250"></asp:TextBox>
+                    </div>
+                    If other than account contact
+                </div>
+                <div>
+                    <div class="feedbackLabel">
+                        <asp:Label ID="Label8" runat="server" Text="Prefered language"></asp:Label>
+                    </div>
+                    <div class="feedbackBox">
+                        <asp:DropDownList ID="txtFeedbackLanguage" runat="server" Width="250"></asp:DropDownList>
+                    </div>
+                </div>
+                <div>
+                    <div class="feedbackLabel">
+                        <asp:Label ID="Label2" runat="server" Text="Feedback Type"></asp:Label>
+                    </div>
+                    <div class="feedbackBox">
+                        <asp:DropDownList ID="feedbacktype" runat="server" Width="250">
+                        </asp:DropDownList>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="feedbackLabel">
+                        <asp:Label ID="Label3" runat="server" Text="Your feedback"></asp:Label>
+                    </div>
+                    <div class="feedbackBox">
+                        <asp:TextBox ID="txtFeedback" runat="server" TextMode="MultiLine" CssClass="feedbackbox" Width="250" Height="200"></asp:TextBox>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="feedbackLabel">
+                        <asp:Label ID="Label4" runat="server" Text="Consent"></asp:Label>
+                    </div>
+                    <div class="feedbackBox">
+                        <asp:CheckBox ID="chkAllow" runat="server" CssClass="feedbackAllow" Checked="True"></asp:CheckBox>
+                    </div>
+                </div>
+
+                <div id="btndiv" runat="server" class="btnShow">
+                    <asp:Button ID="BtnFeedback" runat="server" Text="Feedback" CausesValidation="true" ValidationGroup="feedbackGroup" CssClass="textButton" OnClientClick="return validate();" />
+
+                </div>
+                <br />
+
+                <div>
+                    <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label>
+                </div>
+                <div id="thanks" style="display: none; background-color: green; color: White;">
+                    <asp:Label ID="Label5" runat="server" Text="thanks for your feedback (replaced by xlt)"></asp:Label>
+                </div>
+
+            </div>
+            <!-- /initially hidden feedback form -->
+            <div id="Cus_qt_container" style="display: none">
+                 <div class="pop_inner_container">
+                    <span>Please provide the following information about the End Customer, to ensure you receive the correct pricing and stock information.</span>
+
+                    <div id="ICMS_loco_container" class="clearfix">
+                        <div class="pop_left_col">
+                            ICMS Location
+                        </div>
+                        <div class="pop_right_col">
+                           <asp:DropDownList ID="drpLocation" runat="server" Width="100">
+                           </asp:DropDownList>
+                          
+                        </div>
+                        <!--/pop_right_col-->
+                    </div>
+                    <!--/ICMS_loco_container-->
+                    <div id="chks_container">
+                        <div class="pop_left_col">
+                        </div>
+                        <div class="pop_right_col">
+                  
+                            <asp:CheckBoxList ID="chkTax" runat="server" >
+                                <asp:ListItem Text ="tax type 1 "></asp:ListItem>
+                                <asp:ListItem Text ="tax type2"></asp:ListItem>
+                            </asp:CheckBoxList>
+                           
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                    <!--/chks_container-->
+                    <div id="pref_ware">
+                        <div class="pop_left_col">
+                            Preferred Warehouse
+                        </div>
+                        <div class="pop_right_col">
+                              <asp:DropDownList ID="drpWareHouse" runat="server" Width="100">
+                           </asp:DropDownList>
+                        </div>
+                    </div>
+                    <!--/pref_ware-->
+
+                    <div id="button_container" >
+                        <div style = "padding-right: 2em; " > <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="hpGreyButton" onClick="btnCancel_Click"/></div>
+                        <div > <asp:Button ID="btnContinue" runat="server" Text="Continue"  CssClass="hpOrangeButton" OnClick="btnContinue_Click" /></div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="footer">
+
+                <!-- Submit feedback link -->
+                <asp:Literal ID="litSubmit" runat="server"></asp:Literal>
+
+                <!--legal link -->
+                <input type="button" id="legalLink" value="Legal" class="textButton ib" runat="server" style="cursor: pointer" onclick="doDialog('#legal', 800, 600); return false;" />
+
+                <!--Note - this next div is positioned absolute.. and not in the flow -->
+                <div class="versionNum">
+                    <asp:Literal ID="litVersion" runat="server"></asp:Literal>
+                </div>
+                <div id="feedbackMsg" class="feedbackdiv"></div>
+                <!-- Displays 'the thanks for your feedback' *after* they've closed  redundant ? -->
+
+
+
+            </div>
+            <div style="position: absolute; right: 0px; bottom: 0px; width: 30px; height: 30px; background-color: transparent;" id="ttlMN" runat="server"></div>
+            <div id="legal" style="display: none;">
+                <asp:Literal ID="terms" runat="server"></asp:Literal>
+            </div>
+        </form>
+
+    </div>
+</body>
+
+<script type="text/javascript">
+    $(window).on('scroll', function () {
+        if ($('#quoteOuter').height() > 0 && ($(window).scrollTop() + $(window).height()) <= $(document).height()) {
+            if ($(window).scrollTop() + $(window).height() > ($('body').height() - $(".footer").height()))
+                $("#quoteOuter").height($(window).height() - $("#spacer").outerHeight() - $(".footer").outerHeight() - 1)
+            else
+                $("#quoteOuter").css('height', $(window).height() - $("#spacer").outerHeight() - 1);
+        }
+        //if ($(window).scrollTop() + $(window).height() > $('#quoteOuter').height()) { $('#quoteOuter').css('top', $(this).scrollTop() - ($('#quoteOuter').height() - $(window).height() + 300)); } else { $('#quoteOuter').css('top', 0);}
+        $('#quoteOuter').css('top', $(window).scrollTop() - $("spacer").outerHeight());
+        if ($('#PageLimits').height() < $(window).height()) $(window).scrollTop(0);
+    }
+    );
+
+
+    function doDialog(divID, w, h) {
+
+        $(divID).dialog({
+            resizable: false,
+            height: h,
+            width: w,
+
+            modal: true,
+            close: function () { }
+        });
+    }
+
+    var objChkd;
+
+    function HandleOnCheck() {
+
+        var chkLst = document.getElementById('chkTax');
+
+
+        if (objChkd && objChkd.checked)
+            objChkd.checked = false;
+
+        objChkd = event.srcElement;
+
+
+    }
+
+    //function legalClick() {
+
+    //    $("#legal").dialog({
+    //        resizable: false,
+    //        height: 800,
+    //        width: 400,
+    //        modal: true,
+    //        close: function () { }
+    //    });
+
+    //}
+
+
+</script>
+</html>

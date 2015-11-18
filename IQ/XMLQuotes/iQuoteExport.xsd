@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Data">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Quote">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Product" maxOccurs="unbounded" minOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="Class"/>
+                    <xs:element type="xs:string" name="PartNum"/>
+                    <xs:element type="xs:string" name="SupplierPartNum" minOccurs="0"/>
+                    <xs:element type="xs:string" name="Description" minOccurs="0"/>
+                    <xs:element type="xs:integer" name="Qty"/>
+					<xs:element type="xs:decimal" name="Price" minOccurs="0"/>
+                    <xs:element type="xs:decimal" name="ListPrice" minOccurs="0"/>
+					<xs:element type="xs:integer" name="OPGref" minOccurs="0"/>	
+					<xs:element type="xs:decimal" name="RebateValue" minOccurs="0"/>	
+					<xs:element type="xs:anyURI"  name="URLProductImage" minOccurs="0"/>
+		            <xs:element type="xs:anyURI"  name="URLProductSpecs" minOccurs="0"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:int" name="ID"/>
+            <xs:attribute type="xs:string" name="Name"/>
+            <xs:attribute type="xs:string" name="CreatedBy"/>
+            <xs:attribute type="xs:string" name="CreatorEmail"/>
+			<xs:attribute type="xs:string" name="RequestorCompany"/>
+			<xs:attribute type="xs:string" name="RequestorName"/>
+			<xs:attribute type="xs:string" name="RequestorEmail"/>
+            <xs:attribute type="xs:string" name="Supplier"/>
+            <xs:attribute type="xs:anyURI" name="URLProductImage"/>
+            <xs:attribute type="xs:anyURI" name="URLProductSpecs"/>
+			<xs:attribute type="xs:string" name="Notes"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

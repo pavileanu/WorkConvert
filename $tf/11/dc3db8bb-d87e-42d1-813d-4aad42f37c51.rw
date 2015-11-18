@@ -1,0 +1,1 @@
+﻿ALTER TABLE SlotType ADD FK_Translation_Key_Short int

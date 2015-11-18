@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="VB" Debug="true" Service="IQ.clsStockPriceSvc" CodeBehind="PnA.svc.vb" %>
