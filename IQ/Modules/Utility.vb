@@ -30,7 +30,7 @@ Imports log4net.Config
 
 Module Utility
 
-    Public Const imagebase = "http://www.channelcentral.net/"
+    Public Const imagebase As String = "http://www.channelcentral.net/"
     'Public Const imagebase = "http://iquote2.channelcentral.net/sandbox/daisyimages/"
 
     Public eim$ = "../editor/images/"
