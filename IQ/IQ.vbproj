@@ -42,11 +42,12 @@
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\</OutputPath>
     <DocumentationFile>IQ.xml</DocumentationFile>
-    <NoWarn>42353,42354,42355</NoWarn>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <Prefer32Bit>false</Prefer32Bit>
     <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
-    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -55,10 +56,11 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\</OutputPath>
     <DocumentationFile>IQ.xml</DocumentationFile>
-    <NoWarn>42353,42354,42355</NoWarn>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
     <PackageAsSingleFile>false</PackageAsSingleFile>
     <Prefer32Bit>false</Prefer32Bit>
-    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -67,7 +69,7 @@
     <OptionCompare>Binary</OptionCompare>
   </PropertyGroup>
   <PropertyGroup>
-    <OptionStrict>On</OptionStrict>
+    <OptionStrict>Off</OptionStrict>
   </PropertyGroup>
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
@@ -78,31 +80,33 @@
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\x64\Debug\</OutputPath>
     <DocumentationFile>IQ.xml</DocumentationFile>
-    <NoWarn>42353,42354,42355</NoWarn>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
     <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
     <Prefer32Bit>false</Prefer32Bit>
-    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\x64\Release\</OutputPath>
     <DocumentationFile>IQ.xml</DocumentationFile>
     <Optimize>true</Optimize>
-    <NoWarn>42353,42354,42355</NoWarn>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <Prefer32Bit>false</Prefer32Bit>
-    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Sandbox|AnyCPU'">
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\</OutputPath>
     <DocumentationFile>IQ.xml</DocumentationFile>
     <Optimize>true</Optimize>
-    <NoWarn>42353,42354,42355</NoWarn>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <CodeAnalysisLogFile>bin\IQ.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
@@ -114,14 +118,15 @@
     <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
     <Prefer32Bit>false</Prefer32Bit>
-    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Sandbox|x64'">
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\x64\Sandbox\</OutputPath>
     <DocumentationFile>IQ.xml</DocumentationFile>
     <Optimize>true</Optimize>
-    <NoWarn>42353,42354,42355</NoWarn>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <CodeAnalysisLogFile>bin\x64\Release\IQ.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
@@ -133,7 +138,8 @@
     <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
     <Prefer32Bit>false</Prefer32Bit>
-    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="customExceptions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -311,6 +317,25 @@
     <None Include="ClassDiagram2.cd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Classes\Ajax\CloneTargetsRequest.cs" />
+    <Content Include="Classes\Ajax\clsAjaxEditorRequest.cs" />
+    <Content Include="Classes\Ajax\clsAjaxIncrementalImportRequest.cs" />
+    <Content Include="Classes\Ajax\clsAttributeFinderRequest.cs" />
+    <Content Include="Classes\Ajax\clsFilterSetRequest.cs" />
+    <Content Include="Classes\Ajax\clsGenericAjaxRequest.cs" />
+    <Content Include="Classes\Ajax\clsSystemEditRequest.cs" />
+    <Content Include="Classes\Ajax\SetFieldOverrideRequest.cs" />
+    <Content Include="Classes\Controllers\AdminController.cs" />
+    <Content Include="Classes\Controllers\DataController.cs" />
+    <Content Include="Classes\Glimpse\clsPageLogging.cs" />
+    <Content Include="Classes\Manipulation\clsManipGraft.cs" />
+    <Content Include="Classes\Manipulation\clsManipPrune.cs" />
+    <Content Include="Classes\Manipulation\ManipulationMethod.cs" />
+    <Content Include="Classes\Utility\AuditLog.cs" />
+    <Content Include="Classes\Utility\clsAuditEntry.cs" />
+    <Content Include="Classes\Utility\ErrorLog.cs" />
+    <Content Include="Classes\Utility\iQuoteExport.cs" />
+    <Content Include="Classes\Utility\LoggingList.cs" />
     <Content Include="Database\1-AddFieldVisibleSquare.sql" />
     <Content Include="Database\10-SlotShortDescription.sql" />
     <Content Include="Database\100- Update Graft paths.sql" />
@@ -1400,7 +1425,7 @@
     </Compile>
     <Compile Include="Aspx\options.aspx.vb">
       <DependentUpon>options.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\PasswordReset.aspx.designer.vb">
       <DependentUpon>PasswordReset.aspx</DependentUpon>
@@ -1511,6 +1536,7 @@
     <Compile Include="Classes\Controllers\AdminController.vb" />
     <Compile Include="Classes\Controllers\DataController.vb" />
     <Compile Include="Classes\Flex.vb" />
+    <Compile Include="Classes\Manipulation\Class1.vb" />
     <Compile Include="Classes\Manipulation\clsManipGraft.vb" />
     <Compile Include="Classes\Manipulation\clsManipPrune.vb" />
     <Compile Include="Classes\Manipulation\ManipulationMethod.vb" />
