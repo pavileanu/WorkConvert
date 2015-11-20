@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Each Branch *can* have a product (some don't).&#xD;&#xA;(The same product can appear on many branches)">
+    <Position X="13.75" Y="7" Height="0.75" Width="1.7" />
+  </Comment>
+  <Class Name="IQ.clsIQ">
+    <Position X="9.5" Y="6" Width="2.25" />
+    <Members>
+      <Property Name="Attributes" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>N6wBSTRZm5EPhiGS9INNOhDRuxAlAiKUGZ6UDkAA10U=</HashCode>
+      <FileName>Classes\clsIQ.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Attributes" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Products" />
+      <Property Name="Branches" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="IQ.clsProduct">
+    <Position X="6.75" Y="3.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AIgAEBAQDQFAgxAgEEAAAQATIBEAAAAgAADBUBCEAAA=</HashCode>
+      <FileName>Classes\clsProduct.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Variants" />
+      <Property Name="Attributes" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="IQ.clsVariant">
+    <Position X="3.75" Y="5.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>BAQHAEAAgRAEgAAIgAA0AUBAAAAAAAAACAAAMAAAAEA=</HashCode>
+      <FileName>Classes\clsVariant.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="prices" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="IQ.clsProductAttribute">
+    <Position X="9.5" Y="2.25" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAACAEAAABACgAACIAAAAQAAAAAIAAAAAgAAAEAEABA=</HashCode>
+      <FileName>Classes\clsProductAttribute.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Product" />
+      <Property Name="Attribute" />
+      <Property Name="Translation" />
+      <Property Name="Unit" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="IQ.clsAttribute" Collapsed="true">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAABAgAACAAAgAQAAAAAJAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\clsAttribute.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsTranslation" Collapsed="true">
+    <Position X="13" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACUAAEAEAAAAgAQEAAAAAQAAAAAAAAAIAAAAECACAAA=</HashCode>
+      <FileName>Classes\clsTranslation.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsUnit" Collapsed="true">
+    <Position X="5.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEEAAAAAAgAACAAAgAQAAAAAIAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Classes\clsUnit.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="IQ.clsPrice">
+    <Position X="0.75" Y="7.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAQAAAgAAwBQgAAgABAQAAAAAAAAAAACAAAAEAAAAAA=</HashCode>
+      <FileName>Classes\clsPrice.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsBranch">
+    <Position X="12.75" Y="9.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>zBSamNAJiQgEhkzzIABgYQS4AAAgAlASLQWgWAAFHQQ=</HashCode>
+      <FileName>Classes\clsBranch.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Parent" />
+      <Property Name="Product" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

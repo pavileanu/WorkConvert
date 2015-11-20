@@ -1,0 +1,1 @@
+﻿ALTER TABLE AuditLog ADD MachineName varchar(200)

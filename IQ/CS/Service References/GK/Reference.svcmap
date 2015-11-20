@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f1c04def-e064-4d09-b74c-cae000d378ba" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:17561/Services/OneTimeToken.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="OneTimeToken.xsd" MetadataType="Schema" ID="2d3b7340-5a5b-400f-83d6-36b87b851b72" SourceId="1" SourceUrl="http://localhost:17561/Services/OneTimeToken.svc?xsd=xsd3" />
+    <MetadataFile FileName="OneTimeToken.wsdl" MetadataType="Wsdl" ID="ac66e608-79b1-4ede-b01b-d20d587c113d" SourceId="1" SourceUrl="http://localhost:17561/Services/OneTimeToken.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="TokenFactory.wsdl" MetadataType="Wsdl" ID="d0a04109-1715-4b6b-8b0c-d268c6bb80bf" SourceId="1" SourceUrl="http://localhost:17561/Services/OneTimeToken.svc?wsdl" />
+    <MetadataFile FileName="OneTimeToken.disco" MetadataType="Disco" ID="4a953018-6b39-4647-bed8-f9778be804f8" SourceId="1" SourceUrl="http://localhost:17561/Services/OneTimeToken.svc?disco" />
+    <MetadataFile FileName="OneTimeToken1.xsd" MetadataType="Schema" ID="506f2a31-c8ba-428b-9796-e1df3345b6ed" SourceId="1" SourceUrl="http://localhost:17561/Services/OneTimeToken.svc?xsd=xsd0" />
+    <MetadataFile FileName="OneTimeToken2.xsd" MetadataType="Schema" ID="b6b636b2-dbf2-4e33-85a6-f6e57e6e18e4" SourceId="1" SourceUrl="http://localhost:17561/Services/OneTimeToken.svc?xsd=xsd1" />
+    <MetadataFile FileName="OneTimeToken3.xsd" MetadataType="Schema" ID="e768cc4b-43f6-4e66-b835-894b7fe648a1" SourceId="1" SourceUrl="http://localhost:17561/Services/OneTimeToken.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

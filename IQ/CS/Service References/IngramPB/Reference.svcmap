@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="915f0d7d-5c3d-422c-80ba-db502f04edae" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://iquote2.channelcentral.net:8092" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="435b4114-000c-4868-87a3-521cec989994" SourceId="1" SourceUrl="http://iquote2.channelcentral.net:8092/?xsd=xsd1" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="c8072347-4036-49af-809b-17e80bdf91e8" SourceId="1" SourceUrl="http://iquote2.channelcentral.net:8092/?xsd=xsd4" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="95dfcad8-ac50-4955-b2f3-8c5d6cc16e7f" SourceId="1" SourceUrl="http://iquote2.channelcentral.net:8092/?xsd=xsd0" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="b84219f3-97a3-4f13-9c4c-62fbfa5250f2" SourceId="1" SourceUrl="http://iquote2.channelcentral.net:8092/?xsd=xsd2" />
+    <MetadataFile FileName="clsLog.wsdl" MetadataType="Wsdl" ID="09b84418-32b9-4dec-a866-1a345094cabd" SourceId="1" SourceUrl="http://iquote2.channelcentral.net:8092/?wsdl" />
+    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="ab50b9e1-7eb8-4451-86af-041b4c25935a" SourceId="1" SourceUrl="http://iquote2.channelcentral.net:8092/?xsd=xsd3" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="5082659a-d528-4e80-9671-f0639059db1d" SourceId="1" SourceUrl="http://iquote2.channelcentral.net:8092/?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

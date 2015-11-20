@@ -1,0 +1,1 @@
+﻿update [field] set HMC_MutualExclusivity = 1 where FK_Screen_ID = 1812

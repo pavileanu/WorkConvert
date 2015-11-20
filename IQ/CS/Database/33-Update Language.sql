@@ -1,0 +1,1 @@
+Update [Language] set Live = 1 

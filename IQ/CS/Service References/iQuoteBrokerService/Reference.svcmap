@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="10d070d3-5408-499b-bf2a-646b12cb1bf9" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8033/iQuoteBrokerService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="iQuoteBrokerService.xsd" MetadataType="Schema" ID="e32c6b2d-1408-4eba-abb7-39bd4e343458" SourceId="1" SourceUrl="http://localhost:8033/iQuoteBrokerService.svc?xsd=xsd1" />
+    <MetadataFile FileName="iQuoteBrokerService1.xsd" MetadataType="Schema" ID="9d8a4124-1663-4d6c-a41f-8b1377665fba" SourceId="1" SourceUrl="http://localhost:8033/iQuoteBrokerService.svc?xsd=xsd0" />
+    <MetadataFile FileName="iQuoteBrokerService3.xsd" MetadataType="Schema" ID="3c105d78-dc50-4831-b1a4-f8371a8916e2" SourceId="1" SourceUrl="http://localhost:8033/iQuoteBrokerService.svc?xsd=xsd3" />
+    <MetadataFile FileName="iQuoteBrokerService2.xsd" MetadataType="Schema" ID="13df538c-3448-46c2-a139-28695db694e3" SourceId="1" SourceUrl="http://localhost:8033/iQuoteBrokerService.svc?xsd=xsd2" />
+    <MetadataFile FileName="iQuoteBrokerService.wsdl" MetadataType="Wsdl" ID="345fcbab-8696-4b74-8c01-3ad1176bad74" SourceId="1" SourceUrl="http://localhost:8033/iQuoteBrokerService.svc?wsdl" />
+    <MetadataFile FileName="iQuoteBrokerService.disco" MetadataType="Disco" ID="8887f8f1-56ff-4b84-bb20-418f6bbcf64d" SourceId="1" SourceUrl="http://localhost:8033/iQuoteBrokerService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,485 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+  font-family: 'HPE';
+  src: url("/styles/fonts/MetricWeb-Regular.eot");
+  src: url("/styles/fonts/MetricWeb-Regular.eot?#iefix") format("embedded-opentype"), url("/styles/fonts/MetricWeb-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HPEbold';
+  src: url("/fonts/MetricWeb-Bold.eot");
+  src: url("/fonts/MetricWeb-Bold.eot?#iefix") format("embedded-opentype"), url("/styles/fonts/MetricWeb-Bold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+body {
+	font-family: HPE;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: HPE;
+}
+
+.link {
+    color: #00B388;
+
+}
+
+div#headerBar {
+    background-color: #425563;
+    background-image: url('/images/HPE-logo.png'); background-position: 20px 20px;
+
+}
+
+div#headerBar a {
+    font-family: HPEbold;
+}
+
+#ctl00_newHeader {
+    background-color: #fff;
+}
+
+span.paradigmIndicator {
+    font-size: 2.6em;
+	font-family:HPEbold;
+}
+
+.menuItem {
+	color:#000;
+}
+
+#nav a:link,
+#nav a:visited {
+    color: #000;
+    font-family:HPE;
+}
+
+.branchTitle {
+	text-align:center;
+}
+
+.bannerimgtop, .bannerimg {
+    border: 2px solid #00B388;
+    cursor: pointer;
+}
+
+div.square_promo_Header {
+    font-family:HPEbold;
+	font-size: 2em;
+}
+
+li.square_promo {
+    color: #00B388;
+	line-height: 120%;
+}
+
+.square {
+    border: 2px solid #C6C9CA;
+}
+
+div#footer, div.footer {
+    background: url(//www.channelcentral.net/images/2014/LOGO_channelcentral_neg_sml.png) #F6F6F6 no-repeat right;
+}
+
+.footer .textButton {
+	color:#757575;
+}
+
+.SquareAttributePanel {
+	font-family:HPE;
+}
+
+
+a {
+    color: #00B388;
+}
+
+.SquareAttributePanel .bold {
+	 font-family:HPEbold;
+}
+
+div.square .branchTitle {
+    font-size:2em;
+}
+
+.upsellLineHeader {
+    font-family: HPE;
+}
+
+
+/*BUTTONS*/
+.hpBlueButton {
+    border: #00B388 solid 2px;
+    Background: Transparent;
+    border-radius: 0;
+    Color: #000000;
+    font-family: HPEbold;
+    Padding-left: 35px;
+    Padding-right: 35px;
+    line-height: 1em;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    letter-spacing: 0.03em;
+}
+
+.hpBlueButton:hover {
+	border: solid 4px #00B388;
+	background-color:transparent;
+	line-height: 0.8em;
+	Padding-left: 33px ;
+	Padding-right: 33px;
+}
+
+.hpBlueButton.smallfont:hover {
+	line-height: 0.6em;
+}
+
+.hpGreyButton {
+	border: #C9C9CA solid 2px;
+	Background: Transparent;
+	border-radius:0;
+	text-align:center;
+	vertical-align: Center;
+	text-transform: uppercase;
+	color: #000000;
+	Letter-Spacing: 0.03em;
+	padding: 0.4em 0.8em;
+	margin-top: 0;
+}
+
+/*new oulined grey hover*/
+.hpGreyButton:hover {
+	border: solid 4px #C9C9CA;
+	background-color:transparent;
+	padding: 0.3em 0.55em;
+	line-height:0.98em;
+}
+
+#quoteFilterPanel .hpGreyButton {
+	border: #C9C9CA solid 2px;
+    Background: Transparent;
+    border-radius: 0;
+    Color: #000000;
+    font-family: HPE;
+    Padding-left: 35px;
+    Padding-right: 35px;
+    line-height: 1em;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    letter-spacing: 0.03em;
+}
+
+#quoteFilterPanel .hpGreyButton:hover {
+	border: solid 4px #C9C9CA;
+	background-color:transparent;
+	line-height: 1.3em;
+	Padding-left: 33px ;
+	Padding-right: 33px;
+}
+
+.hpOrangeButton {
+	border: solid 4px #00B388;
+    Background: Transparent;
+    border-radius: 0;
+    Color: #000000;
+    font-family: HPE;
+    Padding-left: 35px;
+    Padding-right: 35px;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    letter-spacing: 0.03em;
+
+}
+
+
+.hpOrangeButton:hover {
+	border: solid 4px #00B388;
+	background-color:#000;
+	line-height: 1em;
+	Padding-left: 35px ;
+	Padding-right: 35px;
+	color:#fff;
+}
+
+div#quoteFilterPanel .hpOrangeButton, div#quoteFilterPanel {
+    line-height: 1.1em;
+}
+
+.sausageButton {
+    background-color: #00B388;
+}
+
+/*END BUTTONS*/
+
+/*TABS*/
+.tabStrip .branchTitle {
+    font-family: HPEbold;
+	color:inherit;
+}
+
+.activeTab, .inActiveTab {
+    border-radius: 0;
+	padding-bottom:1.1em;
+	Letter-Spacing: 0.05em;
+	text-transform:uppercase;
+}
+
+.activeTab {
+    border: solid #5F7A76 1px;
+    border-bottom: 0;
+	color:#000;
+}
+
+.inActiveTab {
+    background-color: #EBEBEB;
+    color: #757575;
+    border: 1px solid #EBEBEB;
+    border-bottom: 0;
+}
+
+.tabBody {
+    border: solid #5F7A76 1px;
+}
+
+.admin_tabs_line {
+    width: 909px;
+    height: 1px;
+    background: #5F7A76;
+}
+
+.admin_tabs {
+    background-color: #EBEBEB;
+    color: #757575;
+    font-family:HPEbold;
+	text-transform:uppercase;
+
+}
+
+.admin_tab_selected {
+    background-color: #fff;
+    color:#000;
+    border:1px solid #5F7A76;
+    border-bottom:0;
+}
+/*END TABS*/
+
+
+.quickFilterGroupHolder {
+    background-color: #F6F6F6;
+}
+
+.bigLink {
+    color: #757575;
+	font-size: 2em;
+	font-family:HPEbold;
+}
+
+div.bigLink.hpOrange, div.optionsLink.hpOrange {
+    color: #00B388;
+}
+
+.optionsLink {
+    color: #00B388;
+	font-family:HPEbold;
+}
+
+div.quoteHeader {
+    border: 2px solid #C6C9CA;
+}
+
+.quoteCursor {
+    border-color: #00B388;
+}
+
+.quoteCursor.quoteSystem {
+    border-bottom-color: #00B388;
+}
+
+.CustomizeColumns {
+    height:auto; 
+}
+
+div.footer .textButton {
+    font-family: HPE;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+   border: 0;
+   font-weight: normal;
+   background:none; 
+   color: #555555;
+   font-family:HPEbold;
+   border-radius: 0;
+   padding-bottom:1.2em;
+   Letter-Spacing: 0.05em;
+   text-transform:uppercase;
+   background-color: #EBEBEB;
+}
+
+.ui-widget-header {
+	background-color:transparent;
+	background:0;
+	border: 1px solid #5F7A76;
+	border-top:0;
+	border-right:0;
+	border-left:0;
+
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-active {
+    border: 1px solid #5F7A76;
+    border-bottom: 1px solid #fff;
+    background-color:transparent;
+}
+
+
+ .ui-state-hover.ui-state-default.ui-corner-top {
+	 background:none;
+	 background-color:#EBEBEB;
+	 
+ }
+ 
+ 
+ .smallfont {
+    font-size: 70%;
+}
+
+ 
+.ui-dialog-titlebar, .ui-dialog .ui-dialog-titlebar {
+    padding: 0;
+    background-color: #425563;
+}
+
+.buyUI {
+   top:-0.1em;
+}
+#Cus_qt_container {
+	    border: solid #5F7A76 1px;
+		width:30%;
+		min-width:370px;
+		margin:auto;
+}
+
+.HPE_hdr_bg {
+	background-color:#425563;
+	padding: 1% 5%;
+}
+
+.HPE_hdr_bg h1 {
+	font-size:1.2em;
+	color:#fff;
+	font-family:HPEbold;
+	text-transform:uppercase;
+	-webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+	margin:0;
+}
+
+.pop_inner_container {
+	padding:5%;
+}
+
+#Cus_qt_container #ICMS_loco_container {
+	margin-top:1em;
+	margin-bottom:1em;
+}
+
+#Cus_qt_container #chks_container {
+	border-top:1px solid #000;
+	border-bottom:1px solid #000;
+	padding-top:1em;
+	padding-bottom:1em;
+}
+
+#Cus_qt_container #pref_ware {
+	margin-top:1em;
+	margin-bottom:4em;
+}
+
+.pop_left_col {
+	position:relative;
+	display:inline-block;
+    width: 45%;
+}
+
+.pop_right_col {
+    width: 50%;
+	position:relative;
+	display:inline-block;
+}
+
+/*BUTTONS*/
+
+#button_container {
+	text-align:right;
+}
+
+/*new outlined grey*/
+#Cus_qt_container .hpGreyButton {
+	border: #C9C9CA solid 2px;
+	Background: Transparent;
+	Opacity: 100%;
+	border-radius:0;
+	padding:0;
+	text-align:center;
+	vertical-align: Center;
+	text-transform: uppercase;
+	font-size: 0.94em;
+	Color: #000000;
+	Letter-Spacing: 0.03em;
+	Padding-left: 30px ;
+	Padding-right: 30px;
+	line-height: 1.7em;
+    display: inline-block;
+	margin-right:2%;
+}
+
+/*new oulined grey hover*/
+#Cus_qt_container .hpGreyButton:hover {
+	border: solid 4px #C9C9CA;
+	Opacity: 100%;
+	background-color:transparent;
+	line-height: 1.4em;
+	Padding-left: 28px ;
+	Padding-right: 28px;
+}
+
+
+/*this is the new solid green*/
+#Cus_qt_container .hpOrangeButton {
+	background-color: #00B388;
+    Opacity: 100%;
+    line-height: 1.5em;
+    border-radius: 0;
+    padding: 0;
+    font-size: 0.94em;
+    color: #000000;
+    Text-Align: center;
+    Letter-Spacing: 0.03em;
+    Padding-left: 26px;
+    Padding-right: 26px;
+    vertical-align: Center;
+    text-transform: uppercase;
+    border: solid 4px #00B388;
+	display: inline-block;
+
+}
+
+/*new solid green hover*/
+#Cus_qt_container .hpOrangeButton:hover {
+	border: solid 4px #00B388;
+	Background-color: #000000;
+	Opacity: 50%;
+	color:#fff;
+}
+
+
+

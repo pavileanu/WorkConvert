@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="be967a12-43d2-43dc-b720-ddc7518328ec" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:54621/PQWS.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PQWS.xsd" MetadataType="Schema" ID="6cce01b0-743b-4bfe-939d-64c43d62e89d" SourceId="1" SourceUrl="http://localhost:54621/PQWS.svc?xsd=xsd2" />
+    <MetadataFile FileName="PQWS.disco" MetadataType="Disco" ID="5233ec7e-0c3b-465d-92bf-7c17cedd4306" SourceId="1" SourceUrl="http://localhost:54621/PQWS.svc?disco" />
+    <MetadataFile FileName="PQWS.wsdl" MetadataType="Wsdl" ID="c7fbac43-7c2d-44d8-8ef5-fd4c6b018896" SourceId="1" SourceUrl="http://localhost:54621/PQWS.svc?wsdl" />
+    <MetadataFile FileName="PQWS1.xsd" MetadataType="Schema" ID="b10140db-725c-4ec4-a169-6e7579ed9520" SourceId="1" SourceUrl="http://localhost:54621/PQWS.svc?xsd=xsd1" />
+    <MetadataFile FileName="PQWS2.xsd" MetadataType="Schema" ID="5588cfa3-605c-4d17-bb81-af2e0ed3fcb9" SourceId="1" SourceUrl="http://localhost:54621/PQWS.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
