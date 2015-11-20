@@ -34,7 +34,8 @@ public class clsScreenHeader
 			{
 				clsPromo pml = null;
 				List<string> otherPromo = new List<string>();
-				if (iq.seshDic(lid).ContainsKey("promoinforce") && !{"K", "I"}.Contains(iq.Branches(this.Path.Split('.').Last).rca))
+                string[] pathLetters = { "K", "I" };
+				if (iq.seshDic(lid).ContainsKey("promoinforce") && !pathLetters.Contains(iq.Branches(this.Path.Split('.').Last).rca))
 				{
 					pml = iq.Promos(iq.sesh(lid, "promoinforce"));
 				}

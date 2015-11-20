@@ -1707,7 +1707,8 @@ public class clsProduct : i_Editable
 																								}
 																								
 																								
-																								specTableProps.Add(new clsSpecTableEntry() {ProdType = this.ProductType.Code, Type = "pre", Code = "MGT", Title = "Management", Value = iq.AddTranslation(sts, English, "", 0, null, 0, false), Params = ((this.i_Attributes_Code.ContainsKey("ILOHARDWARE")) ? (new[] {this.i_Attributes_Code("ILOHARDWARE")[0].Translation.text(language), t1, t2}) : {})});
+																								specTableProps.Add(new clsSpecTableEntry() {ProdType = this.ProductType.Code, Type = "pre", Code = "MGT", Title = "Management", Value = iq.AddTranslation(sts, English, "", 0, null, 0, false),
+                                                                                                    Params = ((this.i_Attributes_Code.ContainsKey("ILOHARDWARE")) ? (new[] {this.i_Attributes_Code("ILOHARDWARE")[0].Translation.text(language), t1, t2}) : nil)});
 																							}
 																							
 																							if (new[] {"SVR", "NBK", "DTO", "SWD"}.Contains(this.ProductType.Code))

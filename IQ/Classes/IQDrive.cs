@@ -28,9 +28,9 @@ public class IQDrive
 			List<string> scope = new List<string>();
 			scope.Add(DriveService.Scope.Drive);
 			X509Certificate2 certificate = new X509Certificate2(certpath, "notasecret", X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet | X509KeyStorageFlags.Exportable);
-			ServiceAccountCredential credential = new ServiceAccountCredential(
-				new ServiceAccountCredential.Initializer(SERVICE_ACCOUNT_EMAIL)
-				{Scopes = scope}FromCertificate(certificate));
+            ServiceAccountCredential credential = new ServiceAccountCredential(
+                new ServiceAccountCredential.Initializer(SERVICE_ACCOUNT_EMAIL));
+				//{Scopes = scope}.FromCertificate(certificate));
 				
 				
 				//Dim credential As UserCredential = GoogleWebAuthorizationBroker.AuthorizeAsync(New ClientSecrets() With {

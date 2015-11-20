@@ -187,7 +187,7 @@ public class clsQuoteItem : ISqlBasedObject
 								pth = System.Convert.ToString(this.Branch.findProductPathByAttributeValueRecursive(this.Path, "optType", ot, true)); //only populate the path if it isnt already (for instances like PCI and MOD network cards where one system may have one one may have the other)
 							}
 							
-							if (parts.Where(par => par.OptType, ot, CompareMethod.Binary)).Count() == 0)
+							if (parts.Where(par => par.OptType, ot, CompareMethod.Binary).Count() == 0)
 							{
 								//Option type not present
 							}
@@ -429,7 +429,7 @@ public class clsQuoteItem : ISqlBasedObject
 								pth = System.Convert.ToString(this.Branch.findProductPathByAttributeValueRecursive(this.Path, "optType", ot, true)); //only populate the path if it isnt already (for instances like PCI and MOD network cards where one system may have one one may have the other)
 							}
 							
-							if (parts.Where(par => par.OptType, ot, CompareMethod.Binary)).Count() == 0)
+							if (parts.Where(par => par.OptType, ot, CompareMethod.Binary).Count() == 0)
 							{
 								//Option type not present
 							}
@@ -440,7 +440,7 @@ public class clsQuoteItem : ISqlBasedObject
 							else
 							{
 								//We have one.
-								foreach (var part in parts.Where(pa => pa.OptType, ot, CompareMethod.Binary) && (string.IsNullOrEmpty(System.Convert.ToString(ProdVal.OptionFamily)) || pa.hasAttribute("optFam", ProdVal.OptionFamily, true))))
+								foreach (var part in parts.Where((pa => pa.OptType), ot, CompareMethod.Binary) && (string.IsNullOrEmpty(System.Convert.ToString(ProdVal.OptionFamily)) || pa.hasAttribute("optFam", ProdVal.OptionFamily, true)))
 								{
 									if (part.Attributes.ContainsKey(ProdVal.CheckAttribute))
 									{
@@ -1451,7 +1451,8 @@ public class clsQuoteItem : ISqlBasedObject
 						
 						if (slot.numSlots < 0 && !ForGives) //this option TAKES slots'
 						{
-							if (this.Branch.Product.i_Attributes_Code.ContainsKey("capacity") && {"MEM", "HDD", "CPU", "PSU"}.Contains(slot.NonStrictType.MajorCode.ToUpper()))
+                            string[] majorCodes =  {"MEM", "HDD", "CPU", "PSU"};
+							if (this.Branch.Product.i_Attributes_Code.ContainsKey("capacity") && majorCodes.Contains(slot.NonStrictType.MajorCode.ToUpper()))
 							{
 								
 								//options like HDD's or MEM have a Capacity ...
@@ -1579,7 +1580,8 @@ public class clsQuoteItem : ISqlBasedObject
 							
 							if (slot.numSlots < 0) //this option TAKES slots'
 							{
-								if (this.Branch.Product.i_Attributes_Code.ContainsKey("capacity") && {"PWR", "MEM", "HDD"}.Contains(slot.Type.MajorCode.ToUpper()))
+                                string[] majorCodes = {"PWR", "MEM", "HDD"};
+								if (this.Branch.Product.i_Attributes_Code.ContainsKey("capacity") && majorCodes.Contains(slot.Type.MajorCode.ToUpper()))
 								{
 									
 									//options like HDD's or MEM have a Capacity ...
@@ -2627,488 +2629,489 @@ public class clsQuoteItem : ISqlBasedObject
     }
 
     public Panel UI(bool includePreinstalled, clsAccount BuyerAccount, clsAccount agentAccount, HashSet<string> foci, ref List<string> errorMessages, bool validationMode, UInt64 lid)
-		{
-			Panel returnValue = default(Panel);
-			
-			//Returns this QuoteItem (as a panel) ..and recurses for all child items (nesting panels)
-			
-			returnValue = new Panel();
-			
-			if (this.Branch != null)
-			{
-				if (this.Branch.Hidden)
-				{
-					return returnValue; //return an entirely emptt panel from hidden (chassis) branches
-				}
-			}
-			
-			returnValue.CssClass = "quoteItemTree";
-			if (!this.validate)
-			{
-				returnValue.CssClass += " exVal";
-			}
-			if (this == quote.MostRecent)
-			{
-				returnValue.CssClass += " mostRecent"; //used to target the flying frame animation '~~~
-			}
-			if (this == quote.Cursor)
-			{
-				returnValue.CssClass += " quoteCursor"; //used to target the flying frame animation
-			}
-			
-			returnValue.ID = "QI" + System.Convert.ToString(this.ID);
-			clsProduct product = default(clsProduct);
-			bool issystem = false;
-			
-			if (this == this.quote.RootItem) //AKA 'Parts bin
-			{
-				//this is the outermost 'root' item (where we *can* add (orphaned) options)
-				//When we click on - OR THE EVENT BUBBLING REACHES the root item - we 'unlock' the cursor
-				//                                                                                   note this is OUTside the IF
-				//was omd
-				returnValue.CssClass += " quoteRoot";
-				
-				
-				//'THIS WAS THE 'PARTS BIN' - Which was disbaled at Gregs request /01/01/2015 - UI.Attributes("onclick") = "burstBubble(event);if(!ajaxing){setQuoteCursor(" & Me.ID & ",'');}"
-				//The root item
-				
-				Panel qh = new Panel();
-				qh.CssClass = "quoteHeader";
-				
-				
-				
-				Panel namepanel = new Panel();
-				
-				namepanel.Controls.Add(NewLit(Xlt("Quote", agentAccount.Language) + " " + this.quote.RootQuote.ID + "-" + quote.Version + (quote.Saved ? ("<span class=\'saved\'>(" + Xlt("saved", BuyerAccount.Language)) : ("<span class=\'draft\'>(" + Xlt("draft", BuyerAccount.Language))) + ")</span>"));
-				qh.Controls.Add(namepanel);
-				//action buttons
-				Literal butts = new Literal();
-				List<ClsValidationMessage> criticalMsgs = this.ValidationsGreaterThanEqualTo(EnumValidationSeverity.RedCross);
-				//SAMS version FindValidation(selectedMsgs, Me)
-				
-				//       If Me.quote.Saved Then
-				// 'butts.Visible = False
-				//butts.Text = "<div class='q_outputs'><div class='q_saved' onclick = ""burstBubble(event); quoteEvent('Save'); return false;"" title ='" & Xlt("Save", agentAccount.Language) & "'></div> "
-				//Else
-				//            butts.Text = "<div class='q_outputs'><div class='q_save' onclick = ""burstBubble(event); quoteEvent('Save'); return false;"" title ='" & Xlt("Save", agentAccount.Language) & "'></div> "
-				// End If
-				
-				if (criticalMsgs.Count == 0) // need to sort out the images for
-				{
-					//"<div class='q_outputs'><div class='q_save' onclick = ""burstBubble(event); quoteEvent('Save'); return false;"" title ='Save'></div> " & _
-					butts.Text = butts.Text + "<div title =\'" + Xlt("Export", agentAccount.Language) + "\' class=\'q_export \' onclick = \"burstBubble(event); showMenu(" + this.quote.ID.ToString() + "); return false;\"><div id = \"exportMenu" + this.quote.ID.ToString() + "\"  class = \"submenu\" > " + "<a class=\"account\"> " + Xlt("Export Option", agentAccount.Language) + "s</a> <ul class=\"root\" >" + "<li><a onclick = \"burstBubble(event); quoteEvent(\'Excel\'); return false;\" href=\"#\">" + Xlt("Excel", agentAccount.Language) + "</a></li>" + "<li><a onclick = \"burstBubble(event);  quoteEvent(\'PDF\'); return false;\" href=\"#\">" + Xlt("PDF", agentAccount.Language) + "</a></li>" + "<li><a onclick = \"burstBubble(event);  quoteEvent(\'XML\'); return false;\" href=\"#\">" + Xlt("XML", agentAccount.Language) + "</a></li>" + "<li><a href=\"#\" onclick = \"burstBubble(event);  quoteEvent(\'XMLAdv\'); return false;\">" + Xlt("XML Advanced", agentAccount.Language) + "</a></li>" + "<li><a href=\"#\" onclick = \"burstBubble(event);  quoteEvent(\'XMLSmartQuote\'); return false;\">" + Xlt("XML SmartQuote", agentAccount.Language) + "</a></li></ul>" + " </div></div> " + "<div title =\'" + Xlt("Email", agentAccount.Language) + "\' class=\'q_email\' onclick = \"burstBubble(event); quoteEvent(\'Email\'); return false;\"></div> ";
-					//& "<div class='q_excel' onclick = ""burstBubble(event); saveNote(); quoteEvent('Excel'); return false;""></div> " _
-					//& "<div class='q_xml' onclick = ""burstBubble(event); saveNote(); quoteEvent('XML'); return false;""></div></div>"
-				}
-				else
-				{
-					butts.Text = butts.Text + "<div title =\'" + Xlt("Export", agentAccount.Language) + "\' class=\'q_export \' onclick = \"burstBubble(event); displayMsg(\'" + Xlt("Export not available due to validation errors", BuyerAccount.Language) + "\'); return false;\"></div>";
-				}
-				if (quote.Locked)
-				{
-					butts.Text = butts.Text + "<div title =\'" + Xlt("Create Next Version", agentAccount.Language) + "\' class=\'q_newVlocked\' onclick = \"burstBubble(event); displayMsg(\'Next version created\');  rExec(\'Manipulation.aspx?command=createNextVersion&quoteId=" + quote.ID + "\', showQuote); return false;\"></div> ";
-				}
-				else
-				{
-					if (quote.Saved)
-					{
-						butts.Text = butts.Text + "<div  title =\'" + Xlt("Create Next Version", agentAccount.Language) + "\' class=\'q_newVunlocked\' onclick = \"burstBubble(event);displayMsg(\'Next version created\');  rExec(\'Manipulation.aspx?command=createNextVersion&quoteId=" + quote.ID + "\', showQuote); return false;\"></div>";
-					}
-					
-					//Dim btnNextVersion As New Button
-					//btnNextVersion.Text = Xlt("Create next version", agentAccount.Language)
-					//btnNextVersion.ToolTip = Xlt("Creates a copy leaving the original quote intact", agentAccount.Language)
-					//btnNextVersion.OnClientClick = "rExec('Manipulation.aspx?command=createNextVersion&quoteId=" & quote.ID & "', gotoTree);return false;"
-					//UI.Controls.Add(btnNextVersion)
-					
-				}
-				
-				if (quote != null)
-				{
-					
-					if (criticalMsgs.Count == 0 && (iq.sesh(lid, "GK_BasketURL") != null || agentAccount.SellerChannel.orderEmail != ""))
-					{
-						// Dim litAddtobasket = New Literal
-						//butts.Text = butts.Text & "<div class='hpBlueButton smallfont ib'  onclick = ""burstBubble(event); saveNote(false); quoteEvent('Addbasket'); return false;"">" & Xlt("Place Order", agentAccount.Language) & "</div></div> "
-						
-						butts.Text = butts.Text + "<div class=\'hpOrangeButton q_basket smallfont\'  onclick = \"burstBubble(event); saveNote(false); quoteEvent(\'Addbasket" + quote.Saved + "\'); return false;\">&nbsp;</div>";
-					}
-					else
-					{
-						//butts.Text = butts.Text & "</div> "
-					}
-					
-					//Dim addToBasket As Button = New Button()
-					//addToBasket.Text = Xlt("Add to Basket", quote.BuyerAccount.Language)
-					//addToBasket.ID = "btnAddToBasket"
-					//AddHandler addToBasket.Click, AddressOf Me.addToBasket_Click
-					
-					//   qh.Controls.Add(litAddtobasket)
-				}
-				else
-				{
-					butts.Text = butts.Text + "</div>";
-				}
-				
-				namepanel.Controls.Add(butts);
-				
-				Panel ih = new Panel();
-				
-				ih.CssClass = "innerHeader";
-				
-				
-				//quoteName/Customer - Sams pop open panel - part of the export tools
-				Panel qnp = new Panel();
-				qnp.ID = "quotepanel";
-				
-				
-				object qn = this.quote.Name.DisplayValue;
-				if (Strings.Trim(System.Convert.ToString(qn)) == "" || Strings.Trim(System.Convert.ToString(qn)) == "-")
-				{
-					qn = this.quote.BuyerAccount.BuyerChannel.Name;
-				}
-				
-				
-				qnp.Controls.Add(NewLit("<div id = \'quoteText\' ><input id=\'saveQuoteName\'" + (quote.Saved ? " value=\'" + System.Convert.ToString(qn) + "\'" : "") + " type=\'text\' placeholder=\'" + Xlt("enter quote name", BuyerAccount.Language) + "\' onclick= \'burstBubble(event); return false;\'   onkeydown = \'var e=event||window.event; var keyCode=e.keyCode||e.which; if (keyCode==13){return false;}\'/> " + "<input id = \'hiddenType\' type=\'hidden\' value=\'Save\' /><input id = \'hiddenName\' type=\'hidden\' value=\'" + System.Convert.ToString(qn) + "\' /><input id =\'hdnEmail\' type = \'hidden\' value =\'" + this.quote.BuyerAccount.User.Email + "\'/><input id = \'continueBtn\' type=\'button\' class=\"hpBlueButton smallfont\" style=\"margin-top:-0.75em; margin-left:0.6em;\" value = \'" + Xlt("Save", agentAccount.Language) + "\' onClick =\'burstBubble(event); continueClick();\'/><input id = \'cancelBtn\' type=\'button\' onclick=\"burstBubble(event); $(\'#saveQuoteName\').val($(\'#hiddenName\').val());$(\'#continueBtn\').val($(\'#hiddenSaveTrans\').val());$(\'#cancelBtn\').hide();$(\'#quoteText\').show();$(\'#hiddenType\').val(\'Save\');return false;\" class=\"hpBlueButton smallfont\" style=\'display:none;margin-top:-0.70em; margin-left:0.6em;\' value =\'" + Xlt("Cancel", agentAccount.Language) + "\'  />" + "<input id = \'hiddenEmailTrans\' type=\'hidden\' value =\'" + Xlt("Send Email", agentAccount.Language) + "\'  /><input id = \'hiddenSaveTrans\' type=\'hidden\' value =\'" + Xlt("Save", agentAccount.Language) + "\'  /></div>")); // removed 19/01 <input id = 'cancelBtn' type='button' class=""hpGreyButton  smallfont"" value = '" & Xlt("Cancel", agentAccount.Language) & "' style=""margin-top:-0.75em; margin-left:0.6em;"" onClick ='burstBubble(event); quoteCancel();'/>
-				
-				
-				//Systems Options summary + validation rollup
-				
-				Panel sysOptSum = new Panel();
-				sysOptSum.ID = "sysOptSumm";
-				
-				int systems = 0;
-				int options = 0;
-				this.countSystems(ref systems, ref options);
-				
-				string syss = "";
-				if (systems > 1 | systems == 0)
-				{
-					syss = "systems";
-				}
-				else
-				{
-					syss = "system";
-				}
-				string opts = "";
-				if (options > 1 | options == 0)
-				{
-					opts = "options";
-				}
-				else
-				{
-					opts = "option";
-				}
-				syss = System.Convert.ToString(Xlt(syss, agentAccount.Language));
-				opts = System.Convert.ToString(Xlt(opts, agentAccount.Language));
-				
-				sysOptSum.Controls.Add(NewLit("<span class=\'sysOptCount\'>" + System.Convert.ToString(systems) + " " + syss + ", " + System.Convert.ToString(options) + " " + opts + "</span>"));
-				
-				Panel vdRollup = new Panel();
-				vdRollup.CssClass = "validationRollup";
-				sysOptSum.Controls.Add(this.MessageCounts(new[] {enumValidationMessageType.Validation}, {}, {EnumValidationSeverity.DoesQualify, EnumValidationSeverity.DoesntQualify}, true, true)); //exclude flex qualification messages from the roll up
-				
-				Label lblSpace = new Label();
-				lblSpace.Text = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-				sysOptSum.Controls.Add(lblSpace);
-				
-				Dictionary<clsScheme, int> dlp = new Dictionary<clsScheme, int>();
-				this.LoyaltyPoints(ref dlp);
-				
-				int BCTotal = 0;
-				string toolTip = "";
-				
-				if (iq.i_scheme_code.ContainsKey("BC"))
-				{
-					foreach (var scheme in iq.i_scheme_code("BC"))
-					{
-						if (scheme.Region.Encompasses(agentAccount.SellerChannel.Region))
-						{
-							//We have an active region for this account
-							if (dlp.ContainsKey(scheme))
-							{
-								BCTotal += dlp[scheme];
-							}
-							toolTip = System.Convert.ToString(scheme.displayName(agentAccount.Language));
-						}
-					}
-				}
-				
-				if (BCTotal > 0)
-				{
-					
-					string points = System.Convert.ToString(Xlt("Points", agentAccount.Language));
-					
-					Label lblpointsTitle = new Label();
-					lblpointsTitle.CssClass = "BlueCarpetTitle";
-					lblpointsTitle.Text = points + ": ";
-					lblpointsTitle.ToolTip = points;
-					sysOptSum.Controls.Add(lblpointsTitle);
-					
-					Label lblpoints = default(Label);
-					lblpoints = new Label();
-					lblpoints.CssClass = "BlueCarpet";
-					lblpoints.Text = BCTotal.ToString();
-					lblpoints.ToolTip = points;
-					sysOptSum.Controls.Add(lblpoints);
-					
-					Label lblSpace2 = new Label();
-					lblSpace2.Text = lblSpace.Text;
-					sysOptSum.Controls.Add(lblSpace2);
-					
-					LinkButton lnkBtn = new LinkButton();
-					lnkBtn.Attributes.Add("onClick", "return false;");
-					
-					lnkBtn.Text = Xlt("Learn More", BuyerAccount.Language);
-					lnkBtn.OnClientClick = "LearnMoreClick();";
-					
-					sysOptSum.Controls.Add(lnkBtn);
-				}
-				
-				//grand total
-				//If Me.quote.QuotedPrice.isValid Then
-				Panel PnlGrandTotal = new Panel();
-				PnlGrandTotal.CssClass = "grandTotal";
-				PnlGrandTotal.Controls.Add(NewLit(Xlt("Total", agentAccount.Language) + " "));
-				
-				//price panel
-				NullablePrice finalprice = new NullablePrice(this.quote.QuotedPrice.NumericValue - this.quote.TotalRebate, this.quote.Currency, this.quote.QuotedPrice.isList);
-				finalprice.isTotal = true;
-				Panel pp = finalprice.DisplayPrice(BuyerAccount, errorMessages);
-				pp.CssClass += " finalPrice";
-				PnlGrandTotal.Controls.Add(pp);
-				
-				//show the 'quotewide',propogating margin only once there is more than one item at the root level
-				if (this.quote.RootItem.Children.Count > 1 && !(agentAccount.SellerChannel.marginMin == 0 && agentAccount.SellerChannel.marginMax == 0))
-				{
-					PnlGrandTotal.Controls.Add(this.MarginUI(true, System.Convert.ToBoolean(this.quote.Locked))); //whole quote margin - goes inside the header at Dans )
-				}
-				
-				
-				ih.Controls.Add(qnp);
-				ih.Controls.Add(PnlGrandTotal);
-				ih.Controls.Add(sysOptSum);
-				qh.Controls.Add(ih);
-				returnValue.Controls.Add(qh);
-			}
-			else
-			{
-				product = this.Branch.Product;
-				
-				if (product != null) //skip chassis (and other invisible) branches
-				{
-					if (this.Branch.childBranches.Count > 0)
-					{
-						//SYSTEM
-						issystem = true;
-						//this quote items' product branch has sub items and so can be targetted for options (it's a 'system')
-						returnValue.CssClass += " quoteSystem";
-						returnValue.Controls.Add(this.SystemHeader(agentAccount, BuyerAccount, ref errorMessages)); //the virtual system/rollup/total header (also contains the expand/collapse button
-						returnValue.Attributes("onclick") = "burstBubble(event);if(!ajaxing){setQuoteCursor(" + System.Convert.ToString(this.ID) + ");getBranches(\'cmd=open&path=" + this.Path + "&into=tree&Paradigm=C\')};";
-						
-					}
-					else
-					{
-						//It's an OPTION - show it in the tree (and highlight it if its clicked)
-						returnValue.CssClass += " quoteOption";
-						
-						string From = "tree." + iq.RootBranch.ID; //Default to 'from' the root
-						if (this.SystemItem() != null)
-						{
-							From = this.SystemItem().Path; //Override with the system if its there
-						}
-						returnValue.Attributes("onclick") = "burstBubble(event);if(!ajaxing){setQuoteCursor(" + System.Convert.ToString(this.Parent.ID) + ");getBranches(\'cmd=open&path=" + From + "&to=" + this.Path + "&into=tree&Paradigm=C\')};";
-						
-					}
-					//          UI.Attributes("onclick") = "burstBubble(event);if(!ajaxing){setQuoteCursor(" & Me.Parent.ID & ");getBranches('cmd=open&path=" & from & "&to=" & Me.Path & "&into=tree')};"
-				}
-				
-				if (!this.collapsed)
-				{
-					
-					//note - for Pauls benefit if you have the DIAGVIEW role .. you see ALL products int he basket
-					
-					if (this.ShouldShowInBasket(includePreinstalled, BuyerAccount, foci))
-					{
-						returnValue.Controls.Add(this.basketLine(agentAccount, BuyerAccount, product, foci, ref errorMessages, lid));
-					}
-					
-					//Dim vms As Panel = New Panel
-					//UI.Controls.Add(vms)
-					//vms.CssClass = "validationMessages"
-					//For Each vm As ClsValidationMessage In Me.Msgs
-					//    If vm IsNot Nothing Then  'TODO remove - some 'nothings' are getting in
-					//        vms.Controls.Add(vm.UI(BuyerAccount, agentAccount.Language, errorMessages))
-					//    End If
-					//Next
-					
-					
-				}
-			}
-			
-			
-			//we *always* recurse (Through invisible options) otherwise we'd lose options in preinstalled options) .. but only append the HTML for preinstalled items if includePreinstalled=true
-			
-			//dont recurse into collapse items
-			if (!this.collapsed)
-			{
-				
-				Panel options = new Panel();
-				Panel systems = new Panel();
-				
-				Panel addto = default(Panel);
-				returnValue.Controls.Add(systems);
-				returnValue.Controls.Add(options);
-				
-				string prevDisplayText = "";
-				ArrayList itemsToRemove = new ArrayList();
-				bool isPrevPreInstalled = false;
-				bool isPreInstalled = false;
-				int prevItemQuantity = 0;
-				int itemQuantity;
-				string path = "";
-				bool isASystem;
-				
-				ArrayList prevItemQuantities = new ArrayList();
-				ArrayList prevDisplayTexts = new ArrayList();
-				IQ.clsQuoteItem prevItem = null;
-				
-				//' This avoids systems and only uses options. It also orders by the option name.
-				foreach (var item in from c in this.Children where c.order > 2 orderby c.SKUVariant.DistiSku select c)
-				{
-					
-					path = System.Convert.ToString(item.Path);
-					isASystem = System.Convert.ToBoolean(item.Branch.Product.isSystem(path));
-					if (isASystem == false)
-					{
-						string displayText = System.Convert.ToString(item.SKUVariant.DistiSku);
-						isPreInstalled = System.Convert.ToBoolean(item.IsPreInstalled);
-						
-						itemQuantity = System.Convert.ToInt32(item.Quantity);
-						if ((displayText == prevDisplayText) && (isPreInstalled == false) && (isPrevPreInstalled == false))
-						{
-							item.Quantity = prevItemQuantity + item.Quantity;
-							if (!(prevItem == null))
-							{
-								this.Children.Remove(prevItem);
-							}
-						}
-						prevDisplayText = displayText;
-						isPrevPreInstalled = isPreInstalled;
-						prevItemQuantity = System.Convert.ToInt32(item.Quantity);
-						prevItem = item;
-					}
-				}
-				
-				//order systems first then options - so that we can group the root level options into a parts bin (single div) we can draw a box around
-				
-				foreach (var item in this.Children.Where(ch => ch.ShouldShowInBasket(includePreinstalled, BuyerAccount, foci)).GroupBy(ch => ch.Branch.Product.isSystem(ch.Path)))
-				{
-					if (item.Key)
-					{
-						addto = systems;
-					}
-					else
-					{
-						addto = options;
-					}
-					
-					//Ruined below temp with andalso False until this is ok'd
-					foreach (var i in item.GroupBy(ch => ch.Branch.Product.ProductType.Translation.text(English) + (ch.IsPreInstalled && false ? 0 : ch.ID).ToString()).OrderByDescending(ch => ch.First.Branch.Product.ProductType.Order).OrderByDescending(ch => ch.First.IsPreInstalled))
-					{
-						if (i.Count > 1 && i.First.IsPreInstalled)
-						{
-							//Add header
-							Panel panel = new Panel();
-							panel.CssClass = "quoteGroup";
-							panel.Attributes("OnClick") = "burstBubble(event);";
-							panel.Controls.Add(NewLit("<h3 style=\"outline-color:white;background:white;\">" + i.First.Branch.Product.ProductType.Translation.text(BuyerAccount.Language) + "</h3>"));
-							panel panel2 = new Panel();
-							addto.Controls.Add(panel);
-							panel.Controls.Add(panel2);
-							
-							foreach (var qi in i)
-							{
-								if (qi.Branch != null)
-								{
-									panel2.Controls.Add(qi.UI(includePreinstalled, BuyerAccount, agentAccount, foci, errorMessages, validationMode, lid));
-								}
-							}
-						}
-						else
-						{
-							if (!i.First.IsPreInstalled || includePreinstalled) //was me.preinstalled - which was a bug (i think) NA 12/06/2014
-							{
-								//and... recurse
-								if (i.First.Branch != null)
-								{
-									if (!i.First.Branch.Product.isSystem(i.First.Path))
-									{
-										if (this == quote.RootItem)
-										{
-											if (this == quote.RootItem)
-											{
-												options.Attributes("class") = "partsBin";
-											}
-										}
-									}
-								}
-								
-								//formerly UI.controls.add
-								
-								addto.Controls.Add(i.First.UI(includePreinstalled, BuyerAccount, agentAccount, foci, errorMessages, validationMode, lid));
-							}
-						}
-					}
-				}
-				
-				
-				
-				//    Case Is = viewTypeEnum.Summary
-				//this was the old summary/BOM view - which has been obsoleted (before it ever made it out) 'is essentially the same - potentially consolidates some items
-				// UI.Controls.Add(Me.FlatList(BuyerAccount, errorMessages))
-				
-				//        If viewType and viewTypeEnum).validation then
-				//Case Is = viewTypeEnum.validation
-				
-				if (issystem)
-				{
-					
-					returnValue.Controls.Add(this.SystemFooter(BuyerAccount, agentAccount, ref errorMessages)); //Includes flex checklist
-					
-					if (this.ExpandedPanels.Contains(panelEnum.Spec))
-					{
-						returnValue.Controls.Add(this.specPanelOpen);
-					}
-					else
-					{
-						if (specPanelClosed != null)
-						{
-							returnValue.Controls.Add(this.specPanelClosed);
-						}
-						//UI.Controls.Add(Me.validationpanel)
-						//UI.Controls.Add(Me.PromosPanel)
-					}
-					
-					returnValue.Controls.Add(this.ValidationPanel(BuyerAccount, agentAccount, ref errorMessages));
-					// OBSOLETED      UI.Controls.Add(Me.PromosPanel(agentAccount)) ' Total rebate, Loyalty point by schecme, Bundle savings
-					
-				}
-				
-				//'output each items validation messages *HERE* to get them in contexct
-				//Dim vms As Panel = New Panel
-				//UI.Controls.Add(vms)
-				//vms.CssClass = "validationMessages"
-				//For Each vm As ClsValidationMessage In Me.Msgs
-				//    If vm IsNot Nothing Then  'TODO remove - some 'nothings' are getting in
-				//        vms.Controls.Add(vm.UI(BuyerAccount, agentAccount.Language, errorMessages))
-				//    End If
-				//Next
-				
-			}
-			
-			return returnValue;
-		}
+    {
+        Panel returnValue = default(Panel);
+
+        //Returns this QuoteItem (as a panel) ..and recurses for all child items (nesting panels)
+
+        returnValue = new Panel();
+
+        if (this.Branch != null)
+        {
+            if (this.Branch.Hidden)
+            {
+                return returnValue; //return an entirely emptt panel from hidden (chassis) branches
+            }
+        }
+
+        returnValue.CssClass = "quoteItemTree";
+        if (!this.validate)
+        {
+            returnValue.CssClass += " exVal";
+        }
+        if (this == quote.MostRecent)
+        {
+            returnValue.CssClass += " mostRecent"; //used to target the flying frame animation '~~~
+        }
+        if (this == quote.Cursor)
+        {
+            returnValue.CssClass += " quoteCursor"; //used to target the flying frame animation
+        }
+
+        returnValue.ID = "QI" + System.Convert.ToString(this.ID);
+        clsProduct product = default(clsProduct);
+        bool issystem = false;
+
+        if (this == this.quote.RootItem) //AKA 'Parts bin
+        {
+            //this is the outermost 'root' item (where we *can* add (orphaned) options)
+            //When we click on - OR THE EVENT BUBBLING REACHES the root item - we 'unlock' the cursor
+            //                                                                                   note this is OUTside the IF
+            //was omd
+            returnValue.CssClass += " quoteRoot";
+
+
+            //'THIS WAS THE 'PARTS BIN' - Which was disbaled at Gregs request /01/01/2015 - UI.Attributes("onclick") = "burstBubble(event);if(!ajaxing){setQuoteCursor(" & Me.ID & ",'');}"
+            //The root item
+
+            Panel qh = new Panel();
+            qh.CssClass = "quoteHeader";
+
+
+
+            Panel namepanel = new Panel();
+
+            namepanel.Controls.Add(NewLit(Xlt("Quote", agentAccount.Language) + " " + this.quote.RootQuote.ID + "-" + quote.Version + (quote.Saved ? ("<span class=\'saved\'>(" + Xlt("saved", BuyerAccount.Language)) : ("<span class=\'draft\'>(" + Xlt("draft", BuyerAccount.Language))) + ")</span>"));
+            qh.Controls.Add(namepanel);
+            //action buttons
+            Literal butts = new Literal();
+            List<ClsValidationMessage> criticalMsgs = this.ValidationsGreaterThanEqualTo(EnumValidationSeverity.RedCross);
+            //SAMS version FindValidation(selectedMsgs, Me)
+
+            //       If Me.quote.Saved Then
+            // 'butts.Visible = False
+            //butts.Text = "<div class='q_outputs'><div class='q_saved' onclick = ""burstBubble(event); quoteEvent('Save'); return false;"" title ='" & Xlt("Save", agentAccount.Language) & "'></div> "
+            //Else
+            //            butts.Text = "<div class='q_outputs'><div class='q_save' onclick = ""burstBubble(event); quoteEvent('Save'); return false;"" title ='" & Xlt("Save", agentAccount.Language) & "'></div> "
+            // End If
+
+            if (criticalMsgs.Count == 0) // need to sort out the images for
+            {
+                //"<div class='q_outputs'><div class='q_save' onclick = ""burstBubble(event); quoteEvent('Save'); return false;"" title ='Save'></div> " & _
+                butts.Text = butts.Text + "<div title =\'" + Xlt("Export", agentAccount.Language) + "\' class=\'q_export \' onclick = \"burstBubble(event); showMenu(" + this.quote.ID.ToString() + "); return false;\"><div id = \"exportMenu" + this.quote.ID.ToString() + "\"  class = \"submenu\" > " + "<a class=\"account\"> " + Xlt("Export Option", agentAccount.Language) + "s</a> <ul class=\"root\" >" + "<li><a onclick = \"burstBubble(event); quoteEvent(\'Excel\'); return false;\" href=\"#\">" + Xlt("Excel", agentAccount.Language) + "</a></li>" + "<li><a onclick = \"burstBubble(event);  quoteEvent(\'PDF\'); return false;\" href=\"#\">" + Xlt("PDF", agentAccount.Language) + "</a></li>" + "<li><a onclick = \"burstBubble(event);  quoteEvent(\'XML\'); return false;\" href=\"#\">" + Xlt("XML", agentAccount.Language) + "</a></li>" + "<li><a href=\"#\" onclick = \"burstBubble(event);  quoteEvent(\'XMLAdv\'); return false;\">" + Xlt("XML Advanced", agentAccount.Language) + "</a></li>" + "<li><a href=\"#\" onclick = \"burstBubble(event);  quoteEvent(\'XMLSmartQuote\'); return false;\">" + Xlt("XML SmartQuote", agentAccount.Language) + "</a></li></ul>" + " </div></div> " + "<div title =\'" + Xlt("Email", agentAccount.Language) + "\' class=\'q_email\' onclick = \"burstBubble(event); quoteEvent(\'Email\'); return false;\"></div> ";
+                //& "<div class='q_excel' onclick = ""burstBubble(event); saveNote(); quoteEvent('Excel'); return false;""></div> " _
+                //& "<div class='q_xml' onclick = ""burstBubble(event); saveNote(); quoteEvent('XML'); return false;""></div></div>"
+            }
+            else
+            {
+                butts.Text = butts.Text + "<div title =\'" + Xlt("Export", agentAccount.Language) + "\' class=\'q_export \' onclick = \"burstBubble(event); displayMsg(\'" + Xlt("Export not available due to validation errors", BuyerAccount.Language) + "\'); return false;\"></div>";
+            }
+            if (quote.Locked)
+            {
+                butts.Text = butts.Text + "<div title =\'" + Xlt("Create Next Version", agentAccount.Language) + "\' class=\'q_newVlocked\' onclick = \"burstBubble(event); displayMsg(\'Next version created\');  rExec(\'Manipulation.aspx?command=createNextVersion&quoteId=" + quote.ID + "\', showQuote); return false;\"></div> ";
+            }
+            else
+            {
+                if (quote.Saved)
+                {
+                    butts.Text = butts.Text + "<div  title =\'" + Xlt("Create Next Version", agentAccount.Language) + "\' class=\'q_newVunlocked\' onclick = \"burstBubble(event);displayMsg(\'Next version created\');  rExec(\'Manipulation.aspx?command=createNextVersion&quoteId=" + quote.ID + "\', showQuote); return false;\"></div>";
+                }
+
+                //Dim btnNextVersion As New Button
+                //btnNextVersion.Text = Xlt("Create next version", agentAccount.Language)
+                //btnNextVersion.ToolTip = Xlt("Creates a copy leaving the original quote intact", agentAccount.Language)
+                //btnNextVersion.OnClientClick = "rExec('Manipulation.aspx?command=createNextVersion&quoteId=" & quote.ID & "', gotoTree);return false;"
+                //UI.Controls.Add(btnNextVersion)
+
+            }
+
+            if (quote != null)
+            {
+
+                if (criticalMsgs.Count == 0 && (iq.sesh(lid, "GK_BasketURL") != null || agentAccount.SellerChannel.orderEmail != ""))
+                {
+                    // Dim litAddtobasket = New Literal
+                    //butts.Text = butts.Text & "<div class='hpBlueButton smallfont ib'  onclick = ""burstBubble(event); saveNote(false); quoteEvent('Addbasket'); return false;"">" & Xlt("Place Order", agentAccount.Language) & "</div></div> "
+
+                    butts.Text = butts.Text + "<div class=\'hpOrangeButton q_basket smallfont\'  onclick = \"burstBubble(event); saveNote(false); quoteEvent(\'Addbasket" + quote.Saved + "\'); return false;\">&nbsp;</div>";
+                }
+                else
+                {
+                    //butts.Text = butts.Text & "</div> "
+                }
+
+                //Dim addToBasket As Button = New Button()
+                //addToBasket.Text = Xlt("Add to Basket", quote.BuyerAccount.Language)
+                //addToBasket.ID = "btnAddToBasket"
+                //AddHandler addToBasket.Click, AddressOf Me.addToBasket_Click
+
+                //   qh.Controls.Add(litAddtobasket)
+            }
+            else
+            {
+                butts.Text = butts.Text + "</div>";
+            }
+
+            namepanel.Controls.Add(butts);
+
+            Panel ih = new Panel();
+
+            ih.CssClass = "innerHeader";
+
+
+            //quoteName/Customer - Sams pop open panel - part of the export tools
+            Panel qnp = new Panel();
+            qnp.ID = "quotepanel";
+
+
+            object qn = this.quote.Name.DisplayValue;
+            if (Strings.Trim(System.Convert.ToString(qn)) == "" || Strings.Trim(System.Convert.ToString(qn)) == "-")
+            {
+                qn = this.quote.BuyerAccount.BuyerChannel.Name;
+            }
+
+
+            qnp.Controls.Add(NewLit("<div id = \'quoteText\' ><input id=\'saveQuoteName\'" + (quote.Saved ? " value=\'" + System.Convert.ToString(qn) + "\'" : "") + " type=\'text\' placeholder=\'" + Xlt("enter quote name", BuyerAccount.Language) + "\' onclick= \'burstBubble(event); return false;\'   onkeydown = \'var e=event||window.event; var keyCode=e.keyCode||e.which; if (keyCode==13){return false;}\'/> " + "<input id = \'hiddenType\' type=\'hidden\' value=\'Save\' /><input id = \'hiddenName\' type=\'hidden\' value=\'" + System.Convert.ToString(qn) + "\' /><input id =\'hdnEmail\' type = \'hidden\' value =\'" + this.quote.BuyerAccount.User.Email + "\'/><input id = \'continueBtn\' type=\'button\' class=\"hpBlueButton smallfont\" style=\"margin-top:-0.75em; margin-left:0.6em;\" value = \'" + Xlt("Save", agentAccount.Language) + "\' onClick =\'burstBubble(event); continueClick();\'/><input id = \'cancelBtn\' type=\'button\' onclick=\"burstBubble(event); $(\'#saveQuoteName\').val($(\'#hiddenName\').val());$(\'#continueBtn\').val($(\'#hiddenSaveTrans\').val());$(\'#cancelBtn\').hide();$(\'#quoteText\').show();$(\'#hiddenType\').val(\'Save\');return false;\" class=\"hpBlueButton smallfont\" style=\'display:none;margin-top:-0.70em; margin-left:0.6em;\' value =\'" + Xlt("Cancel", agentAccount.Language) + "\'  />" + "<input id = \'hiddenEmailTrans\' type=\'hidden\' value =\'" + Xlt("Send Email", agentAccount.Language) + "\'  /><input id = \'hiddenSaveTrans\' type=\'hidden\' value =\'" + Xlt("Save", agentAccount.Language) + "\'  /></div>")); // removed 19/01 <input id = 'cancelBtn' type='button' class=""hpGreyButton  smallfont"" value = '" & Xlt("Cancel", agentAccount.Language) & "' style=""margin-top:-0.75em; margin-left:0.6em;"" onClick ='burstBubble(event); quoteCancel();'/>
+
+
+            //Systems Options summary + validation rollup
+
+            Panel sysOptSum = new Panel();
+            sysOptSum.ID = "sysOptSumm";
+
+            int systems = 0;
+            int options = 0;
+            this.countSystems(ref systems, ref options);
+
+            string syss = "";
+            if (systems > 1 | systems == 0)
+            {
+                syss = "systems";
+            }
+            else
+            {
+                syss = "system";
+            }
+            string opts = "";
+            if (options > 1 | options == 0)
+            {
+                opts = "options";
+            }
+            else
+            {
+                opts = "option";
+            }
+            syss = System.Convert.ToString(Xlt(syss, agentAccount.Language));
+            opts = System.Convert.ToString(Xlt(opts, agentAccount.Language));
+
+            sysOptSum.Controls.Add(NewLit("<span class=\'sysOptCount\'>" + System.Convert.ToString(systems) + " " + syss + ", " + System.Convert.ToString(options) + " " + opts + "</span>"));
+
+            Panel vdRollup = new Panel();
+            vdRollup.CssClass = "validationRollup";
+            sysOptSum.Controls.Add(this.MessageCounts(new[] { { enumValidationMessageType.Validation }, { }, { EnumValidationSeverity.DoesQualify, EnumValidationSeverity.DoesntQualify }, true, true })); //exclude flex qualification messages from the roll up
+
+            Label lblSpace = new Label();
+            lblSpace.Text = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+            sysOptSum.Controls.Add(lblSpace);
+
+            Dictionary<clsScheme, int> dlp = new Dictionary<clsScheme, int>();
+            this.LoyaltyPoints(ref dlp);
+
+            int BCTotal = 0;
+            string toolTip = "";
+
+            if (iq.i_scheme_code.ContainsKey("BC"))
+            {
+                foreach (var scheme in iq.i_scheme_code("BC"))
+                {
+                    if (scheme.Region.Encompasses(agentAccount.SellerChannel.Region))
+                    {
+                        //We have an active region for this account
+                        if (dlp.ContainsKey(scheme))
+                        {
+                            BCTotal += dlp[scheme];
+                        }
+                        toolTip = System.Convert.ToString(scheme.displayName(agentAccount.Language));
+                    }
+                }
+            }
+
+            if (BCTotal > 0)
+            {
+
+                string points = System.Convert.ToString(Xlt("Points", agentAccount.Language));
+
+                Label lblpointsTitle = new Label();
+                lblpointsTitle.CssClass = "BlueCarpetTitle";
+                lblpointsTitle.Text = points + ": ";
+                lblpointsTitle.ToolTip = points;
+                sysOptSum.Controls.Add(lblpointsTitle);
+
+                Label lblpoints = default(Label);
+                lblpoints = new Label();
+                lblpoints.CssClass = "BlueCarpet";
+                lblpoints.Text = BCTotal.ToString();
+                lblpoints.ToolTip = points;
+                sysOptSum.Controls.Add(lblpoints);
+
+                Label lblSpace2 = new Label();
+                lblSpace2.Text = lblSpace.Text;
+                sysOptSum.Controls.Add(lblSpace2);
+
+                LinkButton lnkBtn = new LinkButton();
+                lnkBtn.Attributes.Add("onClick", "return false;");
+
+                lnkBtn.Text = Xlt("Learn More", BuyerAccount.Language);
+                lnkBtn.OnClientClick = "LearnMoreClick();";
+
+                sysOptSum.Controls.Add(lnkBtn);
+            }
+
+            //grand total
+            //If Me.quote.QuotedPrice.isValid Then
+            Panel PnlGrandTotal = new Panel();
+            PnlGrandTotal.CssClass = "grandTotal";
+            PnlGrandTotal.Controls.Add(NewLit(Xlt("Total", agentAccount.Language) + " "));
+
+            //price panel
+            NullablePrice finalprice = new NullablePrice(this.quote.QuotedPrice.NumericValue - this.quote.TotalRebate, this.quote.Currency, this.quote.QuotedPrice.isList);
+            finalprice.isTotal = true;
+            Panel pp = finalprice.DisplayPrice(BuyerAccount, errorMessages);
+            pp.CssClass += " finalPrice";
+            PnlGrandTotal.Controls.Add(pp);
+
+            //show the 'quotewide',propogating margin only once there is more than one item at the root level
+            if (this.quote.RootItem.Children.Count > 1 && !(agentAccount.SellerChannel.marginMin == 0 && agentAccount.SellerChannel.marginMax == 0))
+            {
+                PnlGrandTotal.Controls.Add(this.MarginUI(true, System.Convert.ToBoolean(this.quote.Locked))); //whole quote margin - goes inside the header at Dans )
+
+
+
+                ih.Controls.Add(qnp);
+                ih.Controls.Add(PnlGrandTotal);
+                ih.Controls.Add(sysOptSum);
+                qh.Controls.Add(ih);
+                returnValue.Controls.Add(qh);
+            }
+            else
+            {
+                product = this.Branch.Product;
+
+                if (product != null) //skip chassis (and other invisible) branches
+                {
+                    if (this.Branch.childBranches.Count > 0)
+                    {
+                        //SYSTEM
+                        issystem = true;
+                        //this quote items' product branch has sub items and so can be targetted for options (it's a 'system')
+                        returnValue.CssClass += " quoteSystem";
+                        returnValue.Controls.Add(this.SystemHeader(agentAccount, BuyerAccount, ref errorMessages)); //the virtual system/rollup/total header (also contains the expand/collapse button
+                        returnValue.Attributes("onclick") = "burstBubble(event);if(!ajaxing){setQuoteCursor(" + System.Convert.ToString(this.ID) + ");getBranches(\'cmd=open&path=" + this.Path + "&into=tree&Paradigm=C\')};";
+
+                    }
+                    else
+                    {
+                        //It's an OPTION - show it in the tree (and highlight it if its clicked)
+                        returnValue.CssClass += " quoteOption";
+
+                        string From = "tree." + iq.RootBranch.ID; //Default to 'from' the root
+                        if (this.SystemItem() != null)
+                        {
+                            From = this.SystemItem().Path; //Override with the system if its there
+                        }
+                        returnValue.Attributes("onclick") = "burstBubble(event);if(!ajaxing){setQuoteCursor(" + System.Convert.ToString(this.Parent.ID) + ");getBranches(\'cmd=open&path=" + From + "&to=" + this.Path + "&into=tree&Paradigm=C\')};";
+
+                    }
+                    //          UI.Attributes("onclick") = "burstBubble(event);if(!ajaxing){setQuoteCursor(" & Me.Parent.ID & ");getBranches('cmd=open&path=" & from & "&to=" & Me.Path & "&into=tree')};"
+                }
+
+                if (!this.collapsed)
+                {
+
+                    //note - for Pauls benefit if you have the DIAGVIEW role .. you see ALL products int he basket
+
+                    if (this.ShouldShowInBasket(includePreinstalled, BuyerAccount, foci))
+                    {
+                        returnValue.Controls.Add(this.basketLine(agentAccount, BuyerAccount, product, foci, ref errorMessages, lid));
+                    }
+
+                    //Dim vms As Panel = New Panel
+                    //UI.Controls.Add(vms)
+                    //vms.CssClass = "validationMessages"
+                    //For Each vm As ClsValidationMessage In Me.Msgs
+                    //    If vm IsNot Nothing Then  'TODO remove - some 'nothings' are getting in
+                    //        vms.Controls.Add(vm.UI(BuyerAccount, agentAccount.Language, errorMessages))
+                    //    End If
+                    //Next
+
+
+                }
+            }
+
+
+            //we *always* recurse (Through invisible options) otherwise we'd lose options in preinstalled options) .. but only append the HTML for preinstalled items if includePreinstalled=true
+
+            //dont recurse into collapse items
+            if (!this.collapsed)
+            {
+
+                Panel options = new Panel();
+                Panel systems = new Panel();
+
+                Panel addto = default(Panel);
+                returnValue.Controls.Add(systems);
+                returnValue.Controls.Add(options);
+
+                string prevDisplayText = "";
+                ArrayList itemsToRemove = new ArrayList();
+                bool isPrevPreInstalled = false;
+                bool isPreInstalled = false;
+                int prevItemQuantity = 0;
+                int itemQuantity;
+                string path = "";
+                bool isASystem;
+
+                ArrayList prevItemQuantities = new ArrayList();
+                ArrayList prevDisplayTexts = new ArrayList();
+                IQ.clsQuoteItem prevItem = null;
+
+                //' This avoids systems and only uses options. It also orders by the option name.
+                foreach (var item in from c in this.Children where c.order > 2 orderby c.SKUVariant.DistiSku select c)
+                {
+
+                    path = System.Convert.ToString(item.Path);
+                    isASystem = System.Convert.ToBoolean(item.Branch.Product.isSystem(path));
+                    if (isASystem == false)
+                    {
+                        string displayText = System.Convert.ToString(item.SKUVariant.DistiSku);
+                        isPreInstalled = System.Convert.ToBoolean(item.IsPreInstalled);
+
+                        itemQuantity = System.Convert.ToInt32(item.Quantity);
+                        if ((displayText == prevDisplayText) && (isPreInstalled == false) && (isPrevPreInstalled == false))
+                        {
+                            item.Quantity = prevItemQuantity + item.Quantity;
+                            if (!(prevItem == null))
+                            {
+                                this.Children.Remove(prevItem);
+                            }
+                        }
+                        prevDisplayText = displayText;
+                        isPrevPreInstalled = isPreInstalled;
+                        prevItemQuantity = System.Convert.ToInt32(item.Quantity);
+                        prevItem = item;
+                    }
+                }
+
+                //order systems first then options - so that we can group the root level options into a parts bin (single div) we can draw a box around
+
+                foreach (var item in this.Children.Where(ch => ch.ShouldShowInBasket(includePreinstalled, BuyerAccount, foci)).GroupBy(ch => ch.Branch.Product.isSystem(ch.Path)))
+                {
+                    if (item.Key)
+                    {
+                        addto = systems;
+                    }
+                    else
+                    {
+                        addto = options;
+                    }
+
+                    //Ruined below temp with andalso False until this is ok'd
+                    foreach (var i in item.GroupBy(ch => ch.Branch.Product.ProductType.Translation.text(English) + (ch.IsPreInstalled && false ? 0 : ch.ID).ToString()).OrderByDescending(ch => ch.First.Branch.Product.ProductType.Order).OrderByDescending(ch => ch.First.IsPreInstalled))
+                    {
+                        if (i.Count > 1 && i.First.IsPreInstalled)
+                        {
+                            //Add header
+                            Panel panel = new Panel();
+                            panel.CssClass = "quoteGroup";
+                            panel.Attributes("OnClick") = "burstBubble(event);";
+                            panel.Controls.Add(NewLit("<h3 style=\"outline-color:white;background:white;\">" + i.First.Branch.Product.ProductType.Translation.text(BuyerAccount.Language) + "</h3>"));
+                            panel panel2 = new Panel();
+                            addto.Controls.Add(panel);
+                            panel.Controls.Add(panel2);
+
+                            foreach (var qi in i)
+                            {
+                                if (qi.Branch != null)
+                                {
+                                    panel2.Controls.Add(qi.UI(includePreinstalled, BuyerAccount, agentAccount, foci, errorMessages, validationMode, lid));
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (!i.First.IsPreInstalled || includePreinstalled) //was me.preinstalled - which was a bug (i think) NA 12/06/2014
+                            {
+                                //and... recurse
+                                if (i.First.Branch != null)
+                                {
+                                    if (!i.First.Branch.Product.isSystem(i.First.Path))
+                                    {
+                                        if (this == quote.RootItem)
+                                        {
+                                            if (this == quote.RootItem)
+                                            {
+                                                options.Attributes("class") = "partsBin";
+                                            }
+                                        }
+                                    }
+                                }
+
+                                //formerly UI.controls.add
+
+                                addto.Controls.Add(i.First.UI(includePreinstalled, BuyerAccount, agentAccount, foci, errorMessages, validationMode, lid));
+                            }
+                        }
+                    }
+                }
+
+
+
+                //    Case Is = viewTypeEnum.Summary
+                //this was the old summary/BOM view - which has been obsoleted (before it ever made it out) 'is essentially the same - potentially consolidates some items
+                // UI.Controls.Add(Me.FlatList(BuyerAccount, errorMessages))
+
+                //        If viewType and viewTypeEnum).validation then
+                //Case Is = viewTypeEnum.validation
+
+                if (issystem)
+                {
+
+                    returnValue.Controls.Add(this.SystemFooter(BuyerAccount, agentAccount, ref errorMessages)); //Includes flex checklist
+
+                    if (this.ExpandedPanels.Contains(panelEnum.Spec))
+                    {
+                        returnValue.Controls.Add(this.specPanelOpen);
+                    }
+                    else
+                    {
+                        if (specPanelClosed != null)
+                        {
+                            returnValue.Controls.Add(this.specPanelClosed);
+                        }
+                        //UI.Controls.Add(Me.validationpanel)
+                        //UI.Controls.Add(Me.PromosPanel)
+                    }
+
+                    returnValue.Controls.Add(this.ValidationPanel(BuyerAccount, agentAccount, ref errorMessages));
+                    // OBSOLETED      UI.Controls.Add(Me.PromosPanel(agentAccount)) ' Total rebate, Loyalty point by schecme, Bundle savings
+
+                }
+
+                //'output each items validation messages *HERE* to get them in contexct
+                //Dim vms As Panel = New Panel
+                //UI.Controls.Add(vms)
+                //vms.CssClass = "validationMessages"
+                //For Each vm As ClsValidationMessage In Me.Msgs
+                //    If vm IsNot Nothing Then  'TODO remove - some 'nothings' are getting in
+                //        vms.Controls.Add(vm.UI(BuyerAccount, agentAccount.Language, errorMessages))
+                //    End If
+                //Next
+
+            }
+
+            return returnValue;
+        }
+    }
 
     //Private Shared Function Flatten(source As IEnumerable(Of clsQuoteItem)) As IEnumerable(Of clsQuoteItem)
     //    Return source.Concat(source.SelectMany(Function(p) Children.Flatten()))
@@ -3528,8 +3531,8 @@ public class clsQuoteItem : ISqlBasedObject
 			System.Object t = (from l in this.Branch.Product.OPGflexLines.Values where l.FlexOPG.AppliesToRegion(region) select l).ToList();
 			
 			int flexConditionCount = 0;
-			PlaceHolder flexDoesQualifyPlaceholder = outputValidations(new[] {enumValidationMessageType.Flex}, {EnumValidationSeverity.DoesQualify}, {}, buyeraccount, agentaccount, errorMessages, ref flexConditionCount);
-			PlaceHolder flexDoesntQualifyPlaceholder = outputValidations(new[] {enumValidationMessageType.Flex}, {EnumValidationSeverity.DoesntQualify}, {}, buyeraccount, agentaccount, errorMessages, ref flexConditionCount);
+			PlaceHolder flexDoesQualifyPlaceholder = outputValidations(new[] { {enumValidationMessageType.Flex}, {EnumValidationSeverity.DoesQualify}, {}, buyeraccount, agentaccount, errorMessages, flexConditionCount});
+			PlaceHolder flexDoesntQualifyPlaceholder = outputValidations(new[] {{enumValidationMessageType.Flex}, {EnumValidationSeverity.DoesntQualify}, {}, buyeraccount, agentaccount, errorMessages, flexConditionCount});
 			
 			if (flexConditionCount > 0)
 			{
@@ -3659,7 +3662,7 @@ public class clsQuoteItem : ISqlBasedObject
 			
 			if (this.collapsed)
 			{
-				header.Controls.Add(this.MessageCounts(new[] {enumValidationMessageType.Validation}, {}, {EnumValidationSeverity.DoesQualify, EnumValidationSeverity.DoesntQualify}, false, true));
+				header.Controls.Add(this.MessageCounts(new[] {{enumValidationMessageType.Validation}, {}, {EnumValidationSeverity.DoesQualify, EnumValidationSeverity.DoesntQualify}, false, true}));
 			}
 			
 			if (this.ID == 0)
@@ -4166,7 +4169,7 @@ public class clsQuoteItem : ISqlBasedObject
 			bool critOutstanding = true;
 			Panel vdRollup = new Panel();
 			vdRollup.CssClass = "validationRollup";
-			vHeader.Controls.Add(this.MessageCounts(new[] {enumValidationMessageType.Validation}, {}, {EnumValidationSeverity.DoesQualify, EnumValidationSeverity.DoesntQualify}, false, ref critOutstanding)); //exclude felx qualification messages from the roll up
+			vHeader.Controls.Add(this.MessageCounts(new[] {{enumValidationMessageType.Validation}, {}, {EnumValidationSeverity.DoesQualify, EnumValidationSeverity.DoesntQualify}, false, critOutstanding})); //exclude felx qualification messages from the roll up
 			
 			if (!critOutstanding)
 			{
@@ -4186,7 +4189,7 @@ public class clsQuoteItem : ISqlBasedObject
 			{
 				//Output ALL validation messsages - EXCEPT flex qualification - which greg wants in the systemfooter
 				int count = 0;
-				returnValue.Controls.Add(this.outputValidations(new[] {enumValidationMessageType.Validation}, {}, {EnumValidationSeverity.DoesntQualify, EnumValidationSeverity.DoesQualify}, buyeraccount, agentaccount, ErrorMessages, ref count));
+				returnValue.Controls.Add(this.outputValidations(new[] {{enumValidationMessageType.Validation}, {}, {EnumValidationSeverity.DoesntQualify, EnumValidationSeverity.DoesQualify}, buyeraccount, agentaccount, ErrorMessages, count}));
 				
 			}
 			
