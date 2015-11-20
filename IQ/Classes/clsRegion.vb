@@ -71,7 +71,7 @@ Public Class clsRegion
     Public Function treeNode() As WebControls.TreeNode
 
         treeNode = New WebControls.TreeNode(Me.Displayname(English))
-        treeNode.Value = Me.ID
+        treeNode.Value = CStr(Me.ID)
 
         For Each child In Me.Children.Values
             treeNode.ChildNodes.Add(child.treeNode)
@@ -157,7 +157,7 @@ Public Class clsRegion
         If parent Is Nothing Then
             pid$ = "null"
         Else
-            pid$ = parent.ID
+            pid$ = CStr(parent.ID)
         End If
 
         Dim sql$

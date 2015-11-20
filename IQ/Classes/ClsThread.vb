@@ -87,7 +87,7 @@ Public Class clsThread
         If Me.Parent Is Nothing Then
             pid$ = "null"
         Else
-            pid$ = Me.Parent.ID
+            pid$ = CStr(Me.Parent.ID)
         End If
 
         Dim elid$

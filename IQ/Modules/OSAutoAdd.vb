@@ -9,7 +9,7 @@ Module OSAutoAdd
         Dim con As SqlClient.SqlConnection = da.OpenDatabase()
         ' Dim buyerAccount As clsAccount = CType(iq.sesh(lid, "BuyerAccount"), clsAccount)
         Dim errormessages As List(Of String) = New List(Of String)
-        Dim dicSystems As Dictionary(Of String, clsBranch) = loadDic(con, iq.Branches, "system")
+        Dim dicSystems As Dictionary(Of String, clsBranch) = CType(loadDic(con, iq.Branches, "system"), Global.System.Collections.Generic.Dictionary(Of String, Global.IQ.clsBranch))
         Dim sysProducts As List(Of clsProduct) = (From s In iq.Products.Values Where s.isSystem).ToList()
         Dim sysbranch As clsBranch = New clsBranch()
         ' Dim region = buyerAccount.SellerChannel.Region
@@ -22,10 +22,10 @@ Module OSAutoAdd
             If dicSystems.ContainsKey(prod.sku) Then
                 sysbranch = dicSystems(prod.sku)
 
-                Dim syspath = "tree." & Trim$(iq.RootBranch.ID) 'root
-                syspath &= "." & Trim$(sysbranch.Parent.Parent.ID) 'System type
-                syspath &= "." & Trim$(sysbranch.Parent.ID) 'Family
-                syspath &= "." & Trim$(sysbranch.ID)
+                Dim syspath = "tree." & Trim$(CStr(iq.RootBranch.ID)) 'root
+                syspath &= "." & Trim$(CStr(sysbranch.Parent.Parent.ID)) 'System type
+                syspath &= "." & Trim$(CStr(sysbranch.Parent.ID)) 'Family
+                syspath &= "." & Trim$(CStr(sysbranch.ID))
 
 
                 Dim parentName As String = sysbranch.Parent.EnglishName
@@ -94,7 +94,7 @@ Module OSAutoAdd
         Dim con As SqlClient.SqlConnection = da.OpenDatabase()
         ' Dim buyerAccount As clsAccount = CType(iq.sesh(lid, "BuyerAccount"), clsAccount)
         Dim errormessages As List(Of String) = New List(Of String)
-        Dim dicSystems As Dictionary(Of String, clsBranch) = loadDic(con, iq.Branches, "system")
+        Dim dicSystems As Dictionary(Of String, clsBranch) = CType(loadDic(con, iq.Branches, "system"), Global.System.Collections.Generic.Dictionary(Of String, Global.IQ.clsBranch))
         Dim cpqProducts As List(Of clsProduct) = (From s In iq.Products.Values Where s.ProductType.Code.ToUpper() = "WTY" And (s.i_Attributes_Code.ContainsKey("response") = False Or s.i_Attributes_Code.ContainsKey("servicelevel") = False Or
                                                                               s.i_Attributes_Code.ContainsKey("DMR_ISS") = False Or s.i_Attributes_Code.ContainsKey("desc") = False Or s.i_Attributes_Code.ContainsKey("capacity") = False)).ToList()
         Dim sysbranch As clsBranch = New clsBranch()
@@ -132,8 +132,8 @@ Module OSAutoAdd
         Dim rdr2 = dataAccess.da.DBExecuteReader(con2, sql)
         While rdr2.Read
             Dim prod As clsProduct
-            If iq.i_SKU.ContainsKey(rdr2("optsku")) Then
-                prod = iq.i_SKU(rdr2("optsku"))
+            If iq.i_SKU.ContainsKey(CStr(rdr2("optsku"))) Then
+                prod = iq.i_SKU(CStr(rdr2("optsku")))
                 If Not prod.i_Attributes_Code.ContainsKey("response") Then
                     If Not IsDBNull(rdr2("response")) Then Dim b = New clsProductAttribute(prod, iq.i_attribute_code("response"), 0, iq.i_unit_code("txt"), iq.AddTranslation(rdr2("response").ToString, English, "CPQ", 0, Nothing, 0, False), Nothing)
                 End If
@@ -260,7 +260,7 @@ Module OSAutoAdd
         Dim con As SqlClient.SqlConnection = da.OpenDatabase()
         ' Dim buyerAccount As clsAccount = CType(iq.sesh(lid, "BuyerAccount"), clsAccount)
         Dim errormessages As List(Of String) = New List(Of String)
-        Dim dicSystems As Dictionary(Of String, clsBranch) = loadDic(con, iq.Branches, "system")
+        Dim dicSystems As Dictionary(Of String, clsBranch) = CType(loadDic(con, iq.Branches, "system"), Global.System.Collections.Generic.Dictionary(Of String, Global.IQ.clsBranch))
         Dim sysProducts As List(Of clsProduct) = (From s In iq.Products.Values Where s.isSystem).ToList()
         Dim sysbranch As clsBranch = New clsBranch()
         ' Dim region = buyerAccount.SellerChannel.Region
@@ -279,10 +279,10 @@ Module OSAutoAdd
             If dicSystems.ContainsKey(prod.sku) Then
                 sysbranch = dicSystems(prod.sku)
 
-                Dim syspath = "tree." & Trim$(iq.RootBranch.ID) 'root
-                syspath &= "." & Trim$(sysbranch.Parent.Parent.ID) 'System type
-                syspath &= "." & Trim$(sysbranch.Parent.ID) 'Family
-                syspath &= "." & Trim$(sysbranch.ID)
+                Dim syspath = "tree." & Trim$(CStr(iq.RootBranch.ID)) 'root
+                syspath &= "." & Trim$(CStr(sysbranch.Parent.Parent.ID)) 'System type
+                syspath &= "." & Trim$(CStr(sysbranch.Parent.ID)) 'Family
+                syspath &= "." & Trim$(CStr(sysbranch.ID))
 
                 Dim req As clsGenericAjaxRequest = New clsGenericAjaxRequest()
                 req.lid = lid
@@ -296,7 +296,7 @@ Module OSAutoAdd
     Public Function CarePackReports(lid As UInt64) As List(Of clsSysCarePack)
         Dim con As SqlClient.SqlConnection = da.OpenDatabase()
         Dim errormessages As List(Of String) = New List(Of String)
-        Dim dicSystems As Dictionary(Of String, clsBranch) = loadDic(con, iq.Branches, "system")
+        Dim dicSystems As Dictionary(Of String, clsBranch) = CType(loadDic(con, iq.Branches, "system"), Global.System.Collections.Generic.Dictionary(Of String, Global.IQ.clsBranch))
         Dim sysProducts As List(Of clsProduct) = (From s In iq.Products.Values Where s.isSystem And s.activeTo >= Today And s.EOL = False And s.Active And s.Publish).ToList()
         Dim sysbranch As clsBranch = New clsBranch()
         ' Dim region = buyerAccount.SellerChannel.Region
@@ -308,10 +308,10 @@ Module OSAutoAdd
             skuPrefix = ""
             If dicSystems.ContainsKey(prod.sku) Then
                 sysbranch = dicSystems(prod.sku)
-                 Dim syspath = "tree." & Trim$(iq.RootBranch.ID) 'root
-                syspath &= "." & Trim$(sysbranch.Parent.Parent.ID) 'System type
-                syspath &= "." & Trim$(sysbranch.Parent.ID) 'Family
-                syspath &= "." & Trim$(sysbranch.ID)
+                Dim syspath = "tree." & Trim$(CStr(iq.RootBranch.ID)) 'root
+                syspath &= "." & Trim$(CStr(sysbranch.Parent.Parent.ID)) 'System type
+                syspath &= "." & Trim$(CStr(sysbranch.Parent.ID)) 'Family
+                syspath &= "." & Trim$(CStr(sysbranch.ID))
                 Dim region As clsRegion = iq.i_region_code("US")
                 Dim systemBI = New clsBranchInfo(lid, syspath, Nothing, 70, enumParadigm.errorNotSet, errormessages)
                 Dim hideReasons = systemBI.branch.ReasonsForHide(systemBI.buyerAccount, systemBI.foci, syspath, systemBI.buyerAccount.SellerChannel.priceConfig, False, errormessages)
@@ -357,7 +357,7 @@ Module OSAutoAdd
         Dim con As SqlClient.SqlConnection = da.OpenDatabase()
         ' Dim buyerAccount As clsAccount = CType(iq.sesh(lid, "BuyerAccount"), clsAccount)
         Dim errormessages As List(Of String) = New List(Of String)
-        Dim dicSystems As Dictionary(Of String, clsBranch) = loadDic(con, iq.Branches, "system")
+        Dim dicSystems As Dictionary(Of String, clsBranch) = CType(loadDic(con, iq.Branches, "system"), Global.System.Collections.Generic.Dictionary(Of String, Global.IQ.clsBranch))
         Dim sysProducts As List(Of clsProduct) = (From s In iq.Products.Values Where s.isSystem And s.activeTo >= Today).ToList()
         Dim sysbranch As clsBranch = New clsBranch()
         ' Dim region = buyerAccount.SellerChannel.Region
@@ -371,28 +371,28 @@ Module OSAutoAdd
             If dicSystems.ContainsKey(prod.sku) Then
                 sysbranch = dicSystems(prod.sku)
 
-                Dim syspath = "tree." & Trim$(iq.RootBranch.ID) 'root
-                syspath &= "." & Trim$(sysbranch.Parent.Parent.ID) 'System type
-                syspath &= "." & Trim$(sysbranch.Parent.ID) 'Family
-                syspath &= "." & Trim$(sysbranch.ID)
+                Dim syspath = "tree." & Trim$(CStr(iq.RootBranch.ID)) 'root
+                syspath &= "." & Trim$(CStr(sysbranch.Parent.Parent.ID)) 'System type
+                syspath &= "." & Trim$(CStr(sysbranch.Parent.ID)) 'Family
+                syspath &= "." & Trim$(CStr(sysbranch.ID))
 
                 Dim region As clsRegion = iq.i_region_code("US")
                 Dim troPath As String = ""
-                Dim troBranch As clsBranch = sysbranch.FindBranchByNameBelow("Top Recommended", syspath, False, 12, troPath)
+                Dim troBranch As clsBranch = CType(sysbranch.FindBranchByNameBelow("Top Recommended", CStr(syspath), False, 12, troPath), clsBranch)
                 Dim troCPQBranch As clsBranch
                 Dim hasList = New List(Of String)
                 Dim carepackexists As Boolean = False
                 If troBranch IsNot Nothing Then
-                    troCPQBranch = troBranch.FindBranchByNameBelow("Care Pack", syspath, False, 12, troPath)
+                    troCPQBranch = CType(troBranch.FindBranchByNameBelow("Care Pack", CStr(syspath), False, 12, troPath), clsBranch)
 
                     If troCPQBranch IsNot Nothing Then
                         For Each child As clsBranch In troCPQBranch.childBranches.Values
-                            If Not child.PruneInForce(troPath & "." & child.ID, agentAccount.SellerChannel) Then
-                                If Not hasList.Contains(child.Product.sku) Then
-                                    hasList.Add(child.Product.sku)
+                            If CBool(Not child.PruneInForce(troPath & "." & child.ID, agentAccount.SellerChannel)) Then
+                                If Not hasList.Contains(child.Product.SKU) Then
+                                    hasList.Add(child.Product.SKU)
                                     Dim sysCarePack As clsSysCarePack = New clsSysCarePack()
-                                    sysCarePack.sysSkus = prod.sku
-                                    sysCarePack.carepackSku = child.Product.sku
+                                    sysCarePack.sysSkus = prod.SKU
+                                    sysCarePack.carepackSku = child.Product.SKU
                                     sysCarePack.sysDesc = prod.i_Attributes_Code("desc")(0).Translation.text(English)
                                     sysCarePack.carePackDesc = child.Product.i_Attributes_Code("desc")(0).Translation.text(English)
                                     sysList.Add(sysCarePack)

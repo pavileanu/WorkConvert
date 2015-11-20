@@ -189,7 +189,7 @@ Public Class clsFlexLine
         Me.ID = ID
         Me.FlexOPG = FlexOPG
         Me.Product = Product
-        Me.rebate = Rebate
+        Me.rebate = CDec(Rebate)
         Me.validFrom = validFrom
         Me.validTo = validTo
 
@@ -203,7 +203,7 @@ Public Class clsFlexLine
         Me.ID = ID
         Me.FlexOPG = FlexOPG
         Me.Product = Product
-        Me.rebate = rebate
+        Me.rebate = CDec(rebate)
         Me.validFrom = validFrom
         Me.validTo = validTo
 

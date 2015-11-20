@@ -41,9 +41,9 @@ Public Class clsProductValidation
     End Sub
 
     Public Sub New(MessageType As String, OptType As String, ValidationType As String, Seveirty As String, CheckAttribute As String, DependantOptType As String, Message As String, DependantCheckAttribute As String, RequiredQuantity As Integer, DependantCheckAttributeValue As String, CheckAttributeValue As String, OptionFamily As String, SystemType As String, CorrectMessage As String, LinkOptType As String, LinkTechnology As String, LinkOptionFamily As String)
-        Me.ValidationMessageType = [Enum].Parse(GetType(enumValidationMessageType), MessageType)
-        Me.ValidationType = [Enum].Parse(GetType(enumValidationType), ValidationType)
-        Me.Severity = [Enum].Parse(GetType(EnumValidationSeverity), Seveirty)
+        Me.ValidationMessageType = CType([Enum].Parse(GetType(enumValidationMessageType), MessageType), enumValidationMessageType)
+        Me.ValidationType = CType([Enum].Parse(GetType(enumValidationType), ValidationType), enumValidationType)
+        Me.Severity = CType([Enum].Parse(GetType(EnumValidationSeverity), Seveirty), EnumValidationSeverity)
         Me.CheckAttribute = CheckAttribute
         Me.DependantOptType = DependantOptType
         Me.RequiredOptType = OptType

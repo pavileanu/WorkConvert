@@ -193,7 +193,7 @@ Module ModUniTran
         Dim buyerAccount As clsAccount = CType(iq.sesh(lid, "BuyerAccount"), clsAccount)
         Dim agentAccount As clsAccount = CType(iq.sesh(lid, "AgentAccount"), clsAccount)
 
-        Dim quoteid As Integer = iq.sesh(lid, "QuoteID")
+        Dim quoteid As Integer = CInt(iq.sesh(lid, "QuoteID"))
         Dim ts As Long = Stopwatch.GetTimestamp
         Dim wsCall As String = Nothing
 
@@ -207,7 +207,7 @@ Module ModUniTran
             'Dim request As uniTran.clsStockPriceRequest
 
             '      If buyeraccount.priceBand = "" Then Stop
-            If buyerAccount.SellerChannel.priceConfig And 8 = 0 Then Stop
+            If CBool(buyerAccount.SellerChannel.priceConfig) Then Stop
 
             'Prepare a request 
             Dim skus() = (From i In needingUpdate Select i.DistiSku).ToArray  'LINQ

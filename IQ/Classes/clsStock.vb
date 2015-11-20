@@ -75,7 +75,7 @@ Public Class clsstock  'Should really be called 'shipments' - many can exist for
 
 
         If Quantity = -1 Then
-            Me.ID = temporaryID()
+            Me.ID = CInt(temporaryID())
         Else
             Dim sql$
             sql$ = "INSERT INTO STOCK(FK_variant_ID, quantity,Arrival,datestamp,isCurrent,source) VALUES "

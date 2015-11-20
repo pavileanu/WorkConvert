@@ -126,7 +126,7 @@ Public Class gateKeeper
             'End If
 
             Dim user As clsUser = Nothing
-            If errorMessages.Count Then
+            If CBool(errorMessages.Count) Then
                 'The token might have already been used, or not be found/valid
                 For Each msg In errorMessages
                     form1.Controls.Add(ErrorDymo(msg))
@@ -170,7 +170,7 @@ Public Class gateKeeper
 
                         'find the users buyer company (who do they work for)
                         ' Dim buyerCompany As clsChannel = CompanyAccounts.First.BuyerChannel
-                        Dim uName As String = "" : If nvps.ContainsKey("uName") Then uname = nvps("uName")
+                        Dim uName As String = "" : If nvps.ContainsKey("uName") Then uName = nvps("uName")
                         Dim uTel As String = "" : If nvps.ContainsKey("uTel") Then uTel = nvps("uTel")
 
                         user = New clsUser(reseller, nvps("uEmail"), uName, New nullableString(uTel), New nullableString())
@@ -273,10 +273,10 @@ Public Class gateKeeper
             Dim rdr As SqlClient.SqlDataReader = da.DBExecuteReader(con, sql$)
             If rdr.HasRows Then
                 rdr.Read()
-                hostid = rdr.Item("HostID")
+                hostid = CStr(rdr.Item("HostID"))
             End If
 
-            .Add("host", rdr.Item("HostID"))   'dicCRs(request("corpregionid")))
+            .Add("host", CStr(rdr.Item("HostID")))   'dicCRs(request("corpregionid")))
             rdr.Close()
             con.Close()
 
@@ -379,7 +379,7 @@ Public Class gateKeeper
 
         NVPsFromRequest = New Dictionary(Of String, String)(StringComparer.InvariantCultureIgnoreCase)
         For Each k In request.Form.Keys
-            NVPsFromRequest.Add(k, request.Form.Item(k))
+            NVPsFromRequest.Add(CStr(k), request.Form.Item(k))
         Next k
 
     End Function
@@ -407,7 +407,7 @@ Public Class gateKeeper
                 If DateDiff(DateInterval.Minute, Now, rdr.Item("Timestamp")) > 1 Then
 
                 End If
-                NVPsFromDB.Add(rdr.Item("Name"), rdr.Item("Value"))
+                NVPsFromDB.Add(CStr(rdr.Item("Name")), CStr(rdr.Item("Value")))
             Loop
         End If
 

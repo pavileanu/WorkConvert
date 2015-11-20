@@ -64,7 +64,7 @@ Public Class editor
         Dim path$ = Request.QueryString("path")  'this INITIALLY the path passed in the GET URL - but subsequently that POSTED passed in the FORM (from embed()'s rexec )
         If Request.Form("path") IsNot Nothing Then path = Request.Form("path")
         If Request.QueryString("language") IsNot Nothing Then
-            translationlanguage = iq.Languages(Request.QueryString("language"))
+            translationlanguage = iq.Languages(CInt(Request.QueryString("language")))
         End If
 
 
@@ -88,7 +88,7 @@ Public Class editor
             'save any changes  (posted in the NVPs from Embed/rexec) - really need to see if this affects the view (filtering sorting)
             If cmd IsNot Nothing AndAlso cmd.Contains("saveTranslate") Then
                 Dim arrayLang() As String = Split(cmd, "_")
-                Dim saveLanguage As clsLanguage = iq.Languages(arrayLang(1))
+                Dim saveLanguage As clsLanguage = iq.Languages(CInt(arrayLang(1)))
                 SaveChanges(screen, path, Obj, agentAccount, errorMessages)
                 cmd = ""
             Else
@@ -106,7 +106,7 @@ Public Class editor
             Dim editheader As clsEditHeader = Nothing
             'If Reflection.IsDictionary(Obj) Then
             Dim editHeaders As Dictionary(Of String, clsEditHeader)
-            editHeaders = iq.sesh(lid, "editHeaders")
+            editHeaders = CType(iq.sesh(lid, "editHeaders"), Global.System.Collections.Generic.Dictionary(Of String, Global.IQ.clsEditHeader))
 
             If editHeaders.ContainsKey(path) Then
                 editheader = editHeaders(path)
@@ -253,7 +253,7 @@ Public Class editor
 
             Case Is = "changefilter"
 
-                editHeader.UpdateFilters(parts(1), parts(2), parts(3))
+                editHeader.UpdateFilters(CInt(parts(1)), parts(2), parts(3))
                 editHeader.addMissingColumns(Obj, buyeraccount, language, New HashSet(Of String), errorMessages, lid)
                 'anything we're (now) sorting or filter by needs to be added to the dataview (from the dictionary)
 
@@ -262,7 +262,7 @@ Public Class editor
                 editHeader.RemoveFilter(parts(1))
 
             Case Is = "from"
-                editHeader.Fromindex = parts(1) 'Pagination
+                editHeader.Fromindex = CInt(parts(1)) 'Pagination
 
             Case Is = "hist"
                 errorMessages.Add("Audit Trail/History is not currently supported")
@@ -286,7 +286,7 @@ Public Class editor
                 Dim languageValue As String = Request("value")
 
                 Dim translationlanguage As clsLanguage = New clsLanguage()
-                translationlanguage = iq.Languages(Request.QueryString("value"))
+                translationlanguage = iq.Languages(CInt(Request.QueryString("value")))
                 editHeader.translationLanguage = translationlanguage
             Case Else
 
@@ -379,7 +379,7 @@ Public Class editor
             If iq.sesh(lid, t) Is Nothing Then
                 errorMessages.Add("session variable " & lid & "(" & t & ") was nothing ")
             Else
-                l$ = Replace(l$, "[" & t & "]", iq.sesh(lid, t))
+                l$ = Replace(l$, "[" & t & "]", CStr(iq.sesh(lid, t)))
             End If
         Next
 
@@ -410,14 +410,14 @@ Public Class editor
 
 
         'build a hashset from the CD list stored in the sesstion variable
-        Dim foci As HashSet(Of String) = New HashSet(Of String)(Split(iq.sesh(lid, "foci"), ",").ToList)
+        Dim foci As HashSet(Of String) = New HashSet(Of String)(Split(CStr(iq.sesh(lid, "foci")), ",").ToList)
 
 
         '   Dim fromIndex As Integer = iq.sesh(lid, "from." & path$) 'Pagination
         '   Dim perpage As Integer = iq.sesh(lid, "perpage." & path$) 'Pagination
 
         Dim L As Integer
-        L = 8 * Val(Request("depth"))
+        L = CInt(8 * Val(Request("depth")))
 
         If cmd <> "collapse" Then
             BuildPanel.CssClass = "shadow editPanel"
@@ -470,7 +470,7 @@ Public Class editor
 
                     'we have to check becuase it may have been deleted (but still be in the view)
                     ' If obj.containskey(editheader.VW(i)("id")) Then
-                    Dim id As Integer = editheader.VW(i)("ID")
+                    Dim id As Integer = CInt(editheader.VW(i)("ID"))
                     If obj.containskey(id) Then
                         row = obj(id)  'obj is the dictionary - view contains ordered/filtered rows which carry an ID (which we use as the index for the OBJ dictionary)
                         rownum += 1

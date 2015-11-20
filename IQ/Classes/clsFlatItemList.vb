@@ -327,7 +327,7 @@ Public Class clsFlatListItem
 
         Dim stock As XmlNode = doc.CreateElement("Stock")
         Dim stockReturned As String = Product.CurrentStock(quote.BuyerAccount, 0, Me.QuoteItem.SKUVariant, errorMessages)
-        stock.InnerXml = xmlEncode(getStock(quote.BuyerAccount, stockReturned, True))
+        stock.InnerXml = xmlEncode(getStock(quote.BuyerAccount, CLng(stockReturned), True))
         XMLLine.AppendChild(stock)
 
 
@@ -338,7 +338,7 @@ Public Class clsFlatListItem
                 If msg.message IsNot Nothing Then
                     If msg.severity > EnumValidationSeverity.BlueInfo Then
                         Dim textmsg As String = xmlEncode(msg.replaceVariables(msg.message.text(language), msg.variables))
-                        Dim variants As String() = textmsg.Split(":")
+                        Dim variants As String() = textmsg.Split(CChar(":"))
                         Dim productSku As String = variants(0)
                         If Not productSkus.Contains(productSku) Then
                             productSkus.Add(productSku)
@@ -380,7 +380,7 @@ Public Class clsFlatListItem
             For Each msg In vmsgs
                 If msg.message IsNot Nothing Then
                     Dim textmsg As String = xmlEncode(clsIQ.CleanString(msg.message.text(quote.BuyerAccount.Language)))
-                    Dim variants As String() = textmsg.Split(":")
+                    Dim variants As String() = textmsg.Split(CChar(":"))
                     Dim productSku As String = variants(0)
                     If Not productSkus.Contains(productSku) Then
                         productSkus.Add(productSku)
@@ -439,7 +439,7 @@ Public Class clsFlatListItem
         ElseIf account.SellerChannel.BinaryStock And value <= 0 Then
             result = OutOfStock.text(account.Language)
         ElseIf Not account.SellerChannel.BinaryStock And value > 0 Then
-            result = value
+            result = CStr(value)
         ElseIf Not account.SellerChannel.BinaryStock And value <= 0 Then
             If export Then
                 result = "0"

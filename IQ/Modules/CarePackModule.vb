@@ -15,7 +15,7 @@ Module CarePackModule
         'LogMessage("CarePackJIT")
         ' Make sure we got a branch path
         If request.BranchPath Is Nothing Then Return Nothing
-        If request.BranchPath = "tree.1" Then request.BranchPath = iq.sesh(lid, "treecursor")
+        If request.BranchPath = "tree.1" Then request.BranchPath = CStr(iq.sesh(lid, "treecursor"))
         If request.BranchPath Is Nothing Then Return Nothing
 
         Dim agentAccount = iq.seshTyped(Of clsAccount)(lid, "AgentAccount")
@@ -27,8 +27,8 @@ Module CarePackModule
         Dim sku As String = Nothing
 
         ' Look for the branch and product
-        If iq.Branches.ContainsKey(Split(request.BranchPath, ".").Last) Then
-            systemBranch = iq.Branches(Split(request.BranchPath, ".").Last)
+        If iq.Branches.ContainsKey(CInt(Split(request.BranchPath, ".").Last)) Then
+            systemBranch = iq.Branches(CInt(Split(request.BranchPath, ".").Last))
             Dim path = String.Empty
             systemBranch = systemBranch.FindSystemAbove(request.BranchPath, path)
         End If
@@ -65,7 +65,7 @@ Module CarePackModule
 
         ' Find the Hardware Support branch - care pack branches get grafted on there
         Dim hwSupportPath As String = Left(systemPath, Len(systemPath) - Len(Split(systemPath, ".").Last) - 1)
-        Dim hwSupportBranch As clsBranch = systemBranch.FindBranchByNameBelow("HW Support", Left(systemPath, Len(systemPath) - Len(Split(systemPath, ".").Last) - 1), True, 12, hwSupportPath)
+        Dim hwSupportBranch As clsBranch = CType(systemBranch.FindBranchByNameBelow("HW Support", Left(systemPath, Len(systemPath) - Len(Split(systemPath, ".").Last) - 1), True, 12, hwSupportPath), clsBranch)
         If hwSupportBranch.Matrix Is Nothing Then
             hwSupportBranch.Matrix = carePackScreen
             hwSupportBranch.Update(errorMessages)
@@ -80,12 +80,12 @@ Module CarePackModule
                 ' Couldn't find the Services branch; locate via the All Options branch
                 Dim allOptionsBranchPath = String.Empty
                 Dim allOptionsBranch = systemBranch.FindBranchByNameBelow("All Options", "", True, 12, allOptionsBranchPath)
-                servicesBranch = New clsBranch(Nothing, allOptionsBranch, iq.AddTranslation("Services", English, "", 0, Nothing, 0, False), "", iq.AddTranslation("Options", English, "", 0, Nothing, 0, False), iq.AddTranslation("Option", English, "", 0, Nothing, 0, False), Nothing, 40, False, "Y")
+                servicesBranch = New clsBranch(Nothing, CType(allOptionsBranch, clsBranch), iq.AddTranslation("Services", English, "", 0, Nothing, 0, False), "", iq.AddTranslation("Options", English, "", 0, Nothing, 0, False), iq.AddTranslation("Option", English, "", 0, Nothing, 0, False), Nothing, 40, False, "Y")
 
             End If
 
             If Not servicesBranch Is Nothing Then
-                hwSupportBranch = New clsBranch(Nothing, servicesBranch, iq.AddTranslation("HW Support", English, "", 0, Nothing, 0, False), "", iq.AddTranslation("Options", English, "", 0, Nothing, 0, False), iq.AddTranslation("Option", English, "", 0, Nothing, 0, False), carePackScreen, 0, False, "B")
+                hwSupportBranch = New clsBranch(Nothing, CType(servicesBranch, clsBranch), iq.AddTranslation("HW Support", English, "", 0, Nothing, 0, False), "", iq.AddTranslation("Options", English, "", 0, Nothing, 0, False), iq.AddTranslation("Option", English, "", 0, Nothing, 0, False), carePackScreen, 0, False, "B")
             End If
 
         End If
@@ -96,7 +96,7 @@ Module CarePackModule
 
         ' Find the Top Recommended Options branch
         Dim troPath = String.Empty
-        Dim troBranch As clsBranch = systemBranch.FindBranchByNameBelow("Top Recommended", systemPath, False, 6, troPath)
+        Dim troBranch As clsBranch = CType(systemBranch.FindBranchByNameBelow("Top Recommended", systemPath, False, 6, troPath), clsBranch)
         If troBranch Is Nothing Then
 
             ' Couldn't find the Top Recommended Options branch - create it
@@ -106,7 +106,7 @@ Module CarePackModule
         End If
 
         ' Find the Top Recommended Options/Care Pack branch - care pack branches get grafted on there
-        Dim troCpqBranch As clsBranch = troBranch.FindBranchByNameBelow("Care Pack", troPath, False, 7, troPath)
+        Dim troCpqBranch As clsBranch = CType(troBranch.FindBranchByNameBelow("Care Pack", troPath, False, 7, troPath), clsBranch)
         If troCpqBranch Is Nothing Then
 
             ' Couldn't find the Top Recommended Options/Care Pack branch - create it
@@ -572,7 +572,7 @@ Module CarePackModule
             If serviceLevel Is Nothing Then
 
                 ' We got a care pack with a service level we don't recognize
-                newServiceLevels.Add(hpCarePack.ServiceLevel)
+                newServiceLevels.Add(CStr(hpCarePack.ServiceLevel))
 
             End If
 
@@ -768,7 +768,7 @@ Module CarePackModule
             durUnit = serviceLevel.Duration
             unitCode = iq.i_unit_code("num")
         Else
-            Dim years As Integer = serviceLevel.Duration / 12
+            Dim years As Integer = CInt(serviceLevel.Duration / 12)
             translation = iq.AddTranslation(String.Format("{0} yr", years), English, "CPQ", 0, Nothing, 0, False)
             durUnit = years
             unitCode = iq.i_unit_code("year")
@@ -898,15 +898,15 @@ Module CarePackModule
             Dim agentAccount = iq.seshTyped(Of clsAccount)(request.lid, "AgentAccount")
             Dim buyerAccount = iq.seshTyped(Of clsAccount)(request.lid, "BuyerAccount")
             Dim errorMEssages As List(Of String) = New List(Of String)()
-            If request.BranchPath = "tree.1" Then request.BranchPath = iq.sesh(request.lid, "treecursor")
+            If request.BranchPath = "tree.1" Then request.BranchPath = CStr(iq.sesh(request.lid, "treecursor"))
             If request.BranchPath Is Nothing Then Exit Function
 
             Dim createdTROBranch As Boolean = False
             Dim autoAddCreated As String = Nothing
 
 
-            If iq.Branches.ContainsKey(Split(request.BranchPath, ".").Last) Then
-                Dim branch = iq.Branches(Split(request.BranchPath, ".").Last)
+            If iq.Branches.ContainsKey(CInt(Split(request.BranchPath, ".").Last)) Then
+                Dim branch = iq.Branches(CInt(Split(request.BranchPath, ".").Last))
                 Dim sysPath As String = ""
                 branch = branch.FindSystemAbove(request.BranchPath, sysPath)
                 If branch Is Nothing Then Exit Function
@@ -919,7 +919,7 @@ Module CarePackModule
 
                     'Find HW Support
                     Dim hwsupportpath As String = Left(sysPath, Len(sysPath) - Len(Split(sysPath, ".").Last) - 1)
-                    Dim hwsupportBranch As clsBranch = branch.FindBranchByNameBelow("HW Support", Left(sysPath, Len(sysPath) - Len(Split(sysPath, ".").Last) - 1), True, 12, hwsupportpath)
+                    Dim hwsupportBranch As clsBranch = CType(branch.FindBranchByNameBelow("HW Support", Left(sysPath, Len(sysPath) - Len(Split(sysPath, ".").Last) - 1), True, 12, hwsupportpath), clsBranch)
 
                     If hwsupportBranch Is Nothing Then
                         'Create it
@@ -928,9 +928,9 @@ Module CarePackModule
                         If svcbranch Is Nothing Then
                             Dim aoBranchPath = ""
                             Dim aoBranch = branch.FindBranchByNameBelow("All Options", "", True, 12, aoBranchPath)
-                            svcbranch = New clsBranch(Nothing, aoBranch, iq.AddTranslation("Services", English, "", 0, Nothing, 0, False), "", iq.AddTranslation("Options", English, "", 0, Nothing, 0, False), iq.AddTranslation("Option", English, "", 0, Nothing, 0, False), Nothing, 40, False, "Y")
+                            svcbranch = New clsBranch(Nothing, CType(aoBranch, clsBranch), iq.AddTranslation("Services", English, "", 0, Nothing, 0, False), "", iq.AddTranslation("Options", English, "", 0, Nothing, 0, False), iq.AddTranslation("Option", English, "", 0, Nothing, 0, False), Nothing, 40, False, "Y")
                         End If
-                        hwsupportBranch = New clsBranch(Nothing, svcbranch, iq.AddTranslation("HW Support", English, "", 0, Nothing, 0, False), "", iq.AddTranslation("Options", English, "", 0, Nothing, 0, False), iq.AddTranslation("Option", English, "", 0, Nothing, 0, False), Nothing, 0, False, "B")
+                        hwsupportBranch = New clsBranch(Nothing, CType(svcbranch, clsBranch), iq.AddTranslation("HW Support", English, "", 0, Nothing, 0, False), "", iq.AddTranslation("Options", English, "", 0, Nothing, 0, False), iq.AddTranslation("Option", English, "", 0, Nothing, 0, False), Nothing, 0, False, "B")
                     End If
 
                     For Each bb In hwsupportBranch.childBranches
@@ -942,7 +942,7 @@ Module CarePackModule
                                     agentAccount = iq.seshTyped(Of clsAccount)(request.lid, "AgentAccount")
                                 End If
 
-                                If Not bb.Value.PruneInForce(hwsupportpath & "." & bb.Value.ID, agentAccount.SellerChannel) Then
+                                If CBool(Not bb.Value.PruneInForce(hwsupportpath & "." & bb.Value.ID, agentAccount.SellerChannel)) Then
                                     If Not String.IsNullOrEmpty(bb.Value.Product.SKU) Then
                                         srcList.Add(bb.Value.Product.SKU, bb.Value)
                                     End If
@@ -1006,13 +1006,13 @@ Module CarePackModule
                         If Not IsDBNull(rdr("ccDescription")) Then
                             'Do we have this care pack in iq2?
                             Dim cpqBranch As clsBranch = New clsBranch()
-                            If iq.i_SKU.ContainsKey(rdr("CPKpartnum")) AndAlso iq.i_SKU(rdr("CPKpartnum")).Branches.Count > 0 Then
-                                cpqBranch = iq.i_SKU(rdr("CPKpartnum")).Branches.FirstOrDefault  'CPQ should only be on 1 branch and grafted everywhere else...
+                            If iq.i_SKU.ContainsKey(CStr(rdr("CPKpartnum"))) AndAlso iq.i_SKU(CStr(rdr("CPKpartnum"))).Branches.Count > 0 Then
+                                cpqBranch = iq.i_SKU(CStr(rdr("CPKpartnum"))).Branches.FirstOrDefault  'CPQ should only be on 1 branch and grafted everywhere else...
                                 If Not tgtList.ContainsKey(rdr("CPKpartnum").ToString.Trim()) Then tgtList.Add(rdr("CPKpartnum").ToString.Trim(), cpqBranch)
 
                             Else
                                 'No create it
-                                ToCreate.Add(dataAccess.da.SqlEncode(rdr("CPKpartnum")))
+                                ToCreate.Add(dataAccess.da.SqlEncode(CStr(rdr("CPKpartnum"))))
                             End If
 
                             If {"DTO", "NBK"}.Contains(branch.Product.ProductType.Code) Then 'PPS items DTO and NBK go in here 
@@ -1020,7 +1020,7 @@ Module CarePackModule
                                     '  End If
                                     'If Not cpqBranch.Quantities.Values.Where(Function(q) (String.IsNullOrEmpty(q.Path) OrElse q.Path.Contains(sysPath)) AndAlso q.Region.Encompasses(agentAccount.BuyerChannel.Region) AndAlso q.NumPreInstalled = 1 AndAlso q.FOC = False).Count > 0 Then
                                     Dim resultPath = ""
-                                    branch.findChildBySKU2(sysPath, rdr("CPKpartnum"), resultPath)
+                                    branch.findChildBySKU2(sysPath, CStr(rdr("CPKpartnum")), resultPath)
                                     Dim q = New clsQuantity(agentAccount.BuyerChannel.Region, resultPath, cpqBranch, 1, 0, 0, False, Nothing)
                                     AuditLog.Instance.Add(AuditType.Information, "CarePack SKU Qty record" & rdr("CPKpartnum") & " Syspath " & sysPath, errorMEssages, "")
                                     autoAddCreated = resultPath
@@ -1049,7 +1049,7 @@ Module CarePackModule
 
                                     If Not cpqBranch.Quantities.Values.Where(Function(q) (String.IsNullOrEmpty(q.Path) OrElse q.Path.Contains(sysPath)) AndAlso q.Region.Encompasses(agentAccount.BuyerChannel.Region) AndAlso q.NumPreInstalled = 1 AndAlso q.FOC = False).Count > 0 Then
                                         Dim resultPath = ""
-                                        branch.findChildBySKU2(sysPath, rdr("CPKpartnum"), resultPath)
+                                        branch.findChildBySKU2(sysPath, CStr(rdr("CPKpartnum")), resultPath)
                                         Dim q = New clsQuantity(agentAccount.BuyerChannel.Region, resultPath, cpqBranch, 1, 0, 0, False, Nothing)
                                         AuditLog.Instance.Add(AuditType.Information, "CarePack SKU Qty record" & rdr("CPKpartnum") & " Syspath " & sysPath, errorMEssages, "")
                                         autoAddCreated = resultPath
@@ -1068,14 +1068,14 @@ Module CarePackModule
                     con.Close()
                     'Find TRO branch
                     Dim troPath As String = ""
-                    Dim troBranch As clsBranch = branch.FindBranchByNameBelow("HP Top Recommended", sysPath, False, 12, troPath)
+                    Dim troBranch As clsBranch = CType(branch.FindBranchByNameBelow("HP Top Recommended", sysPath, False, 12, troPath), clsBranch)
                     Dim troCPQBranch As clsBranch
                     If troBranch Is Nothing Then
-                        troBranch = New clsBranch(Nothing, branch, iq.AddTranslation("Top Recommended", English, "", 0, Nothing, 0, False), "", iq.AddTranslation("Top Recommended", English, "", 0, Nothing, 0, False), iq.AddTranslation("Top Recommended", English, "", 0, Nothing, 0, False), Nothing, 0, False, "H")
+                        troBranch = New clsBranch(Nothing, CType(branch, clsBranch), iq.AddTranslation("Top Recommended", English, "", 0, Nothing, 0, False), "", iq.AddTranslation("Top Recommended", English, "", 0, Nothing, 0, False), iq.AddTranslation("Top Recommended", English, "", 0, Nothing, 0, False), Nothing, 0, False, "H")
                         troPath = sysPath & "." & troBranch.ID
                         createdTROBranch = True
                     End If
-                    troCPQBranch = branch.FindBranchByNameBelow("Care Pack", sysPath, False, 12, troPath)
+                    troCPQBranch = CType(branch.FindBranchByNameBelow("Care Pack", sysPath, False, 12, troPath), clsBranch)
 
                     If troCPQBranch Is Nothing Then
                         'Create
@@ -1085,7 +1085,7 @@ Module CarePackModule
                     Dim hasList = New List(Of String)
                     Dim dupChildBranch As List(Of clsBranch) = New List(Of clsBranch)
                     For Each child As clsBranch In troCPQBranch.childBranches.Values
-                        If Not child.PruneInForce(troPath & "." & child.ID, agentAccount.SellerChannel) Then
+                        If CBool(Not child.PruneInForce(troPath & "." & child.ID, agentAccount.SellerChannel)) Then
                             If Not trocpqs.ContainsKey(child.Product.SKU) Then
                                 'Remove (delete or prune, not sure)
                                 Dim p = New clsPrune(troPath & "." & child.ID, New NullableInt(agentAccount.SellerChannel.ID), "CPQJIT")
@@ -1160,31 +1160,31 @@ Module CarePackModule
                          "WHEN ot2.OptTypeParent = 'Services' AND ot2.OptTypeName = 'SW Support' THEN CASE WHEN Options.Technology <> 'SUP' THEN Options.Technology ELSE Options.OptFamily END " & _
                         "End " & _
                          "WHERE OptTypeName='HW Support' and options.optsku IN (" & Join(ToCreate.ToArray, ",") & ")"
-                        If Not iq.i_attribute_code.ContainsKey("Tracing") Then Dim d = New clsAttribute("Tracing", iq.AddTranslation("Tracing", English, "", 0, twc, nextKey, True), 0)
-                        If Not iq.i_attribute_code.ContainsKey("ADP") Then Dim d = New clsAttribute("ADP", iq.AddTranslation("ADP", English, "", 0, twc, nextKey, True), 0)
-                        If Not iq.i_attribute_code.ContainsKey("CTR") Then Dim d = New clsAttribute("CTR", iq.AddTranslation("CTR", English, "", 0, twc, nextKey, True), 0)
+                        If Not iq.i_attribute_code.ContainsKey("Tracing") Then Dim d = New clsAttribute("Tracing", iq.AddTranslation("Tracing", English, "", 0, CType(twc, DataTable), nextKey, True), 0)
+                        If Not iq.i_attribute_code.ContainsKey("ADP") Then Dim d = New clsAttribute("ADP", iq.AddTranslation("ADP", English, "", 0, CType(twc, DataTable), nextKey, True), 0)
+                        If Not iq.i_attribute_code.ContainsKey("CTR") Then Dim d = New clsAttribute("CTR", iq.AddTranslation("CTR", English, "", 0, CType(twc, DataTable), nextKey, True), 0)
 
                         Dim rdr2 = dataAccess.da.DBExecuteReader(con, sql2)
                         While rdr2.Read
                             Dim prod As clsProduct
                             AuditLog.Instance.Add(AuditType.Information, "CarePack SKU created" & rdr2("optsku"), errorMEssages, "")
 
-                            If Not iq.i_SKU.ContainsKey(rdr2("optsku")) Then
-                                prod = New clsProduct(rdr2("optsku").ToString, False, True, iq.i_sector_code("HPBCS"), iq.i_ProductType_Code(rdr2("opttype")), DateTime.Now, DateTime.Now.AddYears(5), True, False, True, buyerAccount.mfrCode, "", "")
+                            If Not iq.i_SKU.ContainsKey(CStr(rdr2("optsku"))) Then
+                                prod = New clsProduct(rdr2("optsku").ToString, False, True, iq.i_sector_code("HPBCS"), iq.i_ProductType_Code(CStr(rdr2("opttype"))), DateTime.Now, DateTime.Now.AddYears(5), True, False, True, buyerAccount.mfrCode, "", "")
                             Else
-                                prod = iq.i_SKU(rdr2("optsku"))
+                                prod = iq.i_SKU(CStr(rdr2("optsku")))
                             End If
 
-                            Dim cpqBranch = New clsBranch(prod, CPQRootBranch, iq.AddTranslation(rdr2("optsku").ToString, English, "CPQ", 0, twc, nextKey, False), "", iq.AddTranslation("Carepacks", English, "", 0, twc, nextKey, False), iq.AddTranslation("Carepack", English, "", 0, twc, nextKey, False), Nothing, 0, False, "B", bwc, nextBId)
-                            Dim a = New clsProductAttribute(prod, iq.i_attribute_code("mfrSKU"), 0, iq.i_unit_code("txt"), iq.AddTranslation(rdr2("optsku").ToString, English, "CPQ", 0, twc, nextKey, False), pawc)
-                            If Not IsDBNull(rdr2("description")) Then Dim b = New clsProductAttribute(prod, iq.i_attribute_code("desc"), 0, iq.i_unit_code("txt"), iq.AddTranslation(rdr2("description").ToString, English, "CPQ", 0, twc, nextKey, False), pawc)
+                            Dim cpqBranch = New clsBranch(prod, CPQRootBranch, iq.AddTranslation(rdr2("optsku").ToString, English, "CPQ", 0, CType(twc, DataTable), nextKey, False), "", iq.AddTranslation("Carepacks", English, "", 0, CType(twc, DataTable), nextKey, False), iq.AddTranslation("Carepack", English, "", 0, CType(twc, DataTable), nextKey, False), Nothing, 0, False, "B", bwc, nextBId)
+                            Dim a = New clsProductAttribute(prod, iq.i_attribute_code("mfrSKU"), 0, iq.i_unit_code("txt"), iq.AddTranslation(rdr2("optsku").ToString, English, "CPQ", 0, CType(twc, DataTable), nextKey, False), pawc)
+                            If Not IsDBNull(rdr2("description")) Then Dim b = New clsProductAttribute(prod, iq.i_attribute_code("desc"), 0, iq.i_unit_code("txt"), iq.AddTranslation(rdr2("description").ToString, English, "CPQ", 0, CType(twc, DataTable), nextKey, False), pawc)
                             If Not IsDBNull(rdr2("duration")) Then Dim b = New clsProductAttribute(prod, iq.i_attribute_code("capacity"), CInt(rdr2("duration")), iq.i_unit_code("year"), Nothing, pawc)
 
-                            If Not IsDBNull(rdr2("servicelevel")) Then Dim b = New clsProductAttribute(prod, iq.i_attribute_code("servicelevel"), 0, iq.i_unit_code("txt"), iq.AddTranslation(rdr2("servicelevel").ToString, English, "CPQ", 0, twc, nextKey, False), pawc)
-                            If Not IsDBNull(rdr2("response")) Then Dim b = New clsProductAttribute(prod, iq.i_attribute_code("response"), 0, iq.i_unit_code("txt"), iq.AddTranslation(rdr2("response").ToString, English, "CPQ", 0, twc, nextKey, False), pawc)
+                            If Not IsDBNull(rdr2("servicelevel")) Then Dim b = New clsProductAttribute(prod, iq.i_attribute_code("servicelevel"), 0, iq.i_unit_code("txt"), iq.AddTranslation(rdr2("servicelevel").ToString, English, "CPQ", 0, CType(twc, DataTable), nextKey, False), pawc)
+                            If Not IsDBNull(rdr2("response")) Then Dim b = New clsProductAttribute(prod, iq.i_attribute_code("response"), 0, iq.i_unit_code("txt"), iq.AddTranslation(rdr2("response").ToString, English, "CPQ", 0, CType(twc, DataTable), nextKey, False), pawc)
                             'this is ISS (Servers and Storage Device) DMR
-                            If Not IsDBNull(rdr2("options")) Then Dim b = New clsProductAttribute(prod, iq.i_attribute_code("DMR_ISS"), 0, iq.i_unit_code("txt"), iq.AddTranslation(rdr2("options").ToString, English, "CPQ", 0, twc, nextKey, False), pawc)
-                            If Not IsDBNull(rdr2("tfs")) Then Dim b = New clsProductAttribute(prod, iq.i_attribute_code("twentyfourseven"), rdr2("tfs"), iq.i_unit_code("txt"), iq.AddTranslation("24x7", English, "CPQ", 0, twc, nextKey, False), pawc)
+                            If Not IsDBNull(rdr2("options")) Then Dim b = New clsProductAttribute(prod, iq.i_attribute_code("DMR_ISS"), 0, iq.i_unit_code("txt"), iq.AddTranslation(rdr2("options").ToString, English, "CPQ", 0, CType(twc, DataTable), nextKey, False), pawc)
+                            If Not IsDBNull(rdr2("tfs")) Then Dim b = New clsProductAttribute(prod, iq.i_attribute_code("twentyfourseven"), rdr2("tfs"), iq.i_unit_code("txt"), iq.AddTranslation("24x7", English, "CPQ", 0, CType(twc, DataTable), nextKey, False), pawc)
                             If Not IsDBNull(rdr2("travel")) Then Dim b = New clsProductAttribute(prod, iq.i_attribute_code("travel"), rdr2("travel"), iq.i_unit_code("txt"), Nothing, pawc)
                             If Not IsDBNull(rdr2("Tracing")) Then Dim b = New clsProductAttribute(prod, iq.i_attribute_code("tracing"), rdr2("Tracing"), iq.i_unit_code("txt"), Nothing, pawc)
                             If Not IsDBNull(rdr2("ADP")) Then Dim b = New clsProductAttribute(prod, iq.i_attribute_code("ADP"), rdr2("ADP"), iq.i_unit_code("txt"), Nothing, pawc)
@@ -1193,22 +1193,22 @@ Module CarePackModule
                             If Not IsDBNull(rdr2("OnSite")) Then Dim b = New clsProductAttribute(prod, iq.i_attribute_code("OnSite"), rdr2("OnSite"), iq.i_unit_code("txt"), Nothing, pawc)
                             If Not IsDBNull(rdr2("CTR")) Then Dim b = New clsProductAttribute(prod, iq.i_attribute_code("CTR"), rdr2("CTR"), iq.i_unit_code("txt"), Nothing, pawc)
 
-                            Dim s = New clsSlot(iq.i_slotType_Code(rdr2("OPTTYPE"))(rdr2("OPTFAMILY")), cpqBranch, "", -1, Nothing, New NullableInt(), 0, 0, swc)
+                            Dim s = New clsSlot(iq.i_slotType_Code(CStr(rdr2("OPTTYPE")))(CStr(rdr2("OPTFAMILY"))), cpqBranch, "", -1, Nothing, New NullableInt(), 0, 0, swc)
 
 
-                            If Not tgtList.ContainsKey(rdr2("optsku")) Then tgtList.Add(rdr2("optsku"), cpqBranch)
-                            listSKUs.Add(rdr2("optsku"))
-                            ToCreate.Remove(dataAccess.da.SqlEncode(rdr2("optsku")))
+                            If Not tgtList.ContainsKey(CStr(rdr2("optsku"))) Then tgtList.Add(CStr(rdr2("optsku")), CType(cpqBranch, clsBranch))
+                            listSKUs.Add(CStr(rdr2("optsku")))
+                            ToCreate.Remove(dataAccess.da.SqlEncode(CStr(rdr2("optsku"))))
                         End While
 
                         For Each sku In ToCreate
                             If Not iq.i_SKU.ContainsKey(sku) Then
-                                Dim prod = New clsProduct(sku.Trim("'").Trim(), False, True, iq.i_sector_code("HPBCS"), iq.i_ProductType_Code("WTY"), DateTime.Now, DateTime.Now.AddYears(5), True, False, True, buyerAccount.mfrCode, "", "")
-                                Dim cpqBranch = New clsBranch(prod, CPQRootBranch, iq.AddTranslation(sku.Trim("'").Trim(), English, "CPQ", 0, twc, nextKey, True), "", iq.AddTranslation("Carepacks", English, "", 0, twc, nextKey, True), iq.AddTranslation("Carepack", English, "", 0, twc, nextKey, True), Nothing, 0, False, "B", bwc, nextBId)
+                                Dim prod = New clsProduct(sku.Trim(CChar("'")).Trim(), False, True, iq.i_sector_code("HPBCS"), iq.i_ProductType_Code("WTY"), DateTime.Now, DateTime.Now.AddYears(5), True, False, True, buyerAccount.mfrCode, "", "")
+                                Dim cpqBranch = New clsBranch(prod, CPQRootBranch, iq.AddTranslation(sku.Trim(CChar("'")).Trim(), English, "CPQ", 0, CType(twc, DataTable), nextKey, True), "", iq.AddTranslation("Carepacks", English, "", 0, CType(twc, DataTable), nextKey, True), iq.AddTranslation("Carepack", English, "", 0, CType(twc, DataTable), nextKey, True), Nothing, 0, False, "B", bwc, nextBId)
 
-                                Dim a = New clsProductAttribute(prod, iq.i_attribute_code("mfrSKU"), 0, iq.i_unit_code("txt"), iq.AddTranslation(sku.Trim("'").Trim(), English, "CPQ", 0, twc, nextKey, False), pawc)
+                                Dim a = New clsProductAttribute(prod, iq.i_attribute_code("mfrSKU"), 0, iq.i_unit_code("txt"), iq.AddTranslation(sku.Trim(CChar("'")).Trim(), English, "CPQ", 0, CType(twc, DataTable), nextKey, False), pawc)
 
-                                If Not tgtList.ContainsKey(sku.Trim("'").Trim()) Then tgtList.Add(sku.Trim("'").Trim(), cpqBranch)
+                                If Not tgtList.ContainsKey(sku.Trim(CChar("'")).Trim()) Then tgtList.Add(sku.Trim(CChar("'")).Trim(), CType(cpqBranch, clsBranch))
                             End If
                         Next
 
@@ -1232,9 +1232,9 @@ Module CarePackModule
                             Dim lps = cl.ListPrices(buyerAccount.SellerChannel.Region.Code, buyerAccount.Currency.Code, listSKUs.ToArray)
 
                             Dim sp = Nothing
-                            If Not buyerAccount.SellerChannel.priceConfig And 2 Then
+                            If CBool(Not buyerAccount.SellerChannel.priceConfig And 2) Then
                                 'is there a webservice
-                                If (buyerAccount.SellerChannel.priceConfig And 8) Then
+                                If CBool((buyerAccount.SellerChannel.priceConfig And 8)) Then
                                     Dim unirequest As IQ.wsconsumer.clsStockPriceRequest = New wsconsumer.clsStockPriceRequest()
                                     unirequest = cl.BuildRequest(buyerAccount.SellerChannel.Code, buyerAccount.Priceband.text, CStr(buyerAccount.User.ID), CStr(request.lid), buyerAccount.Currency.Code, "", WSRQKey, listSKUs.ToArray, "", buyerAccount.User.Email, "iquote2")
                                     Dim handle = cl.RequestStockPrices(unirequest)
@@ -1342,7 +1342,7 @@ Module CarePackModule
             ' If Not buyerAccount.SellerChannel.priceConfig And 2 Then
             Dim skuArray() As String = (From c In carePackList Select c.CarePackProductNumber).ToArray()
             'is there a webservice
-            If (buyerAccount.SellerChannel.priceConfig And 8) Then
+            If CBool((buyerAccount.SellerChannel.priceConfig And 8)) Then
                 Dim unirequest As IQ.wsconsumer.clsStockPriceRequest = New wsconsumer.clsStockPriceRequest()
                 unirequest = cl.BuildRequest(buyerAccount.SellerChannel.Code, buyerAccount.Priceband.text, CStr(buyerAccount.User.ID), CStr(lid), buyerAccount.Currency.Code, "", WSRQKey, skuArray, "", buyerAccount.User.Email, "iquote2")
                 Dim handle = cl.RequestStockPrices(unirequest)
@@ -1355,7 +1355,7 @@ Module CarePackModule
                 If iq.i_SKU.ContainsKey(cpk.CarePackProductNumber) Then
                     'carePack = New clsProduct()
                     carePack = iq.i_SKU(cpk.CarePackProductNumber)
-                    Dim price As Single = cpk.PriceLocalList
+                    Dim price As Single = CSng(cpk.PriceLocalList)
                     Dim p As clsPrice
                     Dim SKUvariant = carePack.Variants.Values.Where(Function(v) v.HasListPrice(buyerAccount.SellerChannel.DefaultCurrency))
                     If SKUvariant.Count = 0 Then
@@ -1430,7 +1430,7 @@ Module CarePackModule
                 End If
                 '                cpk.deleted = True
                 '               cpk.Update(errors)
-                listOfBranches.Add(cpk.ID)
+                listOfBranches.Add(CStr(cpk.ID))
             Catch ex As Exception
                 'LogMessage(ex.Message)
 
@@ -1482,7 +1482,7 @@ Module CarePackModule
                             carePackScreen = iq.i_screens_code("optCPK")
                         End If
                         Dim hwSupportPath As String = Left(sysPath, Len(sysPath) - Len(Split(sysPath, ".").Last) - 1)
-                        Dim hwSupportBranch As clsBranch = systemBranch.FindBranchByNameBelow("HW Support", hwSupportPath, True, 12, hwSupportPath)
+                        Dim hwSupportBranch As clsBranch = CType(systemBranch.FindBranchByNameBelow("HW Support", hwSupportPath, True, 12, hwSupportPath), clsBranch)
                         If hwSupportBranch Is Nothing Then
 
                             ' Couldn't find the Hardware Support branch - create it under the Services branch
@@ -1493,12 +1493,12 @@ Module CarePackModule
                                 ' Couldn't find the Services branch; locate via the All Options branch
                                 Dim allOptionsBranchPath = String.Empty
                                 Dim allOptionsBranch = systemBranch.FindBranchByNameBelow("All Options", "", True, 12, allOptionsBranchPath)
-                                servicesBranch = New clsBranch(Nothing, allOptionsBranch, iq.AddTranslation("Services", English, "", 0, Nothing, 0, False), "", iq.AddTranslation("Options", English, "", 0, Nothing, 0, False), iq.AddTranslation("Option", English, "", 0, Nothing, 0, False), Nothing, 40, False, "Y")
+                                servicesBranch = New clsBranch(Nothing, CType(allOptionsBranch, clsBranch), iq.AddTranslation("Services", English, "", 0, Nothing, 0, False), "", iq.AddTranslation("Options", English, "", 0, Nothing, 0, False), iq.AddTranslation("Option", English, "", 0, Nothing, 0, False), Nothing, 40, False, "Y")
 
                             End If
 
                             If Not servicesBranch Is Nothing Then
-                                hwSupportBranch = New clsBranch(Nothing, servicesBranch, iq.AddTranslation("HW Support", English, "", 0, Nothing, 0, False), "", iq.AddTranslation("Options", English, "", 0, Nothing, 0, False), iq.AddTranslation("Option", English, "", 0, Nothing, 0, False), carePackScreen, 0, False, "B")
+                                hwSupportBranch = New clsBranch(Nothing, CType(servicesBranch, clsBranch), iq.AddTranslation("HW Support", English, "", 0, Nothing, 0, False), "", iq.AddTranslation("Options", English, "", 0, Nothing, 0, False), iq.AddTranslation("Option", English, "", 0, Nothing, 0, False), carePackScreen, 0, False, "B")
                             End If
 
                         End If
@@ -1508,7 +1508,7 @@ Module CarePackModule
                         End If
 
                         Dim troPath = String.Empty
-                        Dim troBranch As clsBranch = systemBranch.FindBranchByNameBelow("Top Recommended", sysPath, False, 12, troPath)
+                        Dim troBranch As clsBranch = CType(systemBranch.FindBranchByNameBelow("Top Recommended", sysPath, False, 12, troPath), clsBranch)
                         If troBranch Is Nothing Then
 
                             ' Couldn't find the Top Recommended Options branch - create it
@@ -1516,7 +1516,7 @@ Module CarePackModule
                             troPath = sysPath & "." & troBranch.ID
 
                         End If
-                        Dim troCpqBranch As clsBranch = troBranch.FindBranchByNameBelow("Care Pack", troPath, False, 12, troPath)
+                        Dim troCpqBranch As clsBranch = CType(troBranch.FindBranchByNameBelow("Care Pack", troPath, False, 12, troPath), clsBranch)
                         If troCpqBranch Is Nothing Then
 
                             ' Couldn't find the Top Recommended Options/Care Pack branch - create it

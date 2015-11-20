@@ -25,12 +25,12 @@ Public Class clsValidation
 
     Public Sub New(id As Integer, description As String, regex As String, violation As String)
 
-        Me.ID = id
+        Me.ID = CStr(id)
         Me.description = description
         Me.regEx = regex
         Me.ViolationMessage = violation
 
-        iq.Validations.Add(Me.ID, Me)
+        iq.Validations.Add(CInt(Me.ID), Me)
 
     End Sub
 
@@ -42,9 +42,9 @@ Public Class clsValidation
 
         Dim sql$
         sql$ = "INSERT INTO [validation] (descripion,regex,violation) VALUES(" & da.SqlEncode(Me.description) & "," & da.SqlEncode(Me.regEx) & "," & da.SqlEncode(Me.ViolationMessage) & ");"
-        Me.ID = da.DBExecutesql(sql$, True)
+        Me.ID = CStr(da.DBExecutesql(sql$, True))
 
-        iq.Validations.Add(Me.ID, Me)
+        iq.Validations.Add(CInt(Me.ID), Me)
 
     End Sub
 

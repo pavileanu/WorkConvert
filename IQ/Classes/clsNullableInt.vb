@@ -8,7 +8,7 @@
 
     Public ReadOnly Property Displayvalue() As String
         Get
-            If Me.value Is DBNull.Value Then Return "" Else Return Me.value
+            If Me.value Is DBNull.Value Then Return "" Else Return CStr(Me.value)
         End Get
     End Property
 

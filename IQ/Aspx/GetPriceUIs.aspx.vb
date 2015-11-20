@@ -30,7 +30,7 @@
             lit.Text = "]^DONE"
         Else
 
-            Dim handle As Integer = Request("handle")
+            Dim handle As Integer = CInt(Request("handle"))
             Dim response As wsconsumer.clsStockPriceResponse = Nothing
 
             If handle <> -1 Then
@@ -81,13 +81,13 @@
 
                 buyeraccount = queuedRequest.BuyerAccount
                 Dim lit As Literal
-                If response.items.Count Then   'yey we have results
+                If CBool(response.items.Count) Then   'yey we have results
 
                     If divIds <> "" Then  'it's possibe we closed the DIV (whilst the request was pending)
                         Dim b()
 
                         Dim pnl As Panel
-                        For Each ID As String In divIds.Split(",")  'each DIV id is of the form P_priceID (or S_Stockid)
+                        For Each ID As String In divIds.Split(CChar(","))  'each DIV id is of the form P_priceID (or S_Stockid)
 
                             If ID <> "" Then
                                 lit = New Literal
@@ -100,13 +100,13 @@
                                     '    minutesOld = 0 ' UI will RETURN the age of the price
                                     'pnl = iq.Products(b(1)).prices(b(2)).Ui 'Should go green
                                     If buyeraccount IsNot Nothing Then
-                                        If Not iq.Prices.ContainsKey(b(1)) Then
+                                        If Not iq.Prices.ContainsKey(CInt(b(1))) Then
                                             Dim jjj As Integer = 99
 
                                         Else
 
 
-                                            Dim price = iq.Prices(b(1))
+                                            Dim price = iq.Prices(CInt(b(1)))
                                             price.lastUpdated = Now
                                             pnl = price.Ui(buyeraccount, 1, lid) 'Should go green
 
@@ -120,11 +120,11 @@
                                                     Dim kkk As Integer = 0
                                                 End If
                                             End If
-                                            End If
+                                        End If
 
                                     Else
-                                            errormessages.Add("* BuyerAccount was nothing in getPriceUIs")
-                                            pnl = New Panel
+                                        errormessages.Add("* BuyerAccount was nothing in getPriceUIs")
+                                        pnl = New Panel
                                     End If
 
 
@@ -142,7 +142,7 @@
 
                                 ElseIf b(0) = "S" Then
                                     ' the placeholder contains a panels (div) - which holds the stock UI  
-                                    Dim ph As PlaceHolder = iq.Stock(b(1)).SKUvariant.StockUI(1, String.Empty, buyeraccount.Language, buyeraccount.SellerChannel)
+                                    Dim ph As PlaceHolder = iq.Stock(CInt(b(1))).SKUvariant.StockUI(1, String.Empty, buyeraccount.Language, buyeraccount.SellerChannel)
                                     Form.Controls.Add(ph)
                                 Else
                                     Beep()
@@ -240,7 +240,7 @@
 
                     ' If item.SKU.Contains("3") Then Stop
                     If item.CustomerPrice > 0 Then
-                        price.Price.value = item.CustomerPrice
+                        price.Price.value = CDec(item.CustomerPrice)
                         price.Price.isValid = True  'Important ! (otherwise POA's remain 'invalid' event though they now have a value
                         price.Price.isList = False  'In case it was a (temporary) list price - (it is'nt now!)
                         price.Source = "Confirmed"
@@ -268,10 +268,10 @@
             End If
 
             If price.Price.isValid Then
-                If iq.sesh(Request.QueryString("lid"), "QuoteID") IsNot Nothing Then
+                If iq.sesh(CULng(Request.QueryString("lid")), "QuoteID") IsNot Nothing Then
 
                     Dim lid As UInt64 = CType(Request.QueryString("lid"), UInt64)
-                    Dim quote As clsQuote = buyeraccount.Quotes(iq.sesh(lid, "QuoteID"))
+                    Dim quote As clsQuote = buyeraccount.Quotes(CInt(iq.sesh(lid, "QuoteID")))
                     quote.RootItem.updateQuotedPrice(v, price.Price)  'Recurses through every item in the quote - updating them IF they have this price
                 End If
             End If

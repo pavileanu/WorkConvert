@@ -43,7 +43,7 @@
             ReDim si.shipments(0)
             si.shipments(0) = New WCFSvc.WCFsvc_clsstock
             si.shipments(0).Arrival = arrival
-            si.shipments(0).Quantity = Quantity
+            si.shipments(0).Quantity = CInt(Quantity)
 
 
             lines.Add(si)
