@@ -1,10 +1,10 @@
 ﻿Public Module GenEdit
 
-    Public Function NullID(obj As Object) As String
+    Public Function NullID(obj As clsValidation) As String
         If obj Is Nothing Then
             Return "null"
         Else
-            Return obj.id.ToString
+            Return obj.ID.ToString
         End If
 
     End Function

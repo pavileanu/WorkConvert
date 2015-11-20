@@ -27,7 +27,7 @@
 
         Stop '- no such thing as a selleraccountid
 
-        Dim SellerAccount As clsAccount = iq.Accounts(iq.sesh(lid, "sellerAccountId"))
+        Dim SellerAccount As clsAccount = iq.Accounts(CInt(iq.sesh(lid, "sellerAccountId")))
         Dim tc As TableCell
         Dim sector As clsSector
 

@@ -11,7 +11,7 @@
             'Grab systemtypes available
 
             ddSysTypes.DataSource = iq.ProductValidationsAssignment.Keys.ToList()
-            ddSysTypes.DataSource.Insert(0, "None")
+            'ddSysTypes.DataSource.Insert(0, "None")
             ddSysTypes.DataBind()
             If Request("typ") IsNot Nothing Then
                 ddSysTypes.SelectedValue = Request("typ")

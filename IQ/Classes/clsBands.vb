@@ -56,7 +56,7 @@ Public Class clsBand
         End If
     End Function
 
-    Public Overrides Function Equals(obj As clsBand) As Boolean
+    Public Overloads Function Equals(obj As clsBand) As Boolean
         Return max = CULng(obj.max) AndAlso min = obj.min
     End Function
 

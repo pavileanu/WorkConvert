@@ -1062,7 +1062,7 @@ Public Class editor
                 Dim nullint As NullableInt = New NullableInt()
                 Reflection.setProperty(Instance, f.propertyName, nullint, Nothing, errorMessages, False)
             ElseIf f.InputType.code = "translate" Then
-                Dim translation As clsTranslation = iq.AddTranslation("Edit me", language, "DM", True, Nothing, 0, False)
+                Dim translation As clsTranslation = iq.AddTranslation("Edit me", language, "DM", CInt(True), Nothing, 0, False)
                 Reflection.setProperty(Instance, f.propertyName, translation, Nothing, errorMessages, False)
             ElseIf f.InputType.code = "string" Then
                 Reflection.setProperty(Instance, f.propertyName, "", Nothing, errorMessages, False) 'will be overriden by any explicit default
@@ -1156,7 +1156,7 @@ Public Class editor
 
         Dim result As Control
         For Each child In c.Controls
-            result = findRecursive(child, toFind)
+            result = findRecursive(CType(child, Control), toFind)
             If Not result Is Nothing Then
                 Return result
             End If
