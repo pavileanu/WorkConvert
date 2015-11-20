@@ -10,7 +10,6 @@
         If Not IsPostBack Then
             'Grab systemtypes available
 
-
             ddSysTypes.DataSource = iq.ProductValidationsAssignment.Keys.ToList()
             ddSysTypes.DataSource.Insert(0, "None")
             ddSysTypes.DataBind()

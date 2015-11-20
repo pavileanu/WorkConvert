@@ -3,7 +3,7 @@
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        Dim lid As uint64 = Request.QueryString("lid")
+        Dim lid As UInt64 = CULng(Request.QueryString("lid"))
 
         'Looks like some kind of standalone page to display a table of margins
 
