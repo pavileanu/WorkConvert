@@ -1,0 +1,1546 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical">
+  <Class Name="IQ.ChangePassword">
+    <Position X="38.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAIAAAA=</HashCode>
+      <FileName>Account\ChangePassword.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.ChangePasswordSuccess">
+    <Position X="38.5" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Account\ChangePasswordSuccess.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.Login">
+    <Position X="36.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAQCAAAIAAAE=</HashCode>
+      <FileName>Account\Login.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.Register">
+    <Position X="37" Y="33.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAIAAAAAAAAAAAAAAAAAABAAAAAAAAIAAAA=</HashCode>
+      <FileName>Account\Register.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.About">
+    <Position X="28.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Aspx\About.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.AccountSettings">
+    <Position X="31.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UAIQAAAAEAAKYAAAAQAAgBABAAABAJAJAAAAACIQCAA=</HashCode>
+      <FileName>Aspx\AccountSettings.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.NewAccount">
+    <Position X="35.25" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAEAAAAIAAAAAAAEAAIARAAAAAAABAAEoAAQA=</HashCode>
+      <FileName>Aspx\AddAccount.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.AddChannelUser">
+    <Position X="33.25" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Aspx\AddChannelUser.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.AdminMenu">
+    <Position X="30.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Aspx\Admin\AdminMenu.master.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.AttributeFinder">
+    <Position X="32.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Aspx\Admin\AttributeFinder.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.Sync">
+    <Position X="31.5" Y="33.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAABAAAAAAAgAAAAAQAAAACAAAAIAAAA=</HashCode>
+      <FileName>Aspx\Admin\Sync.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.SystemEditor">
+    <Position X="31.5" Y="29.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Aspx\Admin\SystemEditor.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.ValidationEditor">
+    <Position X="37" Y="22.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AJCAEAQQAAAQAAABAAAAAgAgIAAEAAgAAECEAQIABAI=</HashCode>
+      <FileName>Aspx\Admin\ValidationEditor.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.ValidationManager">
+    <Position X="33.5" Y="36.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAEAAAAAAAAAAQAAAAAAAAAAABgAAAAAAGAAoAAAI=</HashCode>
+      <FileName>Aspx\Admin\ValidationManager.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.WebForm1">
+    <Position X="31.5" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kAKQASAMEgAiIAFQgAIAIAggQIAyQQAAQAECAQJAEQ4=</HashCode>
+      <FileName>Aspx\admin.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.administration">
+    <Position X="28.5" Y="12.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>kw/UIQBMEgImMAFRhAeGIARmYKWyUBTpQHUigUpCGR4=</HashCode>
+      <FileName>Aspx\administration.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.AdvertReport">
+    <Position X="34" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Aspx\AdvertReport.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.BasketDisplay">
+    <Position X="38.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAABAAAAIAAAA=</HashCode>
+      <FileName>Aspx\BasketDisplay.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.BasketPost">
+    <Position X="38.5" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIEAAAAAAAAAgAAAAAIAAAAAAAAAAAIAIAAAA=</HashCode>
+      <FileName>Aspx\BasketPost.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.ClickThru">
+    <Position X="38.75" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Aspx\ClickThru.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.CurrentSessions">
+    <Position X="35" Y="18" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAEAA=</HashCode>
+      <FileName>Aspx\CurrentSessions.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ._Default">
+    <Position X="26.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>PIzcMOE8nseikJ4cxwfJ3L9A4//zfRsX4/A4V45dE3c=</HashCode>
+      <FileName>Aspx\Default.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.Diagnostics">
+    <Position X="35.25" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Aspx\Diagnostics.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.edit1">
+    <Position X="30.25" Y="35.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgQAIAAAAAAAAAAAAAIAIAA=</HashCode>
+      <FileName>Aspx\edit.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.edit">
+    <Position X="35.25" Y="22" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Aspx\editMS.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.ExportedQuotes">
+    <Position X="37" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IEAAACAAAABAAAAQAAAAIAAAIAAAAAQABABAAAIAAAA=</HashCode>
+      <FileName>Aspx\ExportedQuotes.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.gatekeeper">
+    <Position X="36.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.gateKeeper">
+    <Position X="36.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAACAIAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Aspx\gateKeeper.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.GetPriceUIs">
+    <Position X="33.25" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAoAAAAQAAAAAAAIAAAAAAAAAAAAEIAAAA=</HashCode>
+      <FileName>Aspx\GetPriceUIs.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.help" Collapsed="true">
+    <Position X="33.5" Y="21.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Aspx\help.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.HpSignedup">
+    <Position X="35" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAECAAwAIAAAg=</HashCode>
+      <FileName>Aspx\HpSignedup.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.HpSignup">
+    <Position X="33.5" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAQAAYAAAAiAAQEEAIAAAIAIAAALAo4ECgCCEJAAQg=</HashCode>
+      <FileName>Aspx\HpSignup.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.Loading">
+    <Position X="35" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAQAAAAAAAAAAAAAAAAIAAAABAAAAAQAAIAAAA=</HashCode>
+      <FileName>Aspx\Loading.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.poller">
+    <Position X="33.5" Y="35" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Aspx\poller.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.Regions">
+    <Position X="37" Y="28" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgASAEAAAAACAAAAAAAAQAAAIgQCAEABAAAgBAIDAAA=</HashCode>
+      <FileName>Aspx\Regions.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.Resources">
+    <Position X="36.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAQAAACAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Aspx\Resources.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.SolutionStoreLanding">
+    <Position X="31.5" Y="31.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAMAAAA=</HashCode>
+      <FileName>Aspx\SolutionStoreLanding.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.streamer">
+    <Position X="33.5" Y="33.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Aspx\streamer.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.Support">
+    <Position X="28.5" Y="35.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Aspx\Support.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.teams">
+    <Position X="30.25" Y="38" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Aspx\teams.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.Test">
+    <Position X="38.75" Y="24.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAQQAABAAAAAAIAAAA=</HashCode>
+      <FileName>Aspx\test.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.CloneTargetsRequest">
+    <Position X="33.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAIAAAAAAQAAAAAAAEABAAAAIAAAAAA=</HashCode>
+      <FileName>Classes\Ajax\CloneTargetsRequest.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsAjaxEditorRequest">
+    <Position X="54.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAABAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Classes\Ajax\clsAjaxEditorRequest.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsAjaxIncrementalImportRequest">
+    <Position X="58.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAACAAAAgAAAAACAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Classes\Ajax\clsAjaxIncrementalImportRequest.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsAttributeFinderRequest">
+    <Position X="60" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Ajax\clsAttributeFinderRequest.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsFilterSetRequest">
+    <Position X="46" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Classes\Ajax\clsFilterSetRequest.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsFieldSetRequestDetail">
+    <Position X="56.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAACAAAJIAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Classes\Ajax\clsFilterSetRequest.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsGenericAjaxRequest">
+    <Position X="63.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAACAAACABgAAIABAAAAAAAAAAAAAAAAgAAIAEEAAA=</HashCode>
+      <FileName>Classes\Ajax\clsGenericAjaxRequest.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsSystemEditRequest">
+    <Position X="63.75" Y="36.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Classes\Ajax\clsSystemEditRequest.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.SetFieldOverrideRequest">
+    <Position X="33.25" Y="29.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAACABgAAAAAAAAAAAAAAAAACAAAAAAOAAAABA=</HashCode>
+      <FileName>Classes\Ajax\SetFieldOverrideRequest.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsAccount" BaseTypeListCollapsed="true">
+    <Position X="44.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQgBAAAQCBBBgAAAgAAAQRAEywAAAAQCGEFUAAAEQAA=</HashCode>
+      <FileName>Classes\clsAccount.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsAccountScreenField">
+    <Position X="51.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QEEAAAAACDAgAgIAEgAQAECAABgAAAAAQAAAAIAAAAA=</HashCode>
+      <FileName>Classes\clsAccountScreenField.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsAddress" BaseTypeListCollapsed="true">
+    <Position X="47.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEEAAAAAAgAACAAAgAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\clsAddress.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsAdReports">
+    <Position X="51.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\clsAdReports.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsAdvert" BaseTypeListCollapsed="true">
+    <Position X="53" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAgAQECiABAAgRAAAABAAQQEACEAAAQoAQAAAAAEQAA=</HashCode>
+      <FileName>Classes\clsAdvert.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsAttribute" BaseTypeListCollapsed="true">
+    <Position X="54.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAABBAgAACAAAgAQAAAAAJAAAAAAAAAAAEAAQ=</HashCode>
+      <FileName>Classes\clsAttribute.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.ClsAvalancheOPG">
+    <Position X="61.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAEEAAgAAAiAAAAAAIAAAAAAAAACACACAAAABAAAA=</HashCode>
+      <FileName>Classes\clsAvalancheOPG.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsAvalancheOption">
+    <Position X="65.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAgAAAAAAAAAAAIAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\clsAvalancheOption.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsBand">
+    <Position X="67" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAEAAQAAAQAAAAgAAAAAAAAAAAAIAAAAAQBAAAAAA=</HashCode>
+      <FileName>Classes\clsBands.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsBranch" BaseTypeListCollapsed="true">
+    <Position X="68.75" Y="7" Width="1.5" />
+    <NestedTypes>
+      <Class Name="IQ.clsBranch.clsSKUBranchPathIndexEntry" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Classes\clsBranch.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>xLzauNCZqwssrkz3M8AkYSa6APBwCtQ0LdWiX8rF3bY=</HashCode>
+      <FileName>Classes\clsBranch.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsBranchInfo">
+    <Position X="47.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABQAAQAgQkgAIAAACISIgBATIAAUCAAQIESAAAIEBQ=</HashCode>
+      <FileName>Classes\clsBranchInfo.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsBranchState">
+    <Position X="46" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAAACCEKCABACAAAAAAAUAAiEAAAACAAAABAAAEAE=</HashCode>
+      <FileName>Classes\clsBranchState.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsBrokerManager">
+    <Position X="46" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\clsBrokerManager.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsBundle">
+    <Position X="49.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEEABgAAAiAAAAAAgAAQAIAAAAAAAAAAAAABgEAA=</HashCode>
+      <FileName>Classes\clsBundle.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsBundleItem">
+    <Position X="51.25" Y="21.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQBAgAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Classes\clsBundleItem.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsBundleSystem">
+    <Position X="58.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAIAAgAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Classes\clsBundleSystem.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsCampaign" BaseTypeListCollapsed="true">
+    <Position X="54.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAgBBAgBAAAAAQAQQgAAAAgAAAAAAAAEAECAA=</HashCode>
+      <FileName>Classes\clsCampaign.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsChannel" BaseTypeListCollapsed="true">
+    <Position X="56.5" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ASUAGGACgRAEmAgYAIRkUUQMIHEMQAEWKQwQQAAAAAg=</HashCode>
+      <FileName>Classes\clsChannel.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsClickThru" BaseTypeListCollapsed="true">
+    <Position X="60" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAECAABAAgBAAAAAAAQAAAAAAAAAAAAAAAAAEAEA=</HashCode>
+      <FileName>Classes\clsClickThru.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsCulture">
+    <Position X="61.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAgAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\clsCulture.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsCurrency" BaseTypeListCollapsed="true">
+    <Position X="63.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UAAgEEAAAAIAgAAAAAAgCAAAAAEAAAAAAAAAAAAECAA=</HashCode>
+      <FileName>Classes\clsCurrency.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsCustomerContext">
+    <Position X="67" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAIAAAAAAAAAAIEAAIAAIAAAAAA=</HashCode>
+      <FileName>Classes\clsCustomerContext.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsEditHeader">
+    <Position X="65.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>hAUAABBABAAAEAASQoATiCAACAAAACAAgKAAABAAEAA=</HashCode>
+      <FileName>Classes\clsEditHeader.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsExclude">
+    <Position X="65.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgBIAAAAAAAAAAAEAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Classes\clsExclude.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsField" BaseTypeListCollapsed="true">
+    <Position X="49.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEAABEEhgFwBoQSIZOmYAACICAUoACAAYAgAAAQEWAg=</HashCode>
+      <FileName>Classes\clsField.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsFilter">
+    <Position X="49.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAgAAAAAAgAAAAABEAAAAAAAAAAAAEQAA=</HashCode>
+      <FileName>Classes\clsFilter.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsFlatListItem">
+    <Position X="51.25" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAgAEAAAAAAAIAIAAABIAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Classes\clsFlatItemList.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsFlatList">
+    <Position X="53" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAgAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\clsFlatList.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsImpression" BaseTypeListCollapsed="true">
+    <Position X="67" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAEAAABAAgBAAAAAAAQQQAAAAAAAAAAAAAAAEAEA=</HashCode>
+      <FileName>Classes\clsImpression.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsInputType">
+    <Position X="66.25" Y="40.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAgAAAAAAAAAAAIAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\clsInputType.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsIQ">
+    <Position X="72.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>t6XlSXVfm5EOhiuKfJNdPhnzuxFt1hqdcZ6/DlAQ/+c=</HashCode>
+      <FileName>Classes\clsIQ.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsLanguage">
+    <Position X="51.25" Y="24.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAgAAAAAAgAAAAAAABAAAgAAAAAAABEAA=</HashCode>
+      <FileName>Classes\clsLanguage.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsLegal" BaseTypeListCollapsed="true">
+    <Position X="42.5" Y="32.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEEAAAAAAgAACAAAgAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\clsLegal.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsLimit">
+    <Position X="46" Y="30" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAIAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Classes\clsLimit.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsMargin">
+    <Position X="49.5" Y="38.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAACABACAAAgBAAAAAAAAAAAAAAAAAACAAAAAAACAA=</HashCode>
+      <FileName>Classes\clsMargin.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsMatchList">
+    <Position X="58.25" Y="21.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACEAA=</HashCode>
+      <FileName>Classes\clsMatchList.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsMessage" BaseTypeListCollapsed="true">
+    <Position X="58.25" Y="18" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEEAAAAAAgIACAAAgAQAgAAAAACAAACQAAAAAAAA=</HashCode>
+      <FileName>Classes\clsMessage.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsNote">
+    <Position X="67.25" Y="32.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Classes\clsNote.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.NullableInt">
+    <Position X="47.75" Y="33.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgCAAAAAAAAAAACAAAAAAAAAAAAg=</HashCode>
+      <FileName>Classes\clsNullableInt.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.NullableDate">
+    <Position X="47.75" Y="31.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAACAAACAA=</HashCode>
+      <FileName>Classes\clsNullableString.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.nullableString">
+    <Position X="54.75" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAABAACAAACAA=</HashCode>
+      <FileName>Classes\clsNullableString.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsPool">
+    <Position X="47.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAABAAAAgA=</HashCode>
+      <FileName>Classes\clsOffer.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsOffer">
+    <Position X="65.5" Y="30.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCEEEBgQAAgAAAAAAAAAEAAAAECCAAACAAACACAAA=</HashCode>
+      <FileName>Classes\clsOffer.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsPrice">
+    <Position X="46" Y="21" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAEgAAwBQgAAgARAAAABAAAAAAAAACAAAEAAAAAA=</HashCode>
+      <FileName>Classes\clsPrice.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsPriceBand">
+    <Position X="51.5" Y="39.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\clsPriceBand.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsProduct" BaseTypeListCollapsed="true">
+    <Position X="53" Y="19.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="IQ.clsProduct.clsSpecTableEntry" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Classes\clsProduct.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AIgAEBAQDRFggxAgEOAAAQBXABEEACAhAZDBUACECAA=</HashCode>
+      <FileName>Classes\clsProduct.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="IQ.clsProductAttribute" BaseTypeListCollapsed="true">
+    <Position X="60.25" Y="34" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAABACgAACIAAAAQIAABAIgAAAAgAAAEAEABA=</HashCode>
+      <FileName>Classes\clsProductAttribute.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsProductType">
+    <Position X="51.5" Y="36.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAEEAAAAAAgAACAAAgAAAAAAEIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\clsProductType.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsProductValidation">
+    <Position X="58.25" Y="23.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAggIABAAEAQAAAAAEiIQAIEBggIAUAAAA=</HashCode>
+      <FileName>Classes\clsProductValidation.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsProfile">
+    <Position X="56.5" Y="26" Width="1.5" />
+    <NestedTypes>
+      <Struct Name="IQ.clsProfile.stcStats" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Classes\clsProfile.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAgAAAAAQAAAAACAAgAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Classes\clsProfile.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsPromo" BaseTypeListCollapsed="true">
+    <Position X="62" Y="32.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAACAEAAgBAggAAAAAAgAQAEAAAAAAAAAABAAAAEAAQ=</HashCode>
+      <FileName>Classes\clsPromo.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsPrune">
+    <Position X="67" Y="29.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAgAIAAAAAAQAAAAAAAAQAAAQAAAAEAAA=</HashCode>
+      <FileName>Classes\clsPrune.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsQuantity" BaseTypeListCollapsed="true">
+    <Position X="63.5" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAEAAoBAAwAIAAAAAICAAABGAAAsCAAAAEAAEAAA=</HashCode>
+      <FileName>Classes\clsQuantity.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsQuote" BaseTypeListCollapsed="true">
+    <Position X="70.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JA0xMILgkQJqhASAQAqIyRYBCzAI9FwQUZCEJEAO0Ak=</HashCode>
+      <FileName>Classes\clsQuote.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsQuoteHistoryItem">
+    <Position X="62" Y="38.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Classes\clsQuote.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsQuoteItem" BaseTypeListCollapsed="true">
+    <Position X="70.5" Y="25.25" Width="1.5" />
+    <NestedTypes>
+      <Class Name="IQ.clsQuoteItem.clsSubComponent" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Classes\clsQuoteItem.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>roSiANhxQsGEmAKdaACkRZEBiguAkK0QJMAAxRkA07Q=</HashCode>
+      <FileName>Classes\clsQuoteItem.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsRegion">
+    <Position X="46" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASgAEAAIAAAgAAAAAAkRAQAAQAYABAQIRgAAAQDAgA=</HashCode>
+      <FileName>Classes\clsRegion.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsResource" BaseTypeListCollapsed="true">
+    <Position X="46" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AA0AEEAAiAAggkAAAgQgAQAAAAAAAAAAAQAAAAAEAAA=</HashCode>
+      <FileName>Classes\clsResource.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsResourceCategory">
+    <Position X="42.5" Y="38" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAIAAAgAACAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\clsResourceCategory.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsResponse" BaseTypeListCollapsed="true">
+    <Position X="49.5" Y="27.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEEAAAAAggEAAEAAAAAAEAEEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\clsResponse.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsRight">
+    <Position X="51.5" Y="34.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAABAAgAACAAAgAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Classes\clsRight.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsROKAttribute">
+    <Position X="61.75" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAACAAAgAAAAAAAAAACAAAAAAAAEAAA=</HashCode>
+      <FileName>Classes\clsROKAttribute.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsRole">
+    <Position X="44.25" Y="38" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAAAgAACAAAgAAAAABAAAACAAACAAAAAAAA=</HashCode>
+      <FileName>Classes\clsRole.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsScheme" BaseTypeListCollapsed="true">
+    <Position X="60" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAgBAAgAAAAAAAAQQgIAAAAAAgAAAAAEAEAAA=</HashCode>
+      <FileName>Classes\clsScheme.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsPriorityDirection">
+    <Position X="49.5" Y="24.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAIAEACAAAAAAQAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Classes\clsScreen.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsScreen" BaseTypeListCollapsed="true">
+    <Position X="60.25" Y="38.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEEAQBAAgAAIACABAABAIAEIAAIAAYIAAEAAgAA=</HashCode>
+      <FileName>Classes\clsScreen.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsScreenHeader">
+    <Position X="58.5" Y="29" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>hIkAEAAQgA1gJkIyAoGRAIwAAIHACAQEAqQIWDICmAE=</HashCode>
+      <FileName>Classes\clsScreenHeader.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsScreenOverride">
+    <Position X="63.5" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAEAACCAAAAIAAgAAAAAAAACAACAAQAAAGAAAABA=</HashCode>
+      <FileName>Classes\clsScreenOverride.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsSector">
+    <Position X="65.25" Y="18" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEEAAAAAAgAACAAAAAAAAIAAAAAAQAAAAAAAEACA=</HashCode>
+      <FileName>Classes\clsSector.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsServiceLevel" BaseTypeListCollapsed="true">
+    <Position X="65.25" Y="24.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAw4EEAAACBiwAAAAASAAQIgAFAAAAKAAAAAAgAAAAA=</HashCode>
+      <FileName>Classes\clsServiceLevel.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsServiceType" BaseTypeListCollapsed="true">
+    <Position X="64" Y="37.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEEAAAAAggEAAAAAAAAAEAEECAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\clsServiceType.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsShoppingListItem">
+    <Position X="44.25" Y="28.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAIgAAAAAA=</HashCode>
+      <FileName>Classes\clsShoppingListItem.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsSlot" BaseTypeListCollapsed="true">
+    <Position X="46" Y="32.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQQAEAAjBAAgAAAAAACASAAIBAAAAgAAQAQEAAEIIA=</HashCode>
+      <FileName>Classes\clsSlot.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsSlotSummary">
+    <Position X="47.75" Y="25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAgAAEAAAAAAAAAAAAAAAIAAAAABAAAAgA=</HashCode>
+      <FileName>Classes\clsSlotSummary.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsSlotType">
+    <Position X="51.5" Y="30.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEQAQBQAgAACAAAAFAAAAAEEAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Classes\clsSlotType.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsState">
+    <Position X="56.75" Y="31.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAUAAEAAAAAAgAACAAAgAAAAIAAAAAAQAAAAABAAAAA=</HashCode>
+      <FileName>Classes\clsState.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsstock">
+    <Position X="54.75" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAABEAAAkAA0AAAAAAAAAEAAAEAAACAAAAAAAAEAAA=</HashCode>
+      <FileName>Classes\clsStock.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsStockService">
+    <Position X="63.75" Y="30.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\clsStockService.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsTeam" BaseTypeListCollapsed="true">
+    <Position X="63.75" Y="33.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEEAgAAAAgAAAAAAAAQQAAAAAAAAAAAAEAAAEAAA=</HashCode>
+      <FileName>Classes\clsTeam.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsThread">
+    <Position X="42.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAFAEQBAAgAAEAAAEQACAAAEAAAQQQAABCAAEAAE=</HashCode>
+      <FileName>Classes\ClsThread.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsTranslation">
+    <Position X="47.75" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACUACEAFAAAAgAQEAAAAAQAAIAAAAAAICAAAECAAAAA=</HashCode>
+      <FileName>Classes\clsTranslation.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsTROAA" BaseTypeListCollapsed="true">
+    <Position X="51.25" Y="27" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAUEACAAAAgAAAAEAAAAAgBEEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\clsTROAA.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsUnit" BaseTypeListCollapsed="true">
+    <Position X="47.75" Y="40" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEEAAAAAAgEACAAAgAQAAAAAIAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Classes\clsUnit.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsUser" BaseTypeListCollapsed="true">
+    <Position X="53.25" Y="31" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAgADAAgAAAACCAIQEAAAAQAACAAAAAAAAEAAA=</HashCode>
+      <FileName>Classes\clsUser.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsUserState">
+    <Position X="56.75" Y="34.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAUAAAAAAIgAAgAAAAygAAAACgAAAAAIAAAAAAAABA=</HashCode>
+      <FileName>Classes\clsUserState.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsScreenHeaderState">
+    <Position X="62.25" Y="40.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAICAIAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\clsUserState.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsValidation">
+    <Position X="56.5" Y="28.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEEAAAAAAgAAAIAAAAAAEAAAAAAAAAAAgAAAEAAA=</HashCode>
+      <FileName>Classes\clsValidation.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsValidationInclusion" BaseTypeListCollapsed="true">
+    <Position X="60.25" Y="31.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQBBAgAAAAAAAAQAAAAAFAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Classes\clsValidationInclusion.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.ClsValidationMessage">
+    <Position X="67" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAGAAAAQAEAgAAAwCCQCABEAAABQIAAAAAAAAAEECA=</HashCode>
+      <FileName>Classes\ClsValidationMessage.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsVariant">
+    <Position X="67" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQHAEAAgRAEgAAIgCA8EEBAAAEAAAAACBAAMAAAAEA=</HashCode>
+      <FileName>Classes\clsVariant.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsVisibility">
+    <Position X="65.25" Y="22.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAACAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\clsVisibility.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsWarehouse">
+    <Position X="67" Y="21" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\clsWarehouse.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.AdminController">
+    <Position X="44.25" Y="20.25" Width="1.5" />
+    <NestedTypes>
+      <Class Name="IQ.AdminController.EditDetails" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Classes\Controllers\AdminController.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ABAQAABIEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgQkA=</HashCode>
+      <FileName>Classes\Controllers\AdminController.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.DataController">
+    <Position X="44.25" Y="23.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAACAQAAAACAAAAAACAAAAgAEAAIAwQIgoAAAAEkAA=</HashCode>
+      <FileName>Classes\Controllers\DataController.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsBuyerGroup">
+    <Position X="49.5" Y="36" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAgAAAQAAAAAAAAAAEAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Classes\DEAD - clsBuyerGroup.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsFlexOPG">
+    <Position X="58.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAEBBBAAAwgAAAAAAAAAAACEAAgCACACBAAAAAAAE=</HashCode>
+      <FileName>Classes\Flex.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsFlexLine">
+    <Position X="46" Y="37.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEBAAAAAgAAEAAAAAAAAIAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Classes\Flex.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsFlexRule">
+    <Position X="60" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAQAAAQgAACAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Flex.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsFlexRegion">
+    <Position X="58.25" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAgAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Flex.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.IQDrive">
+    <Position X="56.5" Y="24" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BQAAAAAAAAAAAAAAACAAAAIAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Classes\IQDrive.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.AuditLog">
+    <Position X="56.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIEAQAAAAAAAAAAAAAQCAEAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Utility\AuditLog.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsAuditEntry">
+    <Position X="60" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIABEAAgAAAAAAAAEAyBAAAAAAQAEIAAIBBAAA0=</HashCode>
+      <FileName>Classes\Utility\clsAuditEntry.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.ErrorLog">
+    <Position X="63.5" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Utility\ErrorLog.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.Data">
+    <Position X="47.75" Y="19" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Classes\Utility\iQuoteExport.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.DataQuote">
+    <Position X="44.25" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAiACAQAAgCgIAgCMCiAIUAAQAAACAAAgEAAEAAAgE=</HashCode>
+      <FileName>Classes\Utility\iQuoteExport.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.DataQuoteProduct">
+    <Position X="42.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIEGACAAAQAgAEBAACIoAIMAgAAQAAAAiAAABWAAgBA=</HashCode>
+      <FileName>Classes\Utility\iQuoteExport.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.LoggingList(Of T)">
+    <Position X="63.5" Y="27.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="IQ.LoggingList(Of T).clsData" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Classes\Utility\LoggingList.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAACAAAAAAAAAAAAAAAAAIAAEAAAgQAARAAAA=</HashCode>
+      <FileName>Classes\Utility\LoggingList.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.editlog">
+    <Position X="28.5" Y="37.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAEAAAACAAAAAAAEAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Editor\editlog.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.editor">
+    <Position X="38.75" Y="26.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="IQ.editor.EnumViewType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Editor\editor.aspx.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>gAAAgAAAQGAhoUIAAAASAAQAoBEAAgBABAIYEBIAAAA=</HashCode>
+      <FileName>Editor\editor.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.Global_asax">
+    <Position X="42.5" Y="28" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAEAAAAAAAAAAECIBQQAAAAAAAA=</HashCode>
+      <FileName>Global.asax.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.NullablePrice">
+    <Position X="47.75" Y="35.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YQEAAIAAAAAACBAEAAAIAAQAAAAAACAIAAAAIMAAAAg=</HashCode>
+      <FileName>Modules\clsNullablePrice.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsSysCarePack">
+    <Position X="65.25" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAACA=</HashCode>
+      <FileName>Modules\OSAutoAdd.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.Signout">
+    <Position X="38.75" Y="22.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>My Project\Signout.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.WebForm3">
+    <Position X="33.5" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>My Project\WebForm3.aspx.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.iQuoteBrokerClient" BaseTypeListCollapsed="true">
+    <Position X="61.75" Y="24.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAIAAAA=</HashCode>
+      <FileName>Services\iQuoteBrokerClient.svc.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsNameValuePair">
+    <Position X="63.75" Y="31.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\OneTimeToken.svc.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsToken">
+    <Position X="42.5" Y="30.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Services\OneTimeToken.svc.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsGKAccount">
+    <Position X="61.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAQAAAAAAAACAAAABAAAAAQCAAAAAAAAABA=</HashCode>
+      <FileName>Services\OneTimeToken.svc.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.clsName">
+    <Position X="63.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAEAAEAgBAAAAIAAAAAAAAEAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Services\OneTimeToken.svc.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.TokenFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="53.5" Y="40" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACQAAAAAIgAAQAAAAIAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\OneTimeToken.svc.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.clsStockPriceSvc" BaseTypeListCollapsed="true">
+    <Position X="65.75" Y="35.25" Width="1.5" />
+    <NestedTypes>
+      <Class Name="IQ.clsStockPriceSvc.clsPrice" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Services\PnA.svc.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="IQ.clsStockPriceSvc.clsVariant" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Services\PnA.svc.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="IQ.clsStockPriceSvc.clsMargin" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Services\PnA.svc.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="IQ.clsStockPriceSvc.clsstock" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Services\PnA.svc.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="IQ.clsStockPriceSvc.clsStockItem" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Services\PnA.svc.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="IQ.clsStockPriceSvc.clsResult" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Services\PnA.svc.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AACAEAAABAAAAABBAIAAAAAAAIAAAAAAgAAAAAAAIAA=</HashCode>
+      <FileName>Services\PnA.svc.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.Site">
+    <Position X="35.25" Y="28.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DGCAAAAEGQiIBwmFABGBAMJCDBAkCIALxIAEMAIoABE=</HashCode>
+      <FileName>Site.Master.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.My.MyApplication">
+    <Position X="55" Y="35.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>My Project\MyExtensions\MyWebExtension.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.My.MySettings">
+    <Position X="44.25" Y="30.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Members" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABBAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IQ.GK.clsNameValuePair" BaseTypeListCollapsed="true">
+    <Position X="61.75" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAgAAAAAAAAAQAgAACACAEAAAAAAIAAAA=</HashCode>
+      <FileName>Service References\GK\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.GK.clsToken" BaseTypeListCollapsed="true">
+    <Position X="44.25" Y="35.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAQAAAAAAAAAAgAAAIAAEAgAgAAIAAAA=</HashCode>
+      <FileName>Service References\GK\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.GK.clsName" BaseTypeListCollapsed="true">
+    <Position X="61.75" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAGAAEAABAAAIIFAIAAggAGAAEEAAAQAAIAAAA=</HashCode>
+      <FileName>Service References\GK\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.GK.OneTimeTokenClient" BaseTypeListCollapsed="true">
+    <Position X="53.25" Y="37.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAIAAAAAAAAAACAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Service References\GK\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.IngramPB.clsLogNode" BaseTypeListCollapsed="true">
+    <Position X="53" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAACICAAgAVAABAAAAAAggBAAAQEAAAAAAIAACA=</HashCode>
+      <FileName>Service References\IngramPB\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.IngramPB.QueueOfint" BaseTypeListCollapsed="true">
+    <Position X="49.5" Y="41" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAICAAAQIAAAAAAACABAgAAAAAAEAAQAAAIBAAA=</HashCode>
+      <FileName>Service References\IngramPB\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.IngramPB.I_LoggingClient" BaseTypeListCollapsed="true">
+    <Position X="42.5" Y="22" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAgAIACAAAAAAIAgAAAQAAAQAAAwACAAAAAEAAAA=</HashCode>
+      <FileName>Service References\IngramPB\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.iQuoteBrokerService.Node" BaseTypeListCollapsed="true">
+    <Position X="47.75" Y="27.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEACAAACAAAAgAAQAAAAABQAgAAAAAAEAAIgAAIAACg=</HashCode>
+      <FileName>Service References\iQuoteBrokerService\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.iQuoteBrokerService.IiQuoteBrokerServiceClient" BaseTypeListCollapsed="true">
+    <Position X="55" Y="37" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAgAAAAAAAAAAAAAIAAEABAAAAAAAAAAAAAQAAIAAgA=</HashCode>
+      <FileName>Service References\iQuoteBrokerService\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.PQWS.CPCHierarchyCarePackResults" BaseTypeListCollapsed="true">
+    <Position X="55" Y="32.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAgAIACBAAAAAAAAABAAACAggAAIAAEAAAAAAIAAAA=</HashCode>
+      <FileName>Service References\PQWS\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.PQWS.CPCCountry" BaseTypeListCollapsed="true">
+    <Position X="62" Y="36.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAACAAAAAAAAAAAAAAAAgAEAAAAEAAAAAAIAAAA=</HashCode>
+      <FileName>Service References\PQWS\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.PQWS.SupportRecommendation" BaseTypeListCollapsed="true">
+    <Position X="49.5" Y="30.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAEQAECEAAAAAIgAABiAEQAgAQAAgCEAQAAAAIAAAI=</HashCode>
+      <FileName>Service References\PQWS\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.PQWS.PQWSClient" BaseTypeListCollapsed="true">
+    <Position X="42.5" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAEAAAAAAAAgAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Service References\PQWS\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.WCFSvc.WCFsvc_clsStockItem" BaseTypeListCollapsed="true">
+    <Position X="44.25" Y="32.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAQAAACAAAAAAAAAAAwAAAAgAAAAAAEAgAAEAIAAAA=</HashCode>
+      <FileName>Service References\WCFSvc\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.WCFSvc.WCFsvc_clsstock" BaseTypeListCollapsed="true">
+    <Position X="53.25" Y="34.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAABAACAAAAAAAAAAAAAAAAgAAAAAAEIAAAgAIAAAA=</HashCode>
+      <FileName>Service References\WCFSvc\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.WCFSvc.WCFsvc_clsResult" BaseTypeListCollapsed="true">
+    <Position X="42.5" Y="35" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQCAAQAAAAAAAAAAAAAhggAAAAEAAAAIAIAAAA=</HashCode>
+      <FileName>Service References\WCFSvc\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.WCFSvc.WCFsvc_clsPrice" BaseTypeListCollapsed="true">
+    <Position X="55.25" Y="40" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQQAAACBQAAAgAAAAAgAAAAiACAAAAEAAAAEAIAAAA=</HashCode>
+      <FileName>Service References\WCFSvc\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.WCFSvc.iQuote_Client" BaseTypeListCollapsed="true">
+    <Position X="42.5" Y="20.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\WCFSvc\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.wsconsumer.clsStockPriceRequest" BaseTypeListCollapsed="true">
+    <Position X="61.75" Y="26.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEBBCAACiAAgAABEAAAgIiACEBAAUCAAgAEYgAAA=</HashCode>
+      <FileName>Service References\wsconsumer\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.wsconsumer.clsStockPriceResponse" BaseTypeListCollapsed="true">
+    <Position X="60" Y="27" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAgAACGAgACAAQAAAgYAIAAgAAAAAQEAAAAAAIAAAA=</HashCode>
+      <FileName>Service References\wsconsumer\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.wsconsumer.clsStockPriceItem" BaseTypeListCollapsed="true">
+    <Position X="60" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAACAAAECAAAAAAgAAAgkAAAAIQFAAAAEAoAICA=</HashCode>
+      <FileName>Service References\wsconsumer\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.wsconsumer.clsShipment" BaseTypeListCollapsed="true">
+    <Position X="51.25" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACBCAAQAAAAAAAAAAgAAgAAgAACEAAAAAAIAAAA=</HashCode>
+      <FileName>Service References\wsconsumer\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.wsconsumer.clsLogNode" BaseTypeListCollapsed="true">
+    <Position X="54.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAACICAAgAVAABAAAAAAggBAAAQEAAAAAAIAACA=</HashCode>
+      <FileName>Service References\wsconsumer\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.wsconsumer.QueueOfint" BaseTypeListCollapsed="true">
+    <Position X="57" Y="38.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAICAAAQIAAAAAAACABAgAAAAAAEAAQAAAIBAAA=</HashCode>
+      <FileName>Service References\wsconsumer\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.wsconsumer.clslistprice" BaseTypeListCollapsed="true">
+    <Position X="51.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAFAAACAAAAAAAAAAAgAAAAgAAAAAAEAAAAEAIAAAA=</HashCode>
+      <FileName>Service References\wsconsumer\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IQ.wsconsumer.I_UniTranClient" BaseTypeListCollapsed="true">
+    <Position X="54.75" Y="26.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AFEgAgIIACAACAAAIAAAAgQAAEQAAAgADAAAQAEAEIA=</HashCode>
+      <FileName>Service References\wsconsumer\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

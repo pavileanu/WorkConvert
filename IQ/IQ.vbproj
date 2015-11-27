@@ -458,6 +458,8 @@
     <Content Include="images\LOGO_iQuote2013_blue.png" />
     <Content Include="images\Navigation\sam2.zip" />
     <Content Include="images\Iq\Web.config" />
+    <Content Include="ClassesDiagram1.cd" />
+    <Content Include="ClassDiagram4.cd" />
     <None Include="My Project\PublishProfiles\GPCDataTest.pubxml" />
     <None Include="My Project\PublishProfiles\iQuote2 Editors.pubxml" />
     <None Include="My Project\PublishProfiles\iQuote2 TEST.pubxml" />
